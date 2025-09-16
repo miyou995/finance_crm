@@ -80,3 +80,4 @@ def send_notification_b2b_no_invoice_6months():
         )
 
     return f"Notifications sent for {last_invoice_in_each_company.count()} B2B leads with no invoices in the last 6 months."
+ 

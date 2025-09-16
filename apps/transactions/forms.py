@@ -75,6 +75,7 @@ class InvoicePaiementModelForm(forms.ModelForm):
         obj = super().save(commit=False)
         if getattr(self, "_invoice_pk", None):
             obj.invoice_id = self._invoice_pk
+            obj.client = obj.invoice.lead.company
         if commit:
             obj.save()
         return obj

@@ -465,7 +465,7 @@ class CompanyDetailView(BreadcrumbMixin, DetailView):
         context["contacts_count"] = self.object.contacts.count()
         context["leads_count"] = self.object.leads.count()
         context["payments_count"] = ClientPayment.objects.filter(
-            invoice__lead__company=self.object
+            invoices__lead__company=self.object
         ).count()
         context["invoices_count"] = Invoice.objects.filter(
             lead__company=self.object

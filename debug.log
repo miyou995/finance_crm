@@ -1256,3 +1256,670 @@ django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '
 2025-09-16 16:06:22,991 django.utils.autoreload INFO     Watching for file changes with StatReloader
 2025-09-16 16:06:33,252 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
 2025-09-16 16:06:34,048 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:01:07,883 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:01:28,263 django.request ERROR    Internal Server Error: /users/detail/1
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/users/views.py", line 125, in get_context_data
+    User.objects.filter(id=self.kwargs.get("pk")).include_b2b_counts().first()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/users/models.py", line 238, in include_b2b_counts
+    return self.include_counts(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/users/models.py", line 181, in include_counts
+    .objects.filter(
+             ^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1526, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1333, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'invoice' into field. Choices are: amount, client, client_id, created_at, created_by, created_by_id, date, id, invoices, journal, journal_id, ledger_entries, notes, payment_method, paymentinvoice, reference, updated_at, updated_by, updated_by_id
+2025-09-16 19:01:28,588 django.request WARNING  Not Found: /favicon.ico
+2025-09-16 19:01:59,531 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/users/models.py changed, reloading.
+2025-09-16 19:02:00,321 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:12:46,675 django.request ERROR    Internal Server Error: /companies/detail/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/crm/views.py", line 467, in get_context_data
+    context["payments_count"] = ClientPayment.objects.filter(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1526, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1333, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'invoice' into field. Choices are: amount, client, client_id, created_at, created_by, created_by_id, date, id, invoices, journal, journal_id, ledger_entries, notes, payment_method, paymentinvoice, reference, updated_at, updated_by, updated_by_id
+2025-09-16 19:13:30,571 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/views.py changed, reloading.
+2025-09-16 19:13:31,439 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:13:32,855 django.request ERROR    Internal Server Error: /invoices-paiements/company_invoices_payment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_filters/views.py", line 74, in get
+    self.filterset = self.get_filterset(filterset_class)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_filters/views.py", line 37, in get_filterset
+    kwargs = self.get_filterset_kwargs(filterset_class)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_filters/views.py", line 51, in get_filterset_kwargs
+    "queryset": self.get_queryset(),
+                ^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/views.py", line 105, in get_queryset
+    queryset = ClientPayment.objects.filter(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1526, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1333, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'invoice' into field. Choices are: amount, client, client_id, created_at, created_by, created_by_id, date, id, invoices, journal, journal_id, ledger_entries, notes, payment_method, paymentinvoice, reference, updated_at, updated_by, updated_by_id
+2025-09-16 19:13:42,428 django.request ERROR    Internal Server Error: /invoices-paiements/company_invoices_payment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_filters/views.py", line 74, in get
+    self.filterset = self.get_filterset(filterset_class)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_filters/views.py", line 37, in get_filterset
+    kwargs = self.get_filterset_kwargs(filterset_class)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_filters/views.py", line 51, in get_filterset_kwargs
+    "queryset": self.get_queryset(),
+                ^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/views.py", line 105, in get_queryset
+    queryset = ClientPayment.objects.filter(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1526, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1333, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1805, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'invoice' into field. Choices are: amount, client, client_id, created_at, created_by, created_by_id, date, id, invoices, journal, journal_id, ledger_entries, notes, payment_method, paymentinvoice, reference, updated_at, updated_by, updated_by_id
+2025-09-16 19:14:09,194 django.request ERROR    Internal Server Error: /paiements/invoice/invoicepayment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 30, in create_ledger_entry_signal
+    f"{instance.invoice.lead.company} {instance.invoice.bill_number}"
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 176, in form_valid
+    instance = form.save(commit=True)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/forms.py", line 79, in save
+    obj.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1023, in save_base
+    post_save.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 50, in create_ledger_entry_signal
+    instance.delete()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1281, in delete
+    return collector.delete()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/deletion.py", line 507, in delete
+    signals.post_delete.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 70, in change_invoice_state_unpaid
+    if instance.invoice.rest_amount > 0:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+2025-09-16 19:15:07,081 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:15:07,903 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:16:21,847 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:16:22,616 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:18:04,267 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:18:05,045 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:18:30,688 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:18:31,477 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:18:47,878 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:18:48,646 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:18:53,734 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:18:54,521 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:19:02,705 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:19:03,473 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:19:52,964 django.request ERROR    Internal Server Error: /paiements/invoice/invoicepayment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 34, in create_ledger_entry_signal
+    f"{instance.invoice.first().lead.company} {bill_numbers or _("No invoices")
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 176, in form_valid
+    instance = form.save(commit=True)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/forms.py", line 79, in save
+    obj.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1023, in save_base
+    post_save.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 55, in create_ledger_entry_signal
+    instance.delete()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1281, in delete
+    return collector.delete()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/deletion.py", line 507, in delete
+    signals.post_delete.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 75, in change_invoice_state_unpaid
+    if instance.invoice.rest_amount > 0:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+2025-09-16 19:20:14,740 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:20:15,529 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:24:29,153 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:24:29,930 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:24:34,030 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:24:34,813 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:24:38,880 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:24:39,661 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:24:42,697 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:24:43,474 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:25:07,066 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:25:07,849 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:27:14,126 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:27:14,884 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:28:21,619 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:28:22,361 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:28:43,856 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:28:44,626 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:29:06,141 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:29:06,930 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:29:12,020 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:29:12,812 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:29:15,866 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:29:16,647 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:29:19,692 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:29:20,464 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:29:30,340 root         ERROR    Error creating ledger entry: 'ClientPayment' object has no attribute 'invoice'
+2025-09-16 19:29:30,360 django.request ERROR    Internal Server Error: /paiements/invoice/invoicepayment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 176, in form_valid
+    instance = form.save(commit=True)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/forms.py", line 79, in save
+    obj.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1023, in save_base
+    post_save.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 66, in change_invoice_state_paid
+    for invoice in instance.invoices.all():
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 659, in __get__
+    return self.related_manager_cls(instance)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 1079, in __init__
+    raise ValueError(
+ValueError: "<ClientPayment: Paiement Facture: 200 on 2025-09-16>" needs to have a value for field "id" before this many-to-many relationship can be used.
+2025-09-16 19:33:20,335 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:33:21,157 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:33:26,400 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:33:27,059 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:33:31,165 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:33:31,947 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:33:40,126 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:33:40,905 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:33:48,081 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:33:48,854 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:33:59,498 django.request ERROR    Internal Server Error: /paiements/invoice/invoicepayment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 35, in create_ledger_entry_signal
+    f"{instance.invoice.first().lead.company} {bill_numbers or _("No invoices")
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 176, in form_valid
+    instance = form.save(commit=True)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/forms.py", line 79, in save
+    obj.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1023, in save_base
+    post_save.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 56, in create_ledger_entry_signal
+    instance.delete()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1281, in delete
+    return collector.delete()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/deletion.py", line 507, in delete
+    signals.post_delete.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 112, in change_invoice_state_unpaid
+    update_invoice_state(instance.invoice)
+                         ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+2025-09-16 19:36:17,084 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:36:20,262 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:36:31,864 django.request ERROR    Internal Server Error: /paiements/invoice/invoicepayment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 35, in create_ledger_entry_signal
+    f"{instance.invoice.first().lead.company} {bill_numbers or _("No invoices")
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 176, in form_valid
+    instance = form.save(commit=True)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/forms.py", line 79, in save
+    obj.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1023, in save_base
+    post_save.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 56, in create_ledger_entry_signal
+    instance.delete()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1281, in delete
+    return collector.delete()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/deletion.py", line 507, in delete
+    signals.post_delete.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 113, in change_invoice_state_unpaid
+    update_invoice_state(instance.invoice)
+                         ^^^^^^^^^^^^^^^^
+AttributeError: 'ClientPayment' object has no attribute 'invoice'. Did you mean: 'invoices'?
+2025-09-16 19:36:55,473 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:36:56,255 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:37:02,400 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:37:03,190 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:37:06,516 root         ERROR    Error creating ledger entry: 'ClientPayment' object has no attribute 'invoice'
+2025-09-16 19:37:06,534 django.request ERROR    Internal Server Error: /paiements/invoice/invoicepayment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 176, in form_valid
+    instance = form.save(commit=True)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/forms.py", line 79, in save
+    obj.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1023, in save_base
+    post_save.send(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/dispatch/dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/signals.py", line 108, in change_invoice_state_paid
+    for invoice in instance.invoices.all():
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 659, in __get__
+    return self.related_manager_cls(instance)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/fields/related_descriptors.py", line 1079, in __init__
+    raise ValueError(
+ValueError: "<ClientPayment: Paiement Facture: 2000 on 2025-09-16>" needs to have a value for field "id" before this many-to-many relationship can be used.
+2025-09-16 19:37:41,360 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:37:42,159 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:42:35,831 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:42:36,693 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:42:39,914 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:42:40,573 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:43:44,284 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:43:45,111 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:43:49,215 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:43:49,999 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:44:59,871 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:45:00,643 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:45:11,855 root         ERROR    Error creating ledger entry: 'ClientPayment' object has no attribute 'invoice'
+2025-09-16 19:49:27,895 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/signals.py changed, reloading.
+2025-09-16 19:49:28,700 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:49:44,103 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/users/models.py changed, reloading.
+2025-09-16 19:49:44,877 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:49:48,962 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/users/models.py changed, reloading.
+2025-09-16 19:49:49,750 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:49:51,783 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/users/models.py changed, reloading.
+2025-09-16 19:49:52,562 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:50:22,333 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:50:23,284 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:50:39,734 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:50:40,526 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:50:45,640 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:50:46,426 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:51:02,860 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/admin.py changed, reloading.
+2025-09-16 19:51:03,655 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:51:43,681 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/views.py changed, reloading.
+2025-09-16 19:51:44,470 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:51:50,592 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/views.py changed, reloading.
+2025-09-16 19:51:51,378 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 19:52:36,613 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 19:52:37,403 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 20:02:28,592 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 20:14:09,731 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 20:14:15,809 django.request ERROR    Internal Server Error: /paiements/invoice/invoicepayment/3/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "client_id" of relation "transactions_clientpayment" violates not-null constraint
+DETAIL:  Failing row contains (8, 2025-09-16 19:14:15.776051+00, 2025-09-16 19:14:15.77606+00, cash, 5000.00, 2025-09-16, null, , null, 1, null, null, 3).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 176, in form_valid
+    instance = form.save(commit=True)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/forms.py", line 79, in save
+    obj.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/debug_toolbar/panels/sql/tracking.py", line 234, in execute
+    return self._record(super().execute, sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/debug_toolbar/panels/sql/tracking.py", line 160, in _record
+    return method(sql, params)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+django.db.utils.IntegrityError: null value in column "client_id" of relation "transactions_clientpayment" violates not-null constraint
+DETAIL:  Failing row contains (8, 2025-09-16 19:14:15.776051+00, 2025-09-16 19:14:15.77606+00, cash, 5000.00, 2025-09-16, null, , null, 1, null, null, 3).
+2025-09-16 20:15:29,305 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-16 20:15:30,132 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 20:15:46,539 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-16 20:15:47,338 django.utils.autoreload INFO     Watching for file changes with StatReloader

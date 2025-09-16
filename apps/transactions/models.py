@@ -8,7 +8,6 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from apps.core.models import CRUDUrlMixin, TimestampedModel
-from apps.subscription.models import Subscription
 
 User = get_user_model()
 
@@ -20,7 +19,7 @@ class ClientPaymentQuerySet(models.QuerySet):
                 Q(amount__icontains=query)
                 | Q(invoice__bill_number__icontains=query)
                 | Q(invoice__lead__company__name__icontains=query)
-            )
+            ).distinct()
         return self
 
     def limit_user(self, user):
@@ -33,11 +32,26 @@ class ClientPaymentQuerySet(models.QuerySet):
             return self.filter(
                 Q(invoice__lead__users__in=[user.id])
                 | Q(invoice__lead__users__in=user_team_ids)
-            )
+            ).distinct()
         elif user.is_commercial:
-            return self.filter(Q(invoice__lead__users__in=[user.id]))
+            return self.filter(Q(invoice__lead__users__in=[user.id])).distinct()
         else:
             return self.none()
+
+
+class Journal(models.Model):
+    """Equivalent to Odoo's accounting journal (bank, cash, etc.)."""
+    name = models.CharField(max_length=120)
+    code = models.CharField(max_length=32, blank=True, null=True)
+    type = models.CharField(
+        max_length=20,
+        choices=[("bank", "Bank"), ("cash", "Cash"), ("other", "Other")],
+        default="bank",
+    )
+
+    def __str__(self):
+        return f"{self.name} ({self.code})" if self.code else self.name
+
 
 
 class Transaction(CRUDUrlMixin, TimestampedModel):
@@ -52,6 +66,9 @@ class Transaction(CRUDUrlMixin, TimestampedModel):
         default=PAYMENT_METHOD.CASH,
         max_length=64,
     )
+    
+    journal = models.ForeignKey(Journal, on_delete=models.PROTECT, related_name="%(class)ss", null=True, blank=True)
+
     amount = models.DecimalField(
         max_digits=11,
         verbose_name=_("Montant"),
@@ -126,14 +143,11 @@ class StaffPayment(Transaction):
 
 class ClientPayment(Transaction):
     client = models.ForeignKey(
-        "crm.Company", on_delete=models.PROTECT, related_name="payments", null=True, blank=True
+        "crm.Company", on_delete=models.PROTECT, related_name="payments"
     )
-
-    invoices = models.ManyToManyField(
-            "billing.Invoice",
-            through="PaymentInvoice",
-            related_name="payments",
-        )
+    invoice = models.ForeignKey(
+        "billing.Invoice", on_delete=models.PROTECT, related_name="payments", null=True, blank=True
+    )
 
     
     objects = ClientPaymentQuerySet.as_manager()
