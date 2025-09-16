@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h3 class="modal-title">{% trans 'supprimer' %} {{object}}</h3>
+        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+            <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+        </div>
+    </div>
+    <div class="modal-body">
+        <p>{% trans 'Êtes-vous sûr de vouloir supprimer ceci ?' %} {{object}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{% trans 'Annuler' %}</button>
+        <form 
+            {% if object.get_delete_url %}
+                action="{{object.get_delete_url}}"
+            {% else %}
+                action="{{delete_url}}"
+            {% endif %}
+                method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">{% trans 'supprimer' %}</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load widget_tweaks %}
+
+
+<div class="d-flex flex-stack mb-8">
+    <div class="me-5">
+        <label class="fs-6 fw-semibold">{{field.label.title}}</label>
+        <div class="fs-7 fw-semibold text-muted">{{field.help_text}}</div>
+        <label class="form-check form-switch form-check-custom form-check-solid">
+            {% render_field field class='form-check-input' %}
+            <span class="form-check-label fw-semibold text-muted">{{field.label.title}}</span>
+        </label>
+    </div>
+</div> 
+{% for error in field.errors %}
+    <div class="text-danger fs-7">
+        {{ error }}
+    </div>
+{% endfor %}

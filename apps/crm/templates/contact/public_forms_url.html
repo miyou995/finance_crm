@@ -1,0 +1,244 @@
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+<link href="https://fonts.googleapis.com/css?family=Inter:400,500,600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary-color: #6366f1;
+        --primary-hover: #4f46e5;
+        --text-main: #22223b;
+        --text-secondary: #6c757d;
+        --bg-main: #f4f6fb;
+        --border: #e5e7eb;
+        --radius: 12px;
+        --transition: 0.2s cubic-bezier(.4,0,.2,1);
+    }
+    body {
+        background: var(--bg-main);
+        font-family: 'Inter', 'Roboto', Arial, sans-serif;
+    }
+    .google-form-container {
+        background: #fff;
+        border-radius: var(--radius);
+        box-shadow: 0 6px 32px rgba(99,102,241,0.07), 0 1.5px 6px rgba(0,0,0,0.03);
+        padding: 2.5rem 2rem 2rem 2rem;
+        margin: 40px auto;
+        max-width: 800px;
+        border-top: 5px solid var(--primary-color);
+        transition: box-shadow var(--transition);
+    }
+    .google-form-container:hover {
+        box-shadow: 0 12px 40px rgba(99,102,241,0.13), 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .google-form-header {
+        color: var(--primary-color);
+        text-align: center;
+        font-weight: 600;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: -1px;
+    }
+    .form-text {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .google-form-label {
+        font-size: 1rem;
+        color: var(--text-main);
+        margin-bottom: 0.4rem;
+        display: block;
+        font-weight: 500;
+        transition: color var(--transition);
+        text-align: left;
+        letter-spacing: 0.01em;
+    }
+    .form-group:focus-within .google-form-label {
+        color: var(--primary-color);
+    }
+    .google-form-input,
+    .google-form-select {
+        width: 100%;
+        height: 48px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        font-size: 1rem;
+        padding: 0 16px;
+        background: var(--bg-main);
+        transition: border-color var(--transition), box-shadow var(--transition);
+        color: var(--text-main);
+    }
+    .google-form-input:focus,
+    .google-form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(99,102,241,0.10);
+        background: #fff;
+        outline: none;
+    }
+    .form-check {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 0.5rem;
+    }
+    .form-check-input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        accent-color: var(--primary-color);
+        border-radius: 5px;
+        border: 1.5px solid var(--border);
+        transition: border-color var(--transition);
+        margin-top: 0;
+    }
+    .form-check-input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(99,102,241,0.10);
+    }
+    .form-check-label {
+        font-size: 1.08rem;
+        color: var(--text-main);
+        font-weight: 500;
+        cursor: pointer;
+        user-select: none;
+    }
+    .form-text.text-muted {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        margin-top: 0.2rem;
+    }
+    .google-form-submit {
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+        border: none;
+        color: #fff;
+        padding: 0.85rem 2.5rem;
+        font-size: 1.15rem;
+        border-radius: 30px;
+        font-weight: 600;
+        box-shadow: 0 4px 16px rgba(99,102,241,0.13);
+        transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin: 0 auto;
+        display: block;
+        cursor: pointer;
+    }
+    .google-form-submit:hover, .google-form-submit:focus {
+        background: linear-gradient(90deg, var(--primary-hover), var(--primary-color));
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 8px 24px rgba(99,102,241,0.18);
+    }
+    .required-star {
+        color: #e11d48;
+        font-size: 1.1em;
+        margin-left: 2px;
+    }
+    @media (max-width: 600px) {
+        .google-form-container {
+            padding: 1.2rem 0.7rem 1rem 0.7rem;
+        }
+        .google-form-header {
+            font-size: 1.3rem;
+        }
+    }
+</style>
+
+<div class="container py-5">
+    <div class="google-form-container">
+        <div class="text-center mb-4">
+            <img alt="Logo Union Of Education" src="{% static 'images/logo.png' %}" class="mb-3" style="height:70px; max-width:180px; border-radius: 10px; box-shadow: 0 2px 12px rgba(99,102,241,0.10);" />
+            <h2 class="google-form-header mb-2" style="font-size:2.1rem;">
+            {% translate "Bienvenue à l’Union Of Education !" %}
+            </h2>
+            <div class="form-text" style="font-size:1.15rem;">
+            <i class="ki-outline ki-hand-wave me-1" style="color:var(--primary-color); font-size:1.3em;"></i>
+            {% translate "Nous sommes ravis de vous accueillir. Merci de compléter ce formulaire pour rejoindre notre communauté engagée !" %}
+            </div>
+        </div>
+        <form method="POST" action="{% url 'crm:public_forms_url' %}" hx-vals='{"reload_page": "true"}' autocomplete="on">
+            {% csrf_token %}
+            {% for field in form %}
+                {% if field.field.widget.input_type == "checkbox" %}
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="{{ field.id_for_label }}" name="{{ field.html_name }}"
+                                   {% if field.value %}checked{% endif %} {% if field.field.required %}required{% endif %}>
+                            <label class="form-check-label" for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                                {% if field.field.required %}<span class="required-star">*</span>{% endif %}
+                            </label>
+                        </div>
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                {% elif field.name == "source" or field.name == "interested" %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}" class="google-form-label">
+                            {{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}
+                        </label>
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                        <div class="d-flex flex-wrap gap-2 mt-2">
+                            {% for subfield in field %}
+                                <div class="form-check" style="min-width: 180px;">
+                                    <input class="form-check-input" type="checkbox" id="{{ subfield.id_for_label }}"
+                                           name="{{ field.name }}" value="{{ subfield.data.value }}"
+                                           {% if subfield.data.selected %}checked{% endif %}>
+                                    <label class="form-check-label" for="{{ subfield.id_for_label }}">
+                                        {{ subfield.choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}" class="google-form-label">
+                            {{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}
+                        </label>
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% render_field field class="form-control google-form-input" %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% if formsets %}
+                {% for name, fs in formsets.items %}
+                    {{ fs.management_form }}
+                    <div class="d-flex flex-wrap align-items-center mb-4 gap-3">
+                        {% for field in fs.forms.0.visible_fields %}
+                            {% if 'DELETE' not in field.name %}
+                                <div style="flex:1; min-width: 120px;">
+                                    <label for="{{ field.id_for_label }}" class="google-form-label">
+                                        {{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}
+                                    </label>
+                                    {% if field.name == "phone" %}
+                                        {% render_field field class="form-control google-form-input" required="required" %}
+                                    {% else %}
+                                        {% render_field field class="form-control google-form-input" %}
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="text-center mt-4">
+                <button type="submit" class="google-form-submit">
+                    <i class="ki-outline ki-send me-2"></i>
+                    {% translate "Submit" %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% block modal %}
+    {% include 'popups/_modal.html' with size_class="modal-lg" %}
+{% endblock modal %}

@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-between align-items-center total-container">
+    <h3 class="total-text">
+        <i class="fas fa-chart-bar icon"></i> Total: <span class="total-amount">{{ total|safe }}</span>
+    </h3>
+</div>
+<div>
+    <canvas id="{{ id }}"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    htmx.on('htmx:afterSettle', function() {
+        console.log('Chart INITED')
+        function createGradient(ctx, color1, color2) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, "#073b4c");
+            gradient.addColorStop(1, "#118ab2");
+            return gradient;
+        }
+
+        function createChartConfig(ctx, labels, data, titleText, gradient, chartType) {
+            return {
+                type: chartType || 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total',
+                        data: data,
+                        backgroundColor: gradient,
+                        borderRadius: 10,
+                        barPercentage: 0.6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    aspectRatio: 1.8,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Montant (DZD)',
+                                font: { size: 14, weight: 'bold' },
+                                color: '#444'
+                            },
+                            ticks: {
+                                color: '#333',
+                                font: { size: 13 }
+                            },
+                            grid: { color: "rgba(180, 180, 180, 0.3)" }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                font: { size: 14, weight: 'bold' },
+                                color: '#444'
+                            },
+                            ticks: {
+                                color: '#333',
+                                font: { size: 13 }
+                            },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: titleText,
+                            font: { size: 18, weight: 'bold' },
+                            color: '#333'
+                        },
+                        legend: { display: false }
+                    }
+                }
+            };
+        }
+    const subscriptionCtx = document.getElementById('{{ id }}');
+    if (window.chartInstances && window.chartInstances['{{ id }}']) {
+        window.chartInstances['{{ id }}'].destroy();
+    }
+       
+    console.log("chart_data--","{{ chart_labels|safe }}")
+    if (subscriptionCtx) {
+        const subscriptionGradient = createGradient(subscriptionCtx.getContext('2d'), 'rgba(0, 123, 255, 0.9)', 'rgba(0, 80, 210, 0.7)');
+        // Store chart instance in global object
+        if (!window.chartInstances) window.chartInstances = {};
+        window.chartInstances['{{ id }}'] = new Chart(subscriptionCtx.getContext('2d'), createChartConfig(
+            ctx=subscriptionCtx.getContext('2d'),
+            labels={{ chart_labels|safe }},
+            data={{ chart_data|safe }},
+            titleText="{{ title|safe }}",
+            gradient=subscriptionGradient,
+            chartType="{{ chart_type|safe }}"
+        ));
+    } else {
+        console.error("Canvas element not found");
+    }
+    });
+</script>

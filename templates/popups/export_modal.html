@@ -1,0 +1,40 @@
+{% load static %}
+{% load i18n %}
+<div class="modal fade" id="kt_subscriptions_export_modal{{ modal_id }}" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered mw-650px">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="fw-bold">{% translate 'Export' %} {{object}}</h2>
+				<div id="kt_subscriptions_export_close" class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+					<i class="ki-duotone ki-cross fs-2x">
+						<span class="path1"></span>
+						<span class="path2"></span>
+					</i>
+				</div>
+			</div>
+			<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+				<form id="kt_subscriptions_export_form" class="form" action="{{export_url}}?{{request.GET.urlencode}}" method='POST'
+					hx-include='[name="order_status"], [name="delivery"], [name="wilaya"], [name="start_date"], [name="end_date"],'
+					>
+					{% csrf_token %}
+					{% comment %} <input type="hidden" name="my_warehouse" value={{warehouse.pk}}> {% endcomment %}
+					<div class="fv-row mb-10">
+						<label class="fs-5 fw-semibold form-label mb-5">{% translate "Select Export Format:" %}</label>
+						<select data-control="select2" data-placeholder="Select a format" data-hide-search="true" name="extension" class="form-select form-select-solid" data-dropdown-parent="#kt_subscriptions_export_modal{{ modal_id }}">
+							<option value="excel">{% translate "Excel" %}</option>
+							<option value="pdf">{% translate "PDF" %}</option>
+							<option value="csv">{% translate "CSV" %}</option>
+						</select>
+					</div>
+					<div class="text-center">
+						<button type="button" class="btn btn-light" data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
+						{% include 'snippets/_submit_button.html' %}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	

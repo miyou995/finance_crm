@@ -1,0 +1,60 @@
+<div   
+        class="container my-4"
+        hx-get="{% url 'notification:notification_drawer' %}"
+        hx-trigger="refresh_list from:body"
+        hx-swap="innerHTML"
+        style="max-width: 400px;"
+    >
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold mb-0">
+            <i class="bi bi-bell-fill text-primary me-2 fs-2x"></i>Notifications
+        </h2>
+        {% if notifications %}
+            <span class="badge bg-primary-subtle text-primary-emphasis px-3 py-2 rounded-pill fs-6">
+                {{ notifications|length }} nouvelles
+            </span>
+        {% endif %}
+    </div>
+    <div class="d-flex flex-column gap-4 mx-auto" >
+        <!-- Notifications Drawer -->
+        {% for notification in notifications %}
+            <div class="card border-0 shadow-sm position-relative overflow-hidden notification-card bg-primary-subtle">
+                <span class="position-absolute top-0 end-0 m-2" style="z-index:2;">
+                    <a class="btn btn-link text-danger p-0"
+                       hx-get="{% url 'notification:mark_notification_as_read' notification.id %}"
+                       hx-swap="innerHTML">
+                        <i class="ki-outline ki-cross-circle fs-2 text-danger"></i>
+                    </a>
+                </span>
+                <div class="card-body d-flex align-items-center gap-3 p-3">
+                    <!-- Avatar / Icon -->
+                    <div class="flex-shrink-0">
+                           <i class="ki-solid ki-notification-bing fs-2x text-warning">
+                            </i>
+                    </div>
+                    <!-- Content -->
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold text-primary-emphasis mb-1" style="font-size: 1.06rem;">
+                            {{ notification.message }}
+                        </div>
+                        <div class="d-flex gap-2 small text-muted align-items-center">
+                            <span>
+                                <i class="bi bi-person me-1"></i>{{ notification.recipient }}
+                            </span>
+                            <span>
+                                <i class="bi bi-clock me-1"></i>
+                                {{ notification.date|date:"d M Y" }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ notification.link }}" class="stretched-link"></a>
+            </div>
+        {% empty %}
+            <div class="alert alert-secondary text-center rounded-3 py-5">
+                <i class="bi bi-bell fs-1 mb-3 text-primary mb-5"></i><br>
+                <h2 class="fw-bold mt-6">Aucune notification.</h2>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,300 @@
+{% extends "layout/base.html" %}
+{% load custom_filters %}
+{% load static %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+{% block content %}
+
+<div class="d-block d-md-flex justify-content-between align-items-end mb-4">
+    {% include 'snippets/_breadcrumb.html' %}
+    <div class="d-flex align-items-end gap-2">
+        {% if perms.transactions.add_invoicepayment  %}
+            <a  class="btn btn-sm btn-success"
+                hx-get="{% url 'transactions:create_invoice_invoicepayment' invoice.pk %}"
+                hx-target="#kt_modal_content"
+                hx-swap="innerHTML"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal"
+                hx-vals='{"reload_page": "true"}'>
+                <i class="fa fa-credit-card me-1"></i>Payer maintenant
+            </a>
+        {% endif %}
+        {% if perms.billing.change_invoice  %}
+            <a  class="btn btn-sm btn-primary"
+                hx-get="{% url 'billing:update_invoice' invoice.id %}"
+                hx-target="#kt_modal_content"
+                hx-swap="innerHTML"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal"
+                hx-vals='{"reload_page": "true"}'
+            >
+                <i class="fa fa-edit me-1"></i>Modifier
+            </a>
+        {% endif %}
+        {% if perms.billing.delete_invoice %}
+            <a  class="btn btn-sm btn-danger"
+                hx-get="{% url 'billing:delete_invoice' invoice.id %}"
+                hx-target="#delete_modal_body"
+                hx-swap="innerHTML"
+                data-bs-toggle="modal"
+                data-bs-target="#delete_modal"
+            >
+                <i class="fa fa-trash me-1"></i>Supprimer
+            </a>
+        {% endif %}
+        {% if perms.billing.view_invoice %}
+            <a href="{% url 'billing:print_invoice_pdf' invoice.id %}" target="_blank" class="btn btn-sm btn-info">
+                <i class="fa fa-print me-1"></i>impression
+            </a>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-column flex-lg-row">
+                    <div class="flex-lg-row-fluid me-xl-12 mb-10 mb-xl-0">
+                        <div class="mt-n1">
+                            <div class="d-flex flex-stack pb-10">
+                                <a href="#">
+                                    {% if business.logo %}
+                                        <img alt="Logo" src="{{ business.logo.url }}" style="max-width: 60px;" />
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="m-0">
+                                <div class="d-flex justify-content-between align-items-center mb-8">
+                                    <div class="fw-bold fs-3 text-gray-800">{% translate "Facture" %} {{ invoice.bill_number }}</div>
+                                    <div class="fw-bold fs-3 text-gray-800">{{ invoice.created_at|date:"d M Y" }}</div>
+                                </div>
+                                <div class="row g-5 mb-11">
+                                    {% comment %} from {% endcomment %}
+                                    <div class="col-sm-6">
+                                        <div class="d-flex align-items-center">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">RC :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ business.rc_code|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">Art :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ business.art_code|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">NIF :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ business.nif_code|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">NIS :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ business.nis_code|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">Bank :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ business.bank_number|default:" " }}</span>
+                                        </div>
+                                    </div>
+                                    {% comment %} to {% endcomment %}
+                                    <div class="col-sm-6">
+                                        <div class="d-flex align-items-center ">
+                                            <div class="fw-semibold fs-7 text-gray-600 mb-1">{% translate "Destinataire : " %}  </div>
+                                            <div class="fw-bold fs-6 text-gray-800">{{ invoice.lead.company }}</div>
+                                        </div>
+                                        <div class="d-flex align-items-center ">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">NIF :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ invoice.lead.company.nif|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center ">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">NRC :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ invoice.lead.company.nrc|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center ">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">NIS :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ invoice.lead.company.nis|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center ">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">NART :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ invoice.lead.company.nart|default:" " }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center ">
+                                            <span class="fw-semibold fs-7 text-gray-600 mb-1 me-2">Bank :</span>
+                                            <span class="fw-bold fs-6 text-gray-800">{{ invoice.lead.company.bank_name|default:" " }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-5 mb-12">
+                                    <div class="col-sm-6">
+                                        <div class="fw-semibold fs-7 text-gray-600 mb-1">{% translate "Émis pour" %} :</div>
+                                        <div class="fw-bold fs-6 text-gray-800">{{invoice.lead.company}}</div>
+                                        {% comment %} <div class="fw-semibold fs-7 text-gray-600">8692 Wild Rose Drive 
+                                        <br />Livonia, MI 48150</div> {% endcomment %}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="fw-semibold fs-7 text-gray-600 mb-1">{% translate "Émis par" %} :</div>
+                                        <div class="fw-bold fs-6 text-gray-800">{{ business.name_company }}</div>
+                                        <div class="fw-semibold fs-7 text-gray-600">{{ business.address }}</div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="table-responsive border-bottom mb-9">
+                                        <table class="table mb-3">
+                                            <thead>
+                                                <tr class="border-bottom fs-6 fw-bold text-muted">
+                                                    <th class="min-w-50px pb-2">{% translate "Description" %}</th>
+                                                    <th class="min-w-30px text-end pb-2">{% translate "Quantité" %}</th>
+                                                    <th class="min-w-30px text-end pb-2">{% translate "Prix" %}</th>
+                                                    <th class="min-w-30px text-end pb-2">{% translate "Remise" %}</th>
+                                                    <th class="min-w-40px text-end pb-2">{% translate "Total" %}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in invoice_items %}
+                                                <tr class="fw-bold text-gray-700 fs-5 text-end">
+                                                    <td class="d-flex align-items-center pt-6">
+                                                        <i class="fa fa-genderless text-primary fs-2 me-2"></i>{{ item.title }}
+                                                    </td>
+                                                    <td class="pt-6">{{ item.quantity }}</td>
+                                                    <td class="pt-6">{{ item.unit_price|floatformat:2 }} {% if item.unit %} / {{ item.unit }} {% endif %}</td>
+                                                    <td class="pt-6">{{ item.discount|default:"0" }}</td>
+                                                    <td class="pt-6 text-end">{{ item.get_total_item|floatformat:2 }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <div class="mw-300px">
+                                            <div class="d-flex flex-stack mb-3">
+                                                <div class="fw-semibold pe-10 text-gray-600 fs-7">{% translate "Total HT" %}:</div>
+                                                <div class="text-end fw-bold fs-6 text-gray-800"> {{ invoice.get_total_net|floatformat:2 }}</div>
+                                            </div>
+                                            {% if taxes %}
+                                                {% for tax in taxes %}
+                                                    <div class="d-flex flex-stack mb-3">
+                                                        <div class="fw-semibold pe-10 text-gray-600 fs-7">VAT {{ tax.tax }}%</div>
+                                                        <div class="text-end fw-bold fs-6 text-gray-800">
+                                                            {{ invoice.get_total_net|multiply:tax.tax|divide:100|floatformat:2 }}
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                        
+                                            <div class="d-flex flex-stack">
+                                                <div class="fw-semibold pe-10 text-gray-600 fs-7">{% translate "Total TTC" %}</div>
+                                                <div class="text-end fw-bold fs-6 text-gray-800">{{ invoice.get_total_ttc|floatformat:2 }}</div>
+                                            </div>
+                                            {% if invoice.paid_amount and invoice.rest_amount != 0 %}
+                                                <div class="d-flex flex-stack">
+                                                    <div class="fw-semibold pe-10 text-gray-600 fs-7">{% translate "Avance de paiement" %}</div>
+                                                    <div class="text-end fw-bold fs-6 text-gray-800"> {{ invoice.paid_amount|floatformat:2 }}</div>
+                                                </div>
+                                                <div class="d-flex flex-stack">
+                                                    <div class="fw-semibold pe-10 text-gray-600 fs-7">{% translate "Montant restant" %}</div>
+                                                    <div class="text-end fw-bold fs-6 text-gray-800">{{ invoice.rest_amount|floatformat:2 }}</div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="col-lg-4">
+        <div class="m-0">
+            <div class="d-print-none border border-dashed border-gray-300 card-rounded p-9 bg-lighten">
+                <div class="mb-8">
+                    <span class="badge badge-light-{{ invoice.get_state_color }} me-2 fs-1">{{ invoice.get_state_display }}</span>
+                </div>
+                <h6 class="mb-8 fw-bolder text-gray-600 text-hover-primary">détails de paiement</h6>
+                <div class="mb-6">
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center justify-content-between p-4 bg-white shadow-sm rounded border">
+                            <div class="fw-semibold text-gray-600 fs-7">
+                                <i class="fa fa-file-invoice-dollar text-primary me-2"></i>Montant dû
+                            </div>
+                            <div class="fw-bold text-primary fs-5">
+                                {{ invoice.get_total_ttc|floatformat:2 }}
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between p-4 bg-white shadow-sm rounded border">
+                            <div class="fw-semibold text-gray-600 fs-7">
+                                <i class="fa fa-check-circle text-success me-2"></i>Montant payé
+                            </div>
+                            <div class="fw-bold text-success fs-5">
+                                {{ invoice.paid_amount|floatformat:2 }}
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between p-4 bg-white shadow-sm rounded border">
+                            <div class="fw-semibold text-gray-600 fs-7">
+                                <i class="fa fa-exclamation-circle text-danger me-2"></i>Montant restant
+                            </div>
+                            <div class="fw-bold text-danger fs-5">
+                                {{ invoice.rest_amount|floatformat:2 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="fw-semibold text-gray-600 fs-7">Date de 1er paiement:</div>
+                    <div class="fw-bold text-gray-800 fs-6"> 
+                        {{ invoice.payment_date|date:"d/m/Y" }}
+                    </div>
+                </div>
+                <div class="mb-15">
+                    <div class="fw-semibold text-gray-600 fs-7">Date d'échéance:</div>
+                    <div class="fw-bold fs-6 text-gray-800 d-flex align-items-center">{{ invoice.due_date|date:"d/m/Y" }}
+                        {% if invoice.num_of_days_to_due %}
+                        <span class="fs-7 text-danger d-flex align-items-center">
+                            <span class="bullet bullet-dot bg-danger mx-2"></span>échéance dans {{ invoice.num_of_days_to_due }} jours</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <h6 class="mb-8 fw-bolder text-gray-600 text-hover-primary">Aperçu du projet</h6>
+                <div class="mb-6">
+                    <div class="fw-semibold text-gray-600 fs-7">Nom du projet</div>
+                    <div class="fw-bold text-gray-800 fs-6">{{ invoice.lead.company }}</div>
+                </div>
+                <div class="mb-6">
+                    <div class="fw-semibold text-gray-600 fs-7">Créé par</div>
+                    <div class="fw-bold text-gray-800 fs-6">{{ invoice.created_by }}</div>
+                </div>
+                <div class="mb-8">
+                    <div class="fw-semibold text-gray-600 fs-7 mb-2">Historique des paiements</div>
+                    {% if invoice.payments.all %}
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Montant</th>
+                                        <th>Effectué par</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for payment in invoice.payments.all %}
+                                    <tr>
+                                        <td>{{ payment.date|date:"d/m/Y" }}</td>
+                                        <td>{{ payment.amount|floatformat:2 }}</td>
+                                        <td>{{ payment.created_by }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-muted fs-7">Aucun paiement enregistré.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" name="reload_page" value="true">
+
+{% endblock content %}
+

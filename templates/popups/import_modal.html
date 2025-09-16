@@ -1,0 +1,48 @@
+	{% load static %}
+	{% load i18n %}
+    <div class="modal fade" id="kt__import_modal{{ modal_id }}" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered mw-800px">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="fw-bold">{% translate 'Import contacts' %}</h2>
+					<div id="kt_subscriptions_export_close" class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+						<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+						<i class="ki-duotone ki-cross fs-2x">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+					</div>
+				</div>
+				<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+					<form id="kt__import_modal{{ modal_id }}" class="form"  action={{import_url}} method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+						<div class="fv-row mb-10">
+							<label class="fs-5 fw-semibold form-label mb-5">{% translate 'Select File Format' %}:</label>
+							<select data-control="select2"
+							 data-placeholder="Select a format" 
+							 data-hide-search="true" name="extension" class="form-select form-select-solid">
+								<option value="excel">Excel</option>
+								{% comment %} <option value="csv">CVS</option> {% endcomment %}
+							</select>
+						</div>
+						<label for="basic-url" class="form-label">{% translate 'Browse a file' %}</label>
+						<div class="input-group mb-5">
+							<input type="file" name="import_file" class="form-control" id="basic-url" aria-describedby="basic-addon3" required/>
+						</div>
+						<div class="text-center pb-3">
+							<button type="button" class="btn btn-light" data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
+							{% include 'snippets/_submit_button.html' %}
+						</div>
+					</form>
+					<div class="mt-5"
+						hx-get="{{ import_fields_url }}"
+						hx-trigger="load"
+						hx-swap="innerHTML"
+					>
+
+						{% include "tables/_table_import_fields.html" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

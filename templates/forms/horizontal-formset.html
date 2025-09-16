@@ -1,0 +1,91 @@
+{% load widget_tweaks %}
+{{ formset.media }}
+<div class="table-responsive mb-3">
+    <h1>{{formset_title}}</h1>
+    <table class="table g-2 gs-0 mb-0 fw-bold text-gray-700" data-kt-element="items">
+        <thead>
+            <tr class="border-bottom fs-7 fw-bold text-gray-700 text-uppercase">
+                <th class="w-50px text-center">#</th>
+                {% for field in formset.forms.0.visible_fields %}
+                    <th class="{% if 'DELETE' in field.name %}w-50px text-end{% endif %}"> 
+                    {% if not field.name == "DELETE" %}
+                        {{ field.label }}
+                    {% endif %}
+                    </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody id="{{container_id}}">
+            {{ formset.management_form }}
+            {% for line in formset %}
+                <tr class="border-bottom border-bottom-dashed item-form">
+                    <td class="pt-6 text-nowrap text-center">
+                        <span data-kt-element="number">
+                            <h5 class="mb-0">{{forloop.counter}}</h5>
+                        </span>
+                    </td>
+                    {% for field in line.visible_fields %}
+                        <td class="pt-3">
+                            {% if field.name != "query" %}       
+                                {% if 'DELETE' in field.name %}
+                                    {% if forloop.parentloop.counter > formset.initial_form_count %}
+                                        <button type="button" class="btn btn-sm btn-icon btn-active-color-primary remove-item">
+                                            <i class="ki-outline ki-trash fs-2x text-danger"></i>
+                                        </button>
+                                    {% else %}
+                                        <input type="checkbox" class="form-check-input mt-1" name="{{formset.prefix}}-{{forloop.parentloop.counter0}}-DELETE" id="{{formset.prefix}}-{{forloop.parentloop.counter0}}-DELETE" >
+                                        <label for="{{formset.prefix}}-{{forloop.parentloop.counter0}}-DELETE" class="btn btn-sm btn-icon btn-active-color-primary"  data-kt-element="remove-item">
+                                            <i class="ki-outline ki-trash fs-2x text-danger"></i>
+                                        </label>
+                                    {% endif %}             
+                                {% elif field|widget_type|slugify == "checkboxinput" %}
+                                    <div class="d-flex flex-stack mb-2">
+                                        <label class="form-check form-switch form-check-custom form-check-solid">
+                                            {% render_field field class='form-check-input' %}
+                                            <span class="form-check-label fw-semibold text-muted">{% trans "Active" %}</span>
+                                        </label>
+                                    </div> 
+                                    {% for error in field.errors %}
+                                        <div class="text-danger fs-7">
+                                            {{ error }}
+                                        </div>
+                                    {% endfor %}
+                                {% elif field|widget_type|slugify == "selectmultiple" %}
+                                    <div class="mb-2">
+                                        {% include 'forms/fields/multi-select.html' %}
+                                    </div>   
+                                {% elif field|widget_type|slugify == "select" %}
+                                    <div class="mb-2 d-flex flex-column fv-row">
+                                        {% include 'forms/fields/select.html' %}
+                                    </div>
+                                {% else %} 
+                                    <div class="d-flex flex-column mb-2 fv-row">
+                                        {% render_field field|add_class:'form-control' %}
+                                        {% if field.errors %}
+                                            <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+                                        {% else %}
+                                            <span class="text-muted">{{ field.help_text }}</span>
+                                        {% endif %}
+                                    </div>
+                                {% endif %} 
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>  
+                {% for hidden in line.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+            {% endfor %} 
+        </tbody>
+        <tfoot >
+            <tr class="border-top border-top-dashed align-top fs-6 fw-bold text-gray-700">
+                <th colspan="2" class="text-primary">
+                    <a class="btn btn-sm btn-light-primary" id="addButton_{{formset.prefix}}">
+                        <i class="ki-duotone ki-plus fs-3"></i>
+                        {% translate 'ajouter autre' %}
+                    </a>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

@@ -1,0 +1,116 @@
+{% extends "layout/base.html" %}
+
+{% load static %}
+{% block content %}
+
+<!-- Dashboard Stats Cards with improved styling -->
+<div class="row g-4" id="table_board"> 
+  <div class="col-md-3">
+        <div class="card card-flush border-0 h-100 bg-success bg-opacity-75 shadow-sm hover-elevate-up">
+            <div class="card-header pt-5">
+                <div class="card-title d-flex flex-column align-items-start">
+                    <span class="fs-4 fw-bold text-white mb-2">{% translate "Total revenus" %}</span>
+                    <span class="fs-2 fw-bolder text-white">{{total_income}}</span>
+                </div>
+            </div>
+        </div>
+    </div>  
+   <div class="col-md-3">
+        <div class="card card-flush border-0 h-100 bg-danger bg-opacity-75 shadow-sm hover-elevate-up">
+            <div class="card-header pt-5">
+                <div class="card-title d-flex flex-column align-items-start">
+                    <span class="fs-4 fw-bold text-white mb-2">{% translate "Total dépenses" %}</span>
+                    <span class="fs-2 fw-bolder text-white">{{total_expence}}</span>
+                </div>
+            </div>
+        </div>
+    </div> 
+   <div class="col-md-3">
+        <div class="card card-flush border-0 h-100 bg-warning bg-opacity-75 shadow-sm hover-elevate-up">
+            <div class="card-header pt-5">
+                <div class="card-title d-flex flex-column align-items-start">
+                    <span class="fs-4 fw-bold text-white mb-2">{% translate "Total restant des factures" %}</span>
+                    <span class="fs-2 fw-bolder text-white">{{invoice_reste}}</span>
+                </div>
+            </div>
+        </div>
+    </div>  
+   <div class="col-md-3">
+        <div class="card card-flush border-0 h-100 bg-info bg-opacity-75 shadow-sm hover-elevate-up">
+            <div class="card-header pt-5">
+                <div class="card-title d-flex flex-column align-items-start">
+                    <span class="fs-4 fw-bold text-white mb-2">{% translate "Total restant des abonnements" %}</span>
+                    <span class="fs-2 fw-bolder text-white">{{subscription_remaining_amount}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="container my-5">
+    <!-- Date Range Picker -->
+    <div class="card p-4 shadow-sm mb-4">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-calendar-alt fs-4 text-muted me-2"></i>
+            <div class="flex-grow-1">
+                <input name="start_date" type="hidden"/>
+                <input name="end_date" type="hidden"/>
+                <input 
+                    class="form-control form-control-lg border-0 bg-light" 
+                    placeholder="Sélectionner une période" 
+                    id="kt_daterangepicker_4"
+                    style="cursor: pointer;"
+                />
+            </div>
+            <button class="btn btn-sm btn-light-primary ms-2" onclick="document.getElementById('kt_daterangepicker_4').focus()">
+                <i class="fas fa-filter"></i>
+                Filtrer
+            </button>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row gy-4">
+        <!-- First Chart -->
+        {% if perms.transactions.can_view_chiffre_affaire %}
+            {% comment %} <div class="col-md-6">
+                <div 
+                    class="chart-container p-4 rounded shadow-sm bg-white"
+                    hx-get=""
+                    hx-trigger="load once, date_changed"
+                    hx-include="[name='start_date'], [name='end_date']"
+                    hx-target="this"
+                    hx-swap="innerHTML"
+
+                >
+                    <!-- Chart content will be loaded here -->
+                </div>
+            </div> {% endcomment %}
+
+            <!-- Second Chart -->
+            <div class="col-md-6">
+                {% comment %} <div 
+                    class="chart-container p-4 rounded shadow-sm bg-white"
+                    hx-get="{% url 'transactions:chiffre_par_formation' %}"
+                    hx-trigger="load once, date_changed"
+                    hx-include="[name='start_date'], [name='end_date']"
+                    hx-swap="innerHTML"
+                    style="height: 500px;"
+                >
+                    <!-- Chart content will be loaded here -->
+                </div> {% endcomment %}
+                {% comment %} <div 
+                    class="chart-container p-4 rounded shadow-sm bg-white"
+                    hx-get="{% url 'transactions:chifre_dattes_abonnement_name' %}"
+                    hx-trigger="load once, date_changed"
+                    hx-target="this"
+                    hx-include="[name='start_date'], [name='end_date']"
+                    hx-swap="innerHTML"
+
+                >
+                </div> {% endcomment %}
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock content %}

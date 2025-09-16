@@ -1,0 +1,218 @@
+
+
+
+
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="fr">
+    <meta charset="UTF-8">
+
+<head>
+    <style>
+        @page {
+            size: A5 portrait;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: 1.1;
+            font-family: sans-serif;
+            font-size: 9pt;
+        }
+
+        .receipts-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .receipt-half {
+            padding: 5px;
+            page-break-inside: avoid;
+        }
+
+        .receipt-half:first-child {
+            border-bottom: 1px dashed black;
+        }
+
+        table {
+            font-size: 9pt;
+        }
+
+        h2 {
+            font-size: 12pt !important;
+            margin: 5px 0 !important;
+        }
+
+        p {
+            margin: 3px 0;
+        }
+
+        section {
+            margin-bottom: 10px !important;
+        }
+
+    </style>
+</head>
+
+<body style="font-family: sans-serif; margin: 0; padding: 0; background-color: white; color: black;">
+    <div class="receipts-container">
+        <!-- First Receipt -->
+        <div class="receipt-half">
+            <header style="text-align: center; margin-bottom: 5px; border-bottom: 1px solid black; padding: 5px 0;">
+                <!-- Your header content -->
+            </header>
+      
+            
+            <!-- Your existing main content with adjusted padding and margins -->
+            <main style="padding: 10px; margin: auto;">
+                <footer style="text-align: center; margin-top: 10px; padding-top: 10px;">
+                    <h2 style="margin: 0; font-size: 2em;">Reçu N°: {{transaction.id}}</h2>
+                </footer>
+                    <section style="margin-bottom: 20px;">
+                        {% if transaction.contact %}
+                            <strong>étudiant:</strong> {{transaction.contact.last_name}} {{transaction.contact.first_name}}
+                        {% endif %}
+                        <p style="margin-bottom: 5px;">
+                        </p>
+                        <p><strong>Transaction :</strong> {{transaction.title}}</p>
+                        {% if transaction.notes %}
+                            <p><strong>Notes :</strong> {{transaction.notes}}</p>
+                        {% endif %}
+                        <p><strong>Date de transaction:</strong> {{transaction.date}}</p>
+                    </section>
+            
+                    {% if transaction.is_income %}
+                    <section>
+                        <h2 style="text-align: center; margin: 10px 0; font-size: 1.2em; text-decoration: underline;">
+                            {{transaction.abonnement_contact.type_abonnement}}
+                        </h2>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid black;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <td style="padding: 10px; text-align: left;">Versement</td>
+                                    <td style="padding: 10px; text-align: right;">{{transaction.amount}} DA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    {% elif transaction.is_expense %}
+                    <section>
+                        <h2 style="text-align: center; margin: 10px 0; font-size: 1.2em; text-decoration: underline;">
+                            Dépense
+                        </h2>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid black;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <td style="padding: 10px; text-align: left;">Montant dépensé</td>
+                                    <td style="padding: 10px; text-align: right;">{{transaction.amount}} DA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    {% elif transaction.is_refund %}
+                    <section>
+                        <h2 style="text-align: center; margin: 10px 0; font-size: 1.2em; text-decoration: underline;">
+                            Remboursement
+                        </h2>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid black;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <td style="padding: 10px; text-align: left;">Montant remboursé</td>
+                                    <td style="padding: 10px; text-align: right;">{{transaction.amount}} DA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    {% endif %}        
+                    <section style="text-align: center; margin-top: 20px;">
+                        <p style="font-size: 1em; font-weight: bold;">Merci pour votre visite!</p>
+                    </section>
+            
+            </main>
+        </div>
+
+        <!-- Second Receipt (duplicate) -->
+        <div class="receipt-half">
+            <header style="text-align: center; margin-bottom: 5px; border-bottom: 1px solid black; padding: 5px 0;">
+                <!-- Your header content -->
+            </header>
+            
+           
+            
+            <!-- Your existing main content with adjusted padding and margins -->
+           
+                <main style="padding: 10px; margin: auto;">
+                    <footer style="text-align: center; margin-top: 10px; padding-top: 10px;">
+                    <h2 style="margin: 0; font-size: 2em;">Reçu N°: {{transaction.id}}</h2>
+                </footer>
+                    <section style="margin-bottom: 20px;">
+                        {% if transaction.contact %}
+                            <strong>étudiant:</strong> {{transaction.contact.last_name}} {{transaction.contact.first_name}}
+                        {% endif %}
+                        <p style="margin-bottom: 5px;">
+                        </p>
+                        <p><strong>Transaction :</strong> {{transaction.title}}</p>
+                        {% if transaction.notes %}
+                            <p><strong>Notes :</strong> {{transaction.notes}}</p>
+                        {% endif %}
+                        <p><strong>Date de transaction:</strong> {{transaction.date}}</p>
+                    </section>
+            
+                    {% if transaction.is_income %}
+                    <section>
+                        <h2 style="text-align: center; margin: 10px 0; font-size: 1.2em; text-decoration: underline;">
+                            {{transaction.abonnement_contact.type_abonnement}}
+                        </h2>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid black;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <td style="padding: 10px; text-align: left;">Versement</td>
+                                    <td style="padding: 10px; text-align: right;">{{transaction.amount}} DA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    {% elif transaction.is_expense %}
+                    <section>
+                        <h2 style="text-align: center; margin: 10px 0; font-size: 1.2em; text-decoration: underline;">
+                            Dépense
+                        </h2>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid black;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <td style="padding: 10px; text-align: left;">Montant dépensé</td>
+                                    <td style="padding: 10px; text-align: right;">{{transaction.amount}} DA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    {% elif transaction.is_refund %}
+                    <section>
+                        <h2 style="text-align: center; margin: 10px 0; font-size: 1.2em; text-decoration: underline;">
+                            Remboursement
+                        </h2>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid black;">
+                            <tbody>
+                                <tr style="border-bottom: 1px solid black;">
+                                    <td style="padding: 10px; text-align: left;">Montant remboursé</td>
+                                    <td style="padding: 10px; text-align: right;">{{transaction.amount}} DA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    {% endif %}        
+                
+                        <section style="text-align: center; margin-top: 20px;">
+                            <p style="font-size: 1em; font-weight: bold;">Merci pour votre visite!</p>
+                        </section>
+                
+              
+            </main>
+        </div>
+    </div>
+</body>
+</html>

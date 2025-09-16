@@ -1,0 +1,180 @@
+{% extends "layout/base.html" %}
+{% block content %}
+<div class="d-block d-md-flex justify-content-between align-items-end mb-4">
+    {% include 'snippets/_breadcrumb.html' %}
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-3 mb-4 mb-md-0">
+      <div class="card h-100 shadow-sm">
+          <div class="card-header py-3">
+              <h5 class="mb-0 fw-semibold">{% translate "Configuration" %}</h5>
+          </div>
+            <div class="list-group list-group-flush small" id="config-nav" role="tablist" style="max-height:70vh;overflow:auto">
+
+
+              {% if perms.core.view_leadsource %}
+              <a class="list-group-item list-group-item-action d-flex align-items-center text-black fs-5"
+                 data-bs-toggle="tab" href="#source-pane" role="tab">
+                 <i class="ki-outline ki-filter-search fs-2x me-2"></i> {% translate "Source de l'opportunité" %}
+              </a>
+              {% endif %}
+              {% if perms.core.view_tax %}
+              <a class="list-group-item list-group-item-action d-flex align-items-center text-black fs-5"
+                 data-bs-toggle="tab" href="#tax-pane" role="tab">
+                 <i class="ki-outline ki-discount fs-2x me-2"></i> {% translate "Taxe" %}
+              </a>
+              {% endif %}
+              {% if perms.core.view_potential %}
+              <a class="list-group-item list-group-item-action d-flex align-items-center text-black fs-5"
+                 data-bs-toggle="tab" href="#potential-pane" role="tab">
+                 <i class="ki-outline ki-graph-up fs-2x me-2"></i> {% translate "Potentiel" %}
+              </a>
+              {% endif %}
+            
+             
+              {% if perms.crm.view_activitysector %}
+                <a class="list-group-item list-group-item-action d-flex align-items-center text-black fs-5"
+                    data-bs-toggle="tab" href="#activitysector-pane" role="tab">
+                    <i class="ki-outline ki-data fs-2x me-2"></i> {% translate "Secteur d'activité" %}
+                </a>
+              {% endif %}
+              {% if perms.tags.view_tags %}
+                <a class="list-group-item list-group-item-action d-flex align-items-center text-black fs-5"
+                    data-bs-toggle="tab" href="#tags-pane" role="tab">
+                    <i class="ki-outline ki-flag fs-2x me-2"></i> {% translate "Tags" %}
+                </a>
+              {% endif %}
+            </div>
+      </div>
+  </div>
+  <div class="col-12 col-md-9">
+      <div class="card shadow-sm">
+          <div class="card-body tab-content" id="config-content">
+
+             
+
+              <div class="tab-pane fade" id="source-pane" role="tabpanel">
+                  {% if perms.core.view_leadsource %}
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="mb-0 fw-bold">{% translate "Source de l'opportunité" %}</h3>
+                        {% if perms.core.add_leadsource %}
+                            <a href="#" class="btn btn-sm btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#kt_modal"
+                            hx-get="{% url 'core:create_leadsource' %}"
+                            hx-target="#kt_modal_content"
+                            hx-swap="innerHTML">
+                            <i class="ki-duotone ki-plus fs-2"></i> {% trans 'Ajouter' %}
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div id="SourceTable" class="table-responsive bg-white"
+                        hx-get="{% url 'core:list_leadsource' %}"
+                        hx-trigger="refresh_table from:body, revealed"
+                        hx-target="#SourceTable"
+                        hx-swap="innerHTML">
+                    </div>
+                  {% endif %}
+              </div>
+
+              <div class="tab-pane fade" id="tax-pane" role="tabpanel">
+                  {% if perms.core.view_tax %}
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h3 class="mb-0 fw-bold">{% translate "Taxe" %}</h3>
+                      {% if perms.core.add_tax %}
+                        <a href="#" class="btn btn-sm btn-primary"
+                           data-bs-toggle="modal"
+                           data-bs-target="#kt_modal"
+                           hx-get="{% url 'core:create_tax' %}"
+                           hx-target="#kt_modal_content"
+                           hx-swap="innerHTML">
+                           <i class="ki-duotone ki-plus fs-2"></i> {% trans 'Ajouter' %}
+                        </a>
+                      {% endif %}
+                  </div>
+                  <div id="TaxTable" class="table-responsive bg-white"
+                       hx-get="{% url 'core:list_tax' %}"
+                       hx-trigger="refresh_table from:body, revealed"
+                       hx-target="#TaxTable"
+                       hx-swap="innerHTML"></div>
+                  {% endif %}
+              </div>
+
+              <div class="tab-pane fade" id="potential-pane" role="tabpanel">
+                  {% if perms.core.view_potential %}
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h3 class="mb-0 fw-bold">{% translate "Potentiel" %}</h3>
+                      {% if perms.core.add_potential %}
+                        <a href="#" class="btn btn-sm btn-primary"
+                           data-bs-toggle="modal"
+                           data-bs-target="#kt_modal"
+                           hx-get="{% url 'core:create_potential' %}"
+                           hx-target="#kt_modal_content"
+                           hx-swap="innerHTML">
+                           <i class="ki-duotone ki-plus fs-2"></i> {% trans 'Ajouter' %}
+                        </a>
+
+                      {% endif %}
+                  </div>
+                  <div id="PotentialTable" class="table-responsive bg-white"
+                       hx-get="{% url 'core:list_potential' %}"
+                       hx-trigger="refresh_table from:body, revealed"
+                       hx-target="#PotentialTable"
+                       hx-swap="innerHTML"></div>
+                  {% endif %}
+              </div>
+
+             
+
+              <div class="tab-pane fade" id="activitysector-pane" role="tabpanel">
+                  {% if perms.crm.view_activitysector %}
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h3 class="mb-0 fw-bold">{% translate "Secteur d'activité" %}</h3>
+                      {% if perms.crm.add_activitysector %}
+                        <a href="#" class="btn btn-sm btn-primary"
+                           data-bs-toggle="modal"
+                           data-bs-target="#kt_modal"
+                           hx-get="{% url 'crm:create_activitysector' %}"
+                           hx-target="#kt_modal_content"
+                           hx-swap="innerHTML">
+                           <i class="ki-duotone ki-plus fs-2"></i> {% trans 'Ajouter' %}
+                        </a>
+                      {% endif %}
+                  </div>
+                  <div id="ActivitySectorTable" class="table-responsive bg-white"
+                       hx-get="{% url 'crm:list_activitysector' %}"
+                       hx-trigger="refresh_table from:body, revealed"
+                       hx-target="#ActivitySectorTable"
+                       hx-swap="innerHTML"></div>
+                  {% endif %}
+              </div>
+
+              <div class="tab-pane fade" id="tags-pane" role="tabpanel">
+                  {% if perms.tags.view_tags %}
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h3 class="mb-0 fw-bold">{% translate "Tags" %}</h3>
+                      {% if perms.tags.add_tags %}
+                        <a href="#" class="btn btn-sm btn-primary"
+                           data-bs-toggle="modal"
+                           data-bs-target="#kt_modal"
+                           hx-get="{% url 'tags:create_tags' %}"
+                           hx-target="#kt_modal_content"
+                           hx-swap="innerHTML">
+                           <i class="ki-duotone ki-plus fs-2"></i> {% trans 'Ajouter' %}
+                        </a>
+                      {% endif %}
+                  </div>
+                  <div id="TagsTable" class="table-responsive bg-white"
+                       hx-get="{% url 'tags:list_tags' %}"
+                       hx-trigger="refresh_table from:body, revealed"
+                       hx-target="#TagsTable"
+                       hx-swap="innerHTML"></div>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}
+

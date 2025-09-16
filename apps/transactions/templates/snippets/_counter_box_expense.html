@@ -1,0 +1,12 @@
+<div class="d-flex flex-wrap " id='{{ id }}' hx-swap-oob="true" >
+    <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4">
+        <div class="d-flex align-items-center">
+            <i class="ki-duotone ki-arrow-down fs-3 text-danger me-2">
+                <span class="path1"></span>
+                <span class="path2"></span>
+            </i>
+            <div id="{{value_id}}" class="fs-2 fw-bold" data-kt-countup="true" data-kt-countup-value="{{ total }}" data-kt-countup-suffix="{% translate ' DA' %}">{{ total }}</div>
+        </div>
+        <div class="fw-semibold fs-6 text-gray-500">{% translate title %}</div>
+    </div>
+</div>

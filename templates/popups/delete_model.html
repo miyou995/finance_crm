@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<a type="button" 
+    class="btn btn-danger"
+    data-bs-toggle="modal" 
+    data-bs-target="#delete_modal" 
+    hx-get="{{object.get_delete_url}}" 
+    hx-target="#delete_modal_body" 
+    hx-swap="innerHTML" 
+> 
+    {% trans 'Supprimer' %}
+{% comment %} <span class="indicator-label">Save Changes</span>
+<span class="indicator-progress">Please wait...
+    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span> {% endcomment %}
+</a>

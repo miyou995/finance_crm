@@ -1,0 +1,151 @@
+<script>
+(function() {
+    var prefix = "{{prefix}}"
+    var container_id = "{{container_id}}"
+    var add_button_id = "{{add_button_id}}"
+    var remove_form = "{{remove_form}}"
+    var form_item_class = "{{form_item_class}}"
+    var select2_item_class = "{{select2_item_class}}"
+    
+    if (select2_item_class === "") {
+        var select2_item_class = "select-text"
+    }
+    
+    var itemForm = document.querySelectorAll(`#${container_id} .${form_item_class}`)
+    var container = document.querySelector(`#${container_id}`) 
+    var totalForms = document.querySelector(`#id_${prefix}-TOTAL_FORMS`)
+    var addButton = document.querySelector(`#${add_button_id}`)
+    
+    var formNum = itemForm.length-1
+    function init($elem) {
+      $elem.select2({
+        minimumResultsForSearch: -1,
+        width: 'resolve',
+        });   
+    }
+    
+    if(addButton){
+      addButton.addEventListener('click', function(e){
+        addForm(e)
+      })
+    }
+
+    function correctNumbers() {
+      var formRegex = RegExp(`${prefix}-(\\d+)-`, 'g');
+      var form = container;
+      var trElements = form.getElementsByTagName('tr');
+      
+      for (var i = 0; i < trElements.length; i++) {
+        var trIndex = i;
+
+        var h5Element = trElements[i].querySelector('h5');
+        if (h5Element) {
+            h5Element.innerHTML = `${trIndex+1}`;
+        }
+        
+        trElements[i].querySelectorAll('[name], [id]').forEach((elem) => {
+          var { name, id } = elem;
+          if (name && name.match(formRegex)) {
+            elem.setAttribute('name', name.replace(formRegex, `${prefix}-${trIndex}-`));
+          }
+          if (id && id.match(formRegex)) {
+            elem.setAttribute('id', id.replace(formRegex, `${prefix}-${trIndex}-`));
+          }
+        });
+      }
+    }
+
+    function replaceButtonWithCheckbox(newForm) {
+      var buttonTd = newForm.querySelector('.deleteTd');
+      if (buttonTd) {
+        console.log('LISGHT THE SKY')
+        buttonTd.outerHTML = `
+          <td class="pt-5 text-end">
+            <button type="button" class="btn btn-sm btn-icon btn-active-color-primary remove-item">
+              <i class="ki-outline ki-trash fs-2x"></i>
+            </button>
+          </td>
+        `;
+      }
+    }
+
+    function addForm(e){
+        e.preventDefault()
+        console.log('Adding form to prefix:', prefix)
+        console.log('formNum===>', formNum)
+        var newForm = itemForm[0].cloneNode(true)
+
+        var formRegex = RegExp(`${prefix}-(\\d+)-`,'g')
+        formNum++
+        var h5Element = newForm.querySelector('h5');
+        if (h5Element) {
+            h5Element.innerHTML = `${formNum+1}`;
+        }
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `${prefix}-${formNum}-`);
+        replaceButtonWithCheckbox(newForm);
+
+        container.append(newForm);
+        var newSelect=$(newForm).find(`.${select2_item_class}`).last();
+        totalForms.setAttribute('value', `${formNum+1}`)
+        init(newSelect);
+        
+        var isModalOpen = $('.modal.show').length > 0;
+        if (isModalOpen) {
+          console.log('The modal is open')
+          $(newForm).find(`.${select2_item_class}`).select2({dropdownParent: $("#kt_modal_content")}); 
+        } else {
+          console.log('We dont have any modal open')
+          $(newForm).find(`.${select2_item_class}`).select2();
+        }
+
+         var select2Items = newForm.querySelectorAll('.select2-container');
+         if (select2Items !== null) {
+            select2Items.forEach(function(item) {
+                var parent = item.parentElement;
+                if (item.nextSibling) {
+                    parent.removeChild(parent.lastElementChild);
+                }
+            });	
+        }
+    }
+
+    container.addEventListener("click", function(event) {
+        var target = event.target;
+        if (target.closest(".remove-item")) {
+          var tr = target.closest("tr");
+          var currentItemForms = container.querySelectorAll(`.${form_item_class}`);
+          if (tr === currentItemForms[0]){
+            toastr.error('Vous ne pouvez supprimer le premier élément')
+            console.log('Vous ne pouvez supprimer le premier élément')
+          } else {
+            console.log('Removing from prefix:', prefix)
+            console.log('formNum===>', formNum)
+            formNum--
+            totalForms.setAttribute('value', `${formNum+1}`)
+            tr.remove();
+            event.stopImmediatePropagation() 
+            console.log('THE TR', tr)
+            correctNumbers()
+          }
+        }  
+    });
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

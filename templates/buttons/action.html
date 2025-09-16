@@ -1,0 +1,59 @@
+{% load permissions_tags %}
+
+{% load i18n %}
+<div class="d-flex justify-content-end flex-shrink-0" >
+    <button class="btn btn-icon btn-bg-light btn-active-color-primary justify-content-center btn-sm me-1" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-overflow="true">
+      <i class="bi bi-three-dots fs-5"></i>
+    </button>
+    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-100px" data-kt-menu="true">
+
+
+      {% if object|can_edit:user %}
+          {% if object.get_update_url %}
+            <div class="menu-item px-3">
+                {% if modal_edit %} 
+                    <a 
+                        href=""
+                        data-bs-toggle="modal" 
+                        data-bs-target="#kt_modal"
+                        data-bs-placement="right" 
+                        hx-get="{{object.get_update_url}}" 
+                        hx-target="#kt_modal_content" 
+                        hx-swap="innerHTML" 
+                        data-bs-toggle="tooltip" 
+                  
+                    >
+                        <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">{% trans 'Modifier ' %}</div>
+                    </a>
+                {% else %}
+                    <a href="{{object.get_update_url}}" >
+                        <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">{% trans 'Edit' %}</div>
+                    </a>
+                {% endif %}
+            </div>
+          {% endif %}
+      {% endif %}
+      
+     {% if object|can_delete:user %}
+        <div class="menu-item px-3">
+          <a 
+            href=""
+            data-bs-target="#delete_modal" 
+            hx-get="{{object.get_delete_url}}" 
+            hx-target="#delete_modal_body" 
+            data-bs-toggle="modal" 
+            data-bs-placement="right" 
+            hx-swap="innerHTML" 
+            data-bs-toggle="tooltip" 
+          >
+            <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">{% trans 'Supprimer' %}</div>
+            </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+
+
+  

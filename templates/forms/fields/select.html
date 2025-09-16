@@ -1,0 +1,27 @@
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% comment %} add_attr|data-dropdown-parent=dropdown_parent {% endcomment %}
+
+{% if filter_menu %}
+    {% render_field 
+        field 
+        class="form-select form-control form-control-solid" 
+        data-control="select2" 
+        data-allow-clear="true" 
+        data-dropdown-parent="#filter_menu"
+    %}
+{% else %}
+    {% render_field 
+        field 
+        class="form-select form-control form-control-solid" 
+        data-control="select2" 
+        data-allow-clear="true" 
+    %}
+{% endif %}
+
+<span class="form-check-label fw-semibold text-gray">{{ field.help_text }}</span>
+{% if field.errors %}
+    <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+{% endif %}
+ 

@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="" />
+
+		{% block title %}
+		<title>{{page_title}}</title>
+		{% endblock title %}
+
+		<meta charset="utf-8" />
+		<meta
+			name="description"
+			content="La solution de gestion de gym la plus avancée développée par Octopus Consulting. Gérez vos membres, cours, et paiements facilement avec notre application intuitive et performante."
+		/>
+		<meta property="og:title" content="Octopus Consulting - Application de gestion de gym" />
+		<meta property="og:site_name" content="Octopus Consulting" />
+		<meta
+			property="og:description"
+			content="La solution de gestion de gym la plus avancée développée par Octopus Consulting. Gérez vos membres, cours, et paiements facilement avec notre application intuitive et performante."
+		/>
+		<meta
+			name="keywords"
+			content="gym management, gym software, Octopus Consulting, member management, course management, payment management, fitness, health, gym application, intuitive gym software, advanced gym solution"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Octopus Consulting - Application de gestion de gym" />
+		<meta property="og:url" content="https://octopus-consulting.com" />
+		<meta property="og:site_name" content="Octopus Consulting" />
+		
+
+		<link rel="canonical" href="https://octopus-consulting.com" />
+		<link rel="shortcut icon" href="{% static 'images/logo.png' %}" />
+
+		<link href="{% static 'fonts/inter.css' %}" rel="stylesheet" type="text/css" />
+
+		<link href="{% static 'plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'css/style.bundle.css' %}" rel="stylesheet" type="text/css" />
+		<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+
+		<script src="{% static 'js/htmx.min.js' %}"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+	</head>
+	{% comment %} <script>
+		{% if debug %}
+			if (typeof window.htmx !== "undefined") {
+				htmx.on("htmx:afterSettle", function(detail) {
+					if (
+						typeof window.djdt !== "undefined"
+						&& detail.target instanceof HTMLBodyElement
+						) {
+							console.log("HTMX afterSettle event triggered");
+							djdt.show_toolbar();
+						}
+					});
+				}
+		{% endif %}
+	</script> {% endcomment %}
+
+	<body 
+		id="kt_app_body" 
+		class="app-default"
+		data-kt-app-header-fixed="true" 
+		data-kt-app-header-fixed-mobile="true" 
+		data-kt-app-sidebar-enabled="true" 
+		data-kt-app-sidebar-fixed="true" 
+		data-kt-app-sidebar-hoverable="true" 
+		data-kt-app-sidebar-push-toolbar="true" 
+		data-kt-app-sidebar-push-footer="true" 
+		data-kt-app-toolbar-enabled="true" 
+		data-kt-app-aside-enabled="false" 
+		data-kt-app-aside-fixed="false" 
+		data-kt-app-aside-push-toolbar="false" 
+		data-kt-app-aside-push-footer="false" 
+		 {% if request.COOKIES.sidebar_minimize_state == 'on' %}
+			data-kt-app-sidebar-minimize="on"
+		{% endif %}
+	>
+		<script>
+			var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if ( localStorage.getItem("data-bs-theme") !== null ) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }
+		</script>
+		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+				
+				{% block header %}
+					{% include 'layout/header.html' %}
+				{% endblock header %}
+					
+				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+					
+					{% block sidebar %}
+						{% include 'layout/sidebar.html' %}
+					{% endblock sidebar %}
+						
+					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+						<div class="d-flex flex-column flex-column-fluid">
+							<div id="kt_app_content" class="app-content flex-column-fluid">
+								<div id="kt_app_content_container" class="app-container container-fluid">
+									{% block content %}
+
+									{% endblock content %}
+								</div>
+							</div>
+						</div>
+						{% include 'layout/footer.html' %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+			<i class="ki-outline ki-arrow-up"></i>
+		</div>
+		{% include "snippets/messages.html" %}
+        {% include "snippets/_drawers.html" %}
+
+
+		<div class="modal fade" tabindex="-1" id="delete_modal">
+			<div class="modal-dialog modal-sm" id="delete_modal_body">
+				<div class="modal-content">
+				</div>
+			</div>
+		</div>
+
+		
+
+		{% include 'popups/_modal.html' %}
+
+		
+		{% block modal %}
+			
+		{% endblock modal %}
+
+		<script src="{% static 'plugins/global/plugins.bundle.js' %}"></script>
+		<script src="{% static 'js/scripts.bundle.js' %}"></script>
+
+		<script src="{% static 'js/fullcalendar.global.min.js' %}"></script>
+		{% comment %} <script src="{% static 'js/widgets.bundle.js' %}"></script> {% endcomment %}
+		<script src="{% static 'js/custom_calendar.js' %}"></script>
+		<script src="{% static 'js/sidebar.js' %}"></script> 
+		<script src="{% static 'js/toast.js' %}"></script>
+		<script src="{% static 'js/script.js' %}"></script>
+
+		<script>
+			document.body.addEventListener('htmx:configRequest', (event) => {
+				event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+			})
+		
+		</script>
+	</body>
+</html>

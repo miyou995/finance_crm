@@ -1,0 +1,867 @@
+[
+  {
+    "model": "formations.module",
+    "pk": 11,
+    "fields": {
+      "created_at": "2025-07-01T12:40:59.099336Z",
+      "updated_at": "2025-07-01T12:40:59.099362Z",
+      "name": "Cloud Computing AWS"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 12,
+    "fields": {
+      "created_at": "2025-06-19T12:40:59.099374Z",
+      "updated_at": "2025-07-09T12:40:59.099379Z",
+      "name": "Social Media Marketing"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 13,
+    "fields": {
+      "created_at": "2025-07-08T12:40:59.099386Z",
+      "updated_at": "2025-07-04T12:40:59.099389Z",
+      "name": "Digital Marketing"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 14,
+    "fields": {
+      "created_at": "2025-02-10T12:40:59.099395Z",
+      "updated_at": "2025-06-27T12:40:59.099398Z",
+      "name": "Unity 3D"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 15,
+    "fields": {
+      "created_at": "2025-03-22T12:40:59.099403Z",
+      "updated_at": "2025-06-28T12:40:59.099407Z",
+      "name": "Git Version Control"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 16,
+    "fields": {
+      "created_at": "2025-02-09T12:40:59.099411Z",
+      "updated_at": "2025-07-03T12:40:59.099415Z",
+      "name": "JavaScript ES6+"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 17,
+    "fields": {
+      "created_at": "2025-03-28T12:40:59.099419Z",
+      "updated_at": "2025-06-22T12:40:59.099422Z",
+      "name": "Agile Methodology"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 18,
+    "fields": {
+      "created_at": "2025-01-03T12:40:59.099427Z",
+      "updated_at": "2025-06-21T12:40:59.099430Z",
+      "name": "Cybersecurity Basics"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 19,
+    "fields": {
+      "created_at": "2025-04-30T12:40:59.099434Z",
+      "updated_at": "2025-06-26T12:40:59.099437Z",
+      "name": "Redis Caching"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 20,
+    "fields": {
+      "created_at": "2025-05-05T12:40:59.099441Z",
+      "updated_at": "2025-06-27T12:40:59.099444Z",
+      "name": "UI/UX Design"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 21,
+    "fields": {
+      "created_at": "2025-06-23T12:40:59.099449Z",
+      "updated_at": "2025-06-18T12:40:59.099452Z",
+      "name": "Django Framework"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 22,
+    "fields": {
+      "created_at": "2025-07-10T12:40:59.099456Z",
+      "updated_at": "2025-07-07T12:40:59.099459Z",
+      "name": "Tableau"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 23,
+    "fields": {
+      "created_at": "2025-03-10T12:40:59.099465Z",
+      "updated_at": "2025-07-15T12:40:59.099468Z",
+      "name": "Adobe Photoshop"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 24,
+    "fields": {
+      "created_at": "2025-02-24T12:40:59.099473Z",
+      "updated_at": "2025-06-26T12:40:59.099476Z",
+      "name": "SQL Mastery"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 25,
+    "fields": {
+      "created_at": "2025-02-16T12:40:59.099480Z",
+      "updated_at": "2025-07-03T12:40:59.099483Z",
+      "name": "Web Development Basics"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 26,
+    "fields": {
+      "created_at": "2025-05-26T12:40:59.099487Z",
+      "updated_at": "2025-07-10T12:40:59.099490Z",
+      "name": "Angular"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 27,
+    "fields": {
+      "created_at": "2025-04-17T12:40:59.099494Z",
+      "updated_at": "2025-06-22T12:40:59.099497Z",
+      "name": "Responsive Design"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 28,
+    "fields": {
+      "created_at": "2025-01-29T12:40:59.099501Z",
+      "updated_at": "2025-06-26T12:40:59.099504Z",
+      "name": "Google Cloud Platform"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 29,
+    "fields": {
+      "created_at": "2025-01-07T12:40:59.099508Z",
+      "updated_at": "2025-06-18T12:40:59.099511Z",
+      "name": "Flask Development"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 30,
+    "fields": {
+      "created_at": "2025-05-28T12:40:59.099515Z",
+      "updated_at": "2025-06-18T12:40:59.099518Z",
+      "name": "Google Ads"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 31,
+    "fields": {
+      "created_at": "2025-04-27T12:40:59.099529Z",
+      "updated_at": "2025-06-20T12:40:59.099532Z",
+      "name": "Kubernetes"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 32,
+    "fields": {
+      "created_at": "2025-04-22T12:40:59.099537Z",
+      "updated_at": "2025-06-26T12:40:59.099540Z",
+      "name": "Machine Learning"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 33,
+    "fields": {
+      "created_at": "2025-06-30T12:40:59.099544Z",
+      "updated_at": "2025-07-11T12:40:59.099547Z",
+      "name": "React.js"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 34,
+    "fields": {
+      "created_at": "2025-05-11T12:40:59.099551Z",
+      "updated_at": "2025-06-29T12:40:59.099554Z",
+      "name": "Bootstrap Framework"
+    }
+  },
+  {
+    "model": "formations.module",
+    "pk": 35,
+    "fields": {
+      "created_at": "2025-03-15T12:40:59.099558Z",
+      "updated_at": "2025-07-16T12:40:59.099561Z",
+      "name": "Power BI"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 2,
+    "fields": {
+      "created_at": "2025-06-05T12:40:59.099583Z",
+      "updated_at": "2025-07-14T12:40:59.099587Z",
+      "cours": 16,
+      "teacher": 1,
+      "salle": 1,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "DI",
+      "name": "Session Soir",
+      "color": "#F8C471"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 3,
+    "fields": {
+      "created_at": "2025-06-14T12:40:59.099616Z",
+      "updated_at": "2025-06-22T12:40:59.099620Z",
+      "cours": 33,
+      "teacher": 8,
+      "salle": 1,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "SA",
+      "name": "Session Matinale",
+      "color": "#FFEAA7"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 4,
+    "fields": {
+      "created_at": "2025-02-20T12:40:59.099632Z",
+      "updated_at": "2025-06-26T12:40:59.099635Z",
+      "cours": 21,
+      "teacher": 2,
+      "salle": 1,
+      "hour_start": "18:30:00",
+      "hour_finish": "20:30:00",
+      "day": "JE",
+      "name": "Atelier Pratique",
+      "color": "#DDA0DD"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 5,
+    "fields": {
+      "created_at": "2025-03-14T12:40:59.099645Z",
+      "updated_at": "2025-06-17T12:40:59.099648Z",
+      "cours": 26,
+      "teacher": 10,
+      "salle": 1,
+      "hour_start": "08:00:00",
+      "hour_finish": "10:00:00",
+      "day": "JE",
+      "name": "Séminaire",
+      "color": "#F8C471"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 6,
+    "fields": {
+      "created_at": "2025-05-05T12:40:59.099658Z",
+      "updated_at": "2025-06-18T12:40:59.099662Z",
+      "cours": 16,
+      "teacher": 2,
+      "salle": 4,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "JE",
+      "name": "Formation Continue",
+      "color": "#FF6B6B"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 7,
+    "fields": {
+      "created_at": "2025-02-04T12:40:59.099672Z",
+      "updated_at": "2025-06-20T12:40:59.099675Z",
+      "cours": 16,
+      "teacher": 1,
+      "salle": 4,
+      "hour_start": "09:00:00",
+      "hour_finish": "11:00:00",
+      "day": "MA",
+      "name": "Session Matinale",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 8,
+    "fields": {
+      "created_at": "2025-07-05T12:40:59.099684Z",
+      "updated_at": "2025-07-16T12:40:59.099688Z",
+      "cours": 20,
+      "teacher": 4,
+      "salle": 4,
+      "hour_start": "11:15:00",
+      "hour_finish": "13:15:00",
+      "day": "VE",
+      "name": "Workshop",
+      "color": "#96CEB4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 9,
+    "fields": {
+      "created_at": "2025-05-08T12:40:59.099697Z",
+      "updated_at": "2025-07-12T12:40:59.099700Z",
+      "cours": 6,
+      "teacher": 3,
+      "salle": 1,
+      "hour_start": "10:15:00",
+      "hour_finish": "12:15:00",
+      "day": "VE",
+      "name": "Atelier Pratique",
+      "color": "#FFEAA7"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 10,
+    "fields": {
+      "created_at": "2025-05-26T12:40:59.099710Z",
+      "updated_at": "2025-07-01T12:40:59.099713Z",
+      "cours": 32,
+      "teacher": 4,
+      "salle": 1,
+      "hour_start": "09:00:00",
+      "hour_finish": "11:00:00",
+      "day": "LU",
+      "name": "Formation Après-midi",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 11,
+    "fields": {
+      "created_at": "2025-04-06T12:40:59.099723Z",
+      "updated_at": "2025-07-05T12:40:59.099726Z",
+      "cours": 19,
+      "teacher": 9,
+      "salle": 4,
+      "hour_start": "18:30:00",
+      "hour_finish": "20:30:00",
+      "day": "DI",
+      "name": "Atelier Pratique",
+      "color": "#96CEB4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 12,
+    "fields": {
+      "created_at": "2025-01-29T12:40:59.099736Z",
+      "updated_at": "2025-07-03T12:40:59.099739Z",
+      "cours": 26,
+      "teacher": 12,
+      "salle": 1,
+      "hour_start": "16:15:00",
+      "hour_finish": "18:15:00",
+      "day": "JE",
+      "name": "Formation Après-midi",
+      "color": "#FFEAA7"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 13,
+    "fields": {
+      "created_at": "2025-05-29T12:40:59.099749Z",
+      "updated_at": "2025-06-28T12:40:59.099752Z",
+      "cours": 6,
+      "teacher": 15,
+      "salle": 1,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "MA",
+      "name": "Cours du Matin",
+      "color": "#4ECDC4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 14,
+    "fields": {
+      "created_at": "2025-03-18T12:40:59.099762Z",
+      "updated_at": "2025-06-18T12:40:59.099765Z",
+      "cours": 32,
+      "teacher": 10,
+      "salle": 4,
+      "hour_start": "10:15:00",
+      "hour_finish": "12:15:00",
+      "day": "MA",
+      "name": "Bootcamp",
+      "color": "#AED6F1"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 15,
+    "fields": {
+      "created_at": "2025-02-06T12:40:59.099775Z",
+      "updated_at": "2025-06-29T12:40:59.099810Z",
+      "cours": 20,
+      "teacher": 12,
+      "salle": 4,
+      "hour_start": "16:15:00",
+      "hour_finish": "18:15:00",
+      "day": "LU",
+      "name": "Séminaire",
+      "color": "#96CEB4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 16,
+    "fields": {
+      "created_at": "2025-06-04T12:40:59.099825Z",
+      "updated_at": "2025-06-27T12:40:59.099828Z",
+      "cours": 16,
+      "teacher": 11,
+      "salle": 1,
+      "hour_start": "19:30:00",
+      "hour_finish": "21:30:00",
+      "day": "JE",
+      "name": "Session Matinale",
+      "color": "#AED6F1"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 17,
+    "fields": {
+      "created_at": "2025-03-05T12:40:59.099836Z",
+      "updated_at": "2025-06-19T12:40:59.099838Z",
+      "cours": 25,
+      "teacher": 5,
+      "salle": 4,
+      "hour_start": "14:00:00",
+      "hour_finish": "16:00:00",
+      "day": "JE",
+      "name": "Formation Continue",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 18,
+    "fields": {
+      "created_at": "2025-06-12T12:40:59.099845Z",
+      "updated_at": "2025-07-06T12:40:59.099847Z",
+      "cours": 24,
+      "teacher": 8,
+      "salle": 1,
+      "hour_start": "09:00:00",
+      "hour_finish": "11:00:00",
+      "day": "DI",
+      "name": "Workshop",
+      "color": "#45B7D1"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 19,
+    "fields": {
+      "created_at": "2025-02-27T12:40:59.099855Z",
+      "updated_at": "2025-07-09T12:40:59.099857Z",
+      "cours": 11,
+      "teacher": 13,
+      "salle": 4,
+      "hour_start": "15:00:00",
+      "hour_finish": "17:00:00",
+      "day": "JE",
+      "name": "Formation Continue",
+      "color": "#45B7D1"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 20,
+    "fields": {
+      "created_at": "2025-02-05T12:40:59.099864Z",
+      "updated_at": "2025-07-05T12:40:59.099866Z",
+      "cours": 12,
+      "teacher": 14,
+      "salle": 4,
+      "hour_start": "18:30:00",
+      "hour_finish": "20:30:00",
+      "day": "ME",
+      "name": "Séminaire",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 21,
+    "fields": {
+      "created_at": "2025-02-09T12:40:59.099873Z",
+      "updated_at": "2025-07-03T12:40:59.099875Z",
+      "cours": 24,
+      "teacher": 6,
+      "salle": 4,
+      "hour_start": "15:00:00",
+      "hour_finish": "17:00:00",
+      "day": "ME",
+      "name": "Cours du Matin",
+      "color": "#DDA0DD"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 22,
+    "fields": {
+      "created_at": "2025-02-04T12:40:59.099882Z",
+      "updated_at": "2025-06-26T12:40:59.099884Z",
+      "cours": 30,
+      "teacher": 3,
+      "salle": 1,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "VE",
+      "name": "Séminaire",
+      "color": "#96CEB4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 23,
+    "fields": {
+      "created_at": "2025-05-31T12:40:59.099891Z",
+      "updated_at": "2025-07-04T12:40:59.099893Z",
+      "cours": 18,
+      "teacher": 3,
+      "salle": 1,
+      "hour_start": "18:30:00",
+      "hour_finish": "20:30:00",
+      "day": "JE",
+      "name": "Session Matinale",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 24,
+    "fields": {
+      "created_at": "2025-01-19T12:40:59.099900Z",
+      "updated_at": "2025-06-24T12:40:59.099902Z",
+      "cours": 25,
+      "teacher": 12,
+      "salle": 1,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "ME",
+      "name": "Workshop",
+      "color": "#4ECDC4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 25,
+    "fields": {
+      "created_at": "2025-02-04T12:40:59.099909Z",
+      "updated_at": "2025-06-29T12:40:59.099912Z",
+      "cours": 23,
+      "teacher": 2,
+      "salle": 1,
+      "hour_start": "10:15:00",
+      "hour_finish": "12:15:00",
+      "day": "JE",
+      "name": "Session Matinale",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 26,
+    "fields": {
+      "created_at": "2025-02-21T12:40:59.099918Z",
+      "updated_at": "2025-06-17T12:40:59.099920Z",
+      "cours": 35,
+      "teacher": 9,
+      "salle": 4,
+      "hour_start": "16:15:00",
+      "hour_finish": "18:15:00",
+      "day": "ME",
+      "name": "Session Soir",
+      "color": "#FF6B6B"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 27,
+    "fields": {
+      "created_at": "2025-02-05T12:40:59.099928Z",
+      "updated_at": "2025-06-30T12:40:59.099930Z",
+      "cours": 11,
+      "teacher": 4,
+      "salle": 1,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "MA",
+      "name": "Séminaire",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 28,
+    "fields": {
+      "created_at": "2025-03-04T12:40:59.099937Z",
+      "updated_at": "2025-06-26T12:40:59.099940Z",
+      "cours": 30,
+      "teacher": 10,
+      "salle": 1,
+      "hour_start": "14:00:00",
+      "hour_finish": "16:00:00",
+      "day": "MA",
+      "name": "Bootcamp",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 29,
+    "fields": {
+      "created_at": "2025-03-30T12:40:59.099947Z",
+      "updated_at": "2025-06-18T12:40:59.099949Z",
+      "cours": 17,
+      "teacher": 11,
+      "salle": 1,
+      "hour_start": "15:00:00",
+      "hour_finish": "17:00:00",
+      "day": "ME",
+      "name": "Cours Intensif",
+      "color": "#FF6B6B"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 30,
+    "fields": {
+      "created_at": "2025-05-11T12:40:59.099956Z",
+      "updated_at": "2025-06-28T12:40:59.099958Z",
+      "cours": 22,
+      "teacher": 14,
+      "salle": 1,
+      "hour_start": "09:00:00",
+      "hour_finish": "11:00:00",
+      "day": "ME",
+      "name": "Cours du Matin",
+      "color": "#96CEB4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 31,
+    "fields": {
+      "created_at": "2025-06-25T12:40:59.099965Z",
+      "updated_at": "2025-07-16T12:40:59.099967Z",
+      "cours": 25,
+      "teacher": 6,
+      "salle": 4,
+      "hour_start": "11:15:00",
+      "hour_finish": "13:15:00",
+      "day": "DI",
+      "name": "Cours du Matin",
+      "color": "#AED6F1"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 32,
+    "fields": {
+      "created_at": "2025-04-28T12:40:59.099974Z",
+      "updated_at": "2025-06-26T12:40:59.099976Z",
+      "cours": 15,
+      "teacher": 7,
+      "salle": 1,
+      "hour_start": "17:15:00",
+      "hour_finish": "19:15:00",
+      "day": "MA",
+      "name": "Session Soir",
+      "color": "#F7DC6F"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 33,
+    "fields": {
+      "created_at": "2025-04-19T12:40:59.099983Z",
+      "updated_at": "2025-07-09T12:40:59.099985Z",
+      "cours": 25,
+      "teacher": 15,
+      "salle": 1,
+      "hour_start": "18:30:00",
+      "hour_finish": "20:30:00",
+      "day": "ME",
+      "name": "Formation Après-midi",
+      "color": "#4ECDC4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 34,
+    "fields": {
+      "created_at": "2025-06-14T12:40:59.099992Z",
+      "updated_at": "2025-07-14T12:40:59.099994Z",
+      "cours": 5,
+      "teacher": 4,
+      "salle": 4,
+      "hour_start": "08:00:00",
+      "hour_finish": "10:00:00",
+      "day": "JE",
+      "name": "Séminaire",
+      "color": "#45B7D1"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 35,
+    "fields": {
+      "created_at": "2025-05-04T12:40:59.100001Z",
+      "updated_at": "2025-07-17T12:40:59.100003Z",
+      "cours": 33,
+      "teacher": 6,
+      "salle": 4,
+      "hour_start": "14:00:00",
+      "hour_finish": "16:00:00",
+      "day": "LU",
+      "name": "Formation Après-midi",
+      "color": "#DDA0DD"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 36,
+    "fields": {
+      "created_at": "2025-04-10T12:40:59.100010Z",
+      "updated_at": "2025-07-11T12:40:59.100013Z",
+      "cours": 20,
+      "teacher": 10,
+      "salle": 1,
+      "hour_start": "08:00:00",
+      "hour_finish": "10:00:00",
+      "day": "DI",
+      "name": "Cours du Matin",
+      "color": "#96CEB4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 37,
+    "fields": {
+      "created_at": "2025-04-22T12:40:59.100020Z",
+      "updated_at": "2025-07-12T12:40:59.100022Z",
+      "cours": 28,
+      "teacher": 6,
+      "salle": 4,
+      "hour_start": "08:00:00",
+      "hour_finish": "10:00:00",
+      "day": "VE",
+      "name": "Workshop",
+      "color": "#96CEB4"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 38,
+    "fields": {
+      "created_at": "2025-02-25T12:40:59.100029Z",
+      "updated_at": "2025-07-14T12:40:59.100031Z",
+      "cours": 6,
+      "teacher": 15,
+      "salle": 4,
+      "hour_start": "19:30:00",
+      "hour_finish": "21:30:00",
+      "day": "MA",
+      "name": "Formation Continue",
+      "color": "#F8C471"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 39,
+    "fields": {
+      "created_at": "2025-02-02T12:40:59.100038Z",
+      "updated_at": "2025-07-07T12:40:59.100040Z",
+      "cours": 29,
+      "teacher": 4,
+      "salle": 1,
+      "hour_start": "09:00:00",
+      "hour_finish": "11:00:00",
+      "day": "ME",
+      "name": "Atelier Pratique",
+      "color": "#98D8C8"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 40,
+    "fields": {
+      "created_at": "2025-05-03T12:40:59.100047Z",
+      "updated_at": "2025-06-27T12:40:59.100049Z",
+      "cours": 23,
+      "teacher": 7,
+      "salle": 1,
+      "hour_start": "15:00:00",
+      "hour_finish": "17:00:00",
+      "day": "MA",
+      "name": "Atelier Pratique",
+      "color": "#F7DC6F"
+    }
+  },
+  {
+    "model": "creneau.creneau",
+    "pk": 41,
+    "fields": {
+      "created_at": "2025-06-12T12:40:59.100056Z",
+      "updated_at": "2025-06-21T12:40:59.100058Z",
+      "cours": 14,
+      "teacher": 9,
+      "salle": 1,
+      "hour_start": "18:30:00",
+      "hour_finish": "20:30:00",
+      "day": "MA",
+      "name": "Cours Intensif",
+      "color": "#F8C471"
+    }
+  }
+]

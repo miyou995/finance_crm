@@ -1,0 +1,71 @@
+{% extends "lead_detail.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+{% load button_tags %}
+{% load render_table from django_tables2 %}
+
+  {% block create_appointment_button %}   
+    <div class="d-flex align-items-center gap-2">
+       {% if perms.appointment.add_appointment %}
+            <button 
+                type="button"
+                class="btn btn-info btn-sm d-flex align-items-center gap-2"
+                data-bs-toggle="modal" 
+                data-bs-target="#kt_modal"
+                title="{% translate 'Ajouter un rappel' %}"
+                hx-target="#kt_modal_content"
+                hx-get="{% url 'appointment:create_lead_b2c_appointment' lead.pk %}"
+                hx-swap="innerHTML"
+            >
+                <i class="fa fa-calendar-plus fs-5"></i>
+                <span>{% translate "Ajouter un rendez-vous" %}</span>
+            </button>
+        {% endif %}
+        {% if perms.leads.change_b2clead  %}
+                <a  
+                    href="#" 
+                    class="btn btn-primary btn-sm me-3"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#kt_modal"
+                    data-bs-placement="right" 
+                    data-bs-toggle="tooltip" 
+                    hx-target="#kt_modal_content" 
+                    hx-get="{% url 'leads:update_b2clead' object.pk %}"
+                    hx-swap="innerHTML">
+                    <i class="ki-solid ki-notepad-edit fs-2"></i> 
+                    {% translate "modifier" %}
+                </a>
+        {% endif %}
+    </div>
+
+{% endblock create_appointment_button %}
+
+
+
+{% block related_data %}
+
+    <div class="fw-bold mt-5">{% get_verbose_field_name company "last_name" %}</div>
+    <div class="text-gray-600">
+        {{ company.last_name|default:"N/A" }} 
+    </div>
+
+
+    <div class="fw-bold mt-5">{% get_verbose_field_name company "first_name" %}</div>
+    <div class="text-gray-600">
+        <a href="#" class="text-gray-600 text-hover-primary">{{ company.first_name|default:"N/A" }} </a>
+    </div>
+    
+    <div class="fw-bold mt-5">{% get_verbose_field_name company "company" %}</div>
+    <div class="text-gray-600">
+        {{ company.company|default:"N/A" }} 
+    </div>
+
+
+    <div class="fw-bold mt-5">{% get_verbose_field_name company "birth_date" %}</div>
+    <div class="text-gray-600">{{ company.birth_date|default:"N/A" }}</div>
+
+{% endblock related_data %}
+
+

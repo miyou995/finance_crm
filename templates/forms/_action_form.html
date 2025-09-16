@@ -1,0 +1,129 @@
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load custom_filters %}
+<div class="modal-body scroll-y mx-5 mx-xl-5">
+    <div class="position-absolute top-0 end-0 m-3" style="z-index: 1051;">
+        <button type="button" class="btn btn-sm btn-icon btn-active-color-primary p-0" data-bs-dismiss="modal" aria-label="Close" style="background: none; border: none;">
+            <i class="ki-duotone ki-cross fs-2x">
+                <span class="path1"></span>
+                <span class="path2"></span>
+            </i>
+        </button>
+    </div>
+    <form 
+        hx-post="{{ action_url }}" 
+        hx-target="#kt_modal_content" 
+        hx-include="[name='reload_page']"
+        hx-swap="innerHTML" 
+        {{ form.attrs }}
+        enctype="multipart/form-data"
+    >
+        {% csrf_token %}
+
+        <div class="row gx-10 me-3 mb-5">
+            <div class="col-12">
+                <div class="d-flex justify-content-center align-items-center">
+                    <span class="fs-2x fw-bold text-primary">
+                        {% if form.instance.id %}
+                            {{ form_verbose_name|capfirst }} N° {{ form.instance.id }} — {% translate "Edit" %}
+                        {% else %}
+                            {% translate "Add" %} {{ form_verbose_name|capfirst }}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+
+
+            {% include 'forms/horizental-form.html' with margin_class="mb-4" %}
+            {% if formsets %}
+                {% for formset_name, formset in formsets.items %}
+                    {% include 'forms/horizontal-formset.html' with formset=formset container_id=formset.prefix|add:"_container" formset_name=formset_name prefix=formset.prefix %}
+                {% endfor %}
+            {% endif %}
+
+        <div class="separator separator-dashed my-5"></div>
+
+            {% if selected_items %}
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">{% translate "éléments séléctionnés" %}</h3>
+                    </div>
+
+                    <div class="card-body card-scroll mh-500px">
+                        <div class="table-responsive">
+                            <table class="table table-rounded table-striped border gy-2 gs-2">
+                                <thead>
+                                    <tr class="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
+                                        <th>{% translate "Nom" %}</th>
+                                        <th>{% translate "Société" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in selected_items %}
+                                    <tr>
+                                        <td>{{ item.full_name }}</td>
+                                        <td>{{ item.company|default_if_none:"__" }}
+                                            <input type="hidden" name="selected_rows" value="{{ item.pk }}">
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            {% endif %}
+
+
+            <div class="modal-footer flex-center pb-0">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{% translate 'Close' %}</button>
+                {% if form.instance.id %}
+                    <button 
+                        type="button" 
+                        class="btn btn-danger" 
+                        data-bs-toggle="modal"
+                        data-bs-target="#delete_modal"
+                        hx-get="{{ form.instance.get_delete_url }}"   
+                        hx-target="#delete_modal_body" 
+                        hx-swap="innerHTML"
+                        >
+                    {% translate 'Delete' %}</button>
+                {% endif %}
+                {% include 'snippets/_submit_button.html' %}
+            </div>
+    </form>
+    {% if form.instance.id %}
+        <form action="{{ form.instance.get_delete_url }}" method="post" id="deleteSlideForm">
+            {% csrf_token %}
+        </form> 
+    {% endif %}
+</div>
+
+
+
+
+{% if formsets %}
+    {% for formset_name, formset in formsets.items %}
+        {% include 'snippets/formset.html' with 
+            prefix=formset.prefix 
+            container_id=formset.prefix|add:"_container"
+            add_button_id="addButton_"|add:formset.prefix
+            remove_form="remove-item" 
+            form_item_class="item-form" 
+            select2_item_class="form-select" 
+        %}
+    {% endfor %}
+{% endif %}   
+
+
+
+<script>
+    $('[data-control="select2"]').select2({
+        dropdownParent: $('#kt_modal_content')
+    });
+</script>
+

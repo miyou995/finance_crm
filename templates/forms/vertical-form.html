@@ -1,0 +1,63 @@
+{% load widget_tweaks %}
+{{ form.media }}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}  
+    {% for field in form.visible_fields %}
+        {% if field.name != "query" %}                    
+            {% if field|widget_type|slugify == "checkboxinput" %}
+                {% include 'forms/fields/switcher_input.html' %}
+            {% elif field|widget_type|slugify == "selectmultiple" %}
+                <div class="{{column_classes}} {{margin_class}}">
+                    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    {% include 'forms/fields/multi-select.html' %}
+                    <div class="fs-7 fw-semibold text-muted">{{ field.help_text }}</div>
+                </div>   
+            {% elif field|widget_type|slugify == "select" %}
+                <div class="{{column_classes}} d-flex flex-column {{margin_class}} fv-row ">
+                    <label class="align-items-center fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                        {% include 'forms/fields/select.html' %}
+                    </label>
+                </div>
+            {% elif field|widget_type|slugify == "clearablefileinput" %}
+                <div class="{% if field|widget_type|slugify == 'textarea' and text_area_class %}{{text_area_class}}{% else %}{{column_classes}}{% endif %} {{margin_class}} fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    {% render_field field|add_class:'form-control' %}
+                    {% if field.errors %}
+                        <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+                    {% else %}
+                       <span class=""> {{ field.help_text }} </span>
+                    {% endif %}
+                </div>  
+            {% elif field|widget_type == "rangewidget" %}
+                    <label class="fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                        {% render_field field class="form-control form-control-solid w-200px ps-14  border-secondary"  placeholder="Search Order" %}
+                    </label>
+                
+            {% else %}
+                <div class="{% if field|widget_type|slugify == 'textarea' and text_area_class %}{{text_area_class}}{% else %}{{column_classes}}{% endif %} d-flex flex-column {{margin_class}} fv-row">
+                    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }} </span>
+                    </label>
+                    {% render_field field|add_class:'form-control' %}
+                    {% if field.errors %}
+                        <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+                    {% else %}
+                        <div class="fs-7 fw-semibold text-muted">{{ field.help_text }}</div>
+                    {% endif %}
+                </div>
+            {% endif %} 
+        {% endif %}
+    {% endfor %} 
+
+
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+
+{% endwith %}

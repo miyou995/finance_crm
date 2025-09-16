@@ -1,0 +1,1258 @@
+2025-09-13 10:02:58,603 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:04:04,803 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 107, in dispatch
+    if not self.has_permission():
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 103, in has_permission
+    perms = self.get_permission_required()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 87, in get_permission_required
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: IndexView is missing the permission_required attribute. Define IndexView.permission_required, or override IndexView.get_permission_required().
+2025-09-13 10:04:05,419 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 107, in dispatch
+    if not self.has_permission():
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 103, in has_permission
+    perms = self.get_permission_required()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 87, in get_permission_required
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: IndexView is missing the permission_required attribute. Define IndexView.permission_required, or override IndexView.get_permission_required().
+2025-09-13 10:04:05,804 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 10:04:27,240 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:04:28,056 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:04:29,036 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/list.py", line 158, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/list.py", line 36, in get_queryset
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: IndexView is missing a QuerySet. Define IndexView.model, IndexView.queryset, or override IndexView.get_queryset().
+2025-09-13 10:04:48,553 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:04:49,337 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:05:07,397 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 228, in get
+    context = self.get_context_data(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/views.py", line 43, in get_context_data
+    context = super().get_context_data(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 161, in get_context_data
+    table = self.get_table(**self.get_table_kwargs())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 121, in get_table
+    table_class = self.get_table_class()
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 110, in get_table_class
+    if self.model:
+       ^^^^^^^^^^
+AttributeError: 'IndexView' object has no attribute 'model'
+2025-09-13 10:05:22,340 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:05:23,099 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:05:24,468 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 228, in get
+    context = self.get_context_data(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/views.py", line 43, in get_context_data
+    context = super().get_context_data(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 161, in get_context_data
+    table = self.get_table(**self.get_table_kwargs())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 121, in get_table
+    table_class = self.get_table_class()
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 110, in get_table_class
+    if self.model:
+       ^^^^^^^^^^
+AttributeError: 'IndexView' object has no attribute 'model'
+2025-09-13 10:05:25,692 django.request ERROR    Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 228, in get
+    context = self.get_context_data(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/views.py", line 43, in get_context_data
+    context = super().get_context_data(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 161, in get_context_data
+    table = self.get_table(**self.get_table_kwargs())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 121, in get_table
+    table_class = self.get_table_class()
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_tables2/views.py", line 110, in get_table_class
+    if self.model:
+       ^^^^^^^^^^
+AttributeError: 'IndexView' object has no attribute 'model'
+2025-09-13 10:05:32,288 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:05:33,100 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:09:43,639 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:09:44,412 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:13:43,591 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:13:44,369 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:14:06,911 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:14:07,658 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:15:17,465 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:15:18,227 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:15:34,619 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/company.py changed, reloading.
+2025-09-13 10:15:35,384 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:16:13,319 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:16:14,085 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:16:16,095 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:16:16,856 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:16:21,958 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:16:22,752 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:21:59,622 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/company.py changed, reloading.
+2025-09-13 10:22:00,416 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:22:17,080 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:22:57,335 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:22:58,118 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:23:34,010 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:23:34,762 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:23:39,866 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:23:40,637 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:23:47,521 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:23:48,312 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:23:52,121 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:23:52,866 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:24:08,232 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/views.py changed, reloading.
+2025-09-13 10:24:08,964 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:24:20,187 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:24:20,921 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:24:35,224 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:24:36,003 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:25:49,944 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:25:50,757 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:26:34,906 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/company.py changed, reloading.
+2025-09-13 10:26:35,645 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:27:54,669 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/company.py changed, reloading.
+2025-09-13 10:27:55,434 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:27:59,508 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/company.py changed, reloading.
+2025-09-13 10:28:00,296 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:28:10,506 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/company.py changed, reloading.
+2025-09-13 10:28:11,305 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:28:16,362 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/company.py changed, reloading.
+2025-09-13 10:28:17,142 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:28:51,985 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/contact.py changed, reloading.
+2025-09-13 10:28:52,768 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:28:58,862 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/contact.py changed, reloading.
+2025-09-13 10:28:59,602 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:29:21,076 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/models/contact.py changed, reloading.
+2025-09-13 10:29:21,873 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:29:31,084 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:29:31,848 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:31:49,621 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/views.py changed, reloading.
+2025-09-13 10:31:50,436 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:32:26,363 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/views.py changed, reloading.
+2025-09-13 10:32:27,167 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:32:37,446 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/views.py changed, reloading.
+2025-09-13 10:32:38,252 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:32:40,307 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/views.py changed, reloading.
+2025-09-13 10:32:41,124 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 10:32:58,561 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/crm/forms.py changed, reloading.
+2025-09-13 10:32:59,341 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:51:31,070 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 11:51:31,856 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:51:34,868 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 11:51:35,614 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:51:58,139 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 11:51:58,899 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:53:16,914 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 11:53:17,716 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:53:54,695 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 11:53:55,462 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:56:40,992 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 11:59:11,740 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 11:59:12,591 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:59:26,186 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 11:59:26,983 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 11:59:32,397 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 11:59:53,894 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 11:59:54,674 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:00:05,331 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:00:36,160 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:00:37,011 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:00:41,176 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:00:55,893 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:00:56,731 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:00:58,012 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:01:08,154 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:01:08,977 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:01:15,134 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:01:15,961 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:01:19,801 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:01:56,484 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:01:57,532 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:07:48,351 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:09:40,454 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:09:52,366 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:10:23,660 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:12:31,731 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:12:32,583 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:12:34,609 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:12:35,367 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:12:41,488 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:12:42,321 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:12:44,127 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:12:44,791 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:19:41,795 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:23:12,922 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:23:52,699 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 12:23:53,495 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:24:40,743 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 12:24:41,594 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:24:42,789 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:28:34,321 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:28:47,160 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:29:35,647 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:29:42,837 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:29:49,421 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:31:06,726 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:31:59,962 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:32:24,381 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:32:49,407 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:33:22,917 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:34:00,010 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 12:34:00,810 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:34:02,360 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:34:02,553 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:34:08,096 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-13 12:34:08,917 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:34:10,058 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:34:10,110 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:34:10,399 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:37:02,839 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:37:31,432 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:37:43,725 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:37:50,570 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:38:46,409 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:39:33,110 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:45:23,585 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:50:21,699 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 12:50:22,477 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:54:58,774 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 12:54:59,608 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 12:55:21,642 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 12:55:22,047 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 12:57:47,680 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:58:18,339 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:58:31,762 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:58:42,177 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:58:58,457 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:59:05,895 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 12:59:47,505 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 13:00:00,594 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 13:01:31,674 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:07:22,005 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:09:48,275 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:14:44,066 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:14:54,518 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:14:56,692 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:15:40,166 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:15:49,613 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:16:09,361 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:16:51,153 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:17:28,124 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:17:47,527 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 13:18:16,277 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:18:18,194 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:18:55,600 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 13:27:08,013 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:27:39,945 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:27:56,086 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:27:58,095 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:29:55,722 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:30:40,992 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:30:53,528 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:32:00,580 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:33:57,417 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 13:33:58,226 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 13:34:08,629 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 13:34:09,439 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 13:34:11,028 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:34:11,095 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 13:35:21,068 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:01:24,772 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:01:28,595 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:01:55,929 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:02:02,584 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:02:04,626 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:02:04,962 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:02:45,515 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:02:50,459 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:02:51,725 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:02:52,157 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:03:15,710 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:03:17,579 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:03:17,907 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:03:35,742 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:03:36,167 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:03:38,460 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:03:39,572 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:05:21,724 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:05:23,183 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:05:56,366 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:05:58,251 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:05:58,584 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:06:13,238 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:06:13,573 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:06:25,725 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:06:41,054 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+2025-09-13 15:06:49,008 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:07:00,027 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 15:07:00,846 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:07:04,239 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:07:37,812 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:07:39,652 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:07:39,766 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:07:51,421 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:07:53,686 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:08:11,820 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:08:23,470 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:08:40,568 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:09:30,190 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:17:42,925 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:18:00,221 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 15:18:01,025 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:18:02,060 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 15:18:19,653 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 15:18:22,547 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 15:18:22,927 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:18:37,148 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 15:18:43,923 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 15:18:59,891 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 15:19:00,692 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:19:34,498 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:20:21,343 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:20:23,601 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:20:38,559 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:20:39,443 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:21:13,645 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:21:15,521 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:21:16,192 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:24:36,960 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 15:24:37,783 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:24:38,821 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 15:24:39,018 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 15:24:48,063 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 15:24:48,867 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:25:06,789 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:25:20,380 django.request ERROR    Internal Server Error: /configuration
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 36: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+2025-09-13 15:27:25,759 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:27:50,007 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:28:05,202 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:28:18,591 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:28:20,363 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:28:20,537 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 15:28:24,388 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:44:21,809 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:44:51,700 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:44:52,505 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:45:08,950 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:45:09,768 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:45:22,683 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:45:23,497 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:45:30,727 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:45:31,574 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:46:17,011 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:46:17,795 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:46:37,260 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:46:38,032 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:49:29,762 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:50:51,172 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:50:51,940 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:50:58,045 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:50:58,805 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:51:00,817 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:51:01,583 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:51:05,549 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:51:06,335 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:51:18,626 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:51:19,468 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:51:41,021 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:51:41,889 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:51:44,590 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:53:00,316 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:53:01,116 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:53:03,240 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:53:11,875 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 15:53:12,800 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 15:53:22,094 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:55:12,815 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:55:56,539 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:56:40,597 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:56:41,579 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:56:42,381 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:57:50,928 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:58:02,289 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:58:13,556 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 15:59:20,304 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 15:59:21,135 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:02:19,820 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:02:20,596 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:02:22,639 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:02:23,450 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:02:26,623 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:02:45,407 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:02:46,234 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:02:47,457 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:02:52,650 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:02:53,447 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:05:59,106 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 16:06:50,238 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:07:13,959 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:09:30,397 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:09:47,748 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:12:40,572 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 16:12:41,356 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:12:51,594 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 16:12:52,337 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:12:55,101 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 16:12:55,193 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7a1586caf010>
+2025-09-13 16:13:02,767 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 16:13:03,574 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:13:05,558 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 16:13:06,354 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:13:31,468 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:30:42,044 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:31:02,796 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:31:04,104 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:31:04,962 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:31:20,339 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:31:21,500 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:31:22,579 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:32:14,601 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:32:50,735 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:33:21,316 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 16:35:34,486 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:37:16,465 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:39:21,148 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:39:22,014 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:39:30,252 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:39:31,052 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:39:41,304 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:39:42,107 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:40:53,547 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:40:56,323 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 16:41:31,786 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:41:32,590 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:41:58,217 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:41:59,032 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:42:15,484 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:42:16,256 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:42:22,354 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:42:22,952 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:42:26,136 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:42:26,740 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:42:40,628 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:42:52,949 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:42:53,763 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:43:05,912 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:45:11,948 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:46:01,459 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:46:02,288 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:46:09,453 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:46:10,234 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:46:15,351 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:46:16,137 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:48:12,366 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:48:13,208 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:48:17,320 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:48:18,105 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:48:32,493 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:48:33,312 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:50:12,285 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:50:13,091 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:51:24,182 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:51:24,948 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:52:08,295 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:52:37,107 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:52:37,880 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:52:40,925 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:52:41,710 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:52:51,960 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:53:08,419 django.request ERROR    Internal Server Error: /quotes/2/update/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 178, in form_valid
+    self.process_formsets(instance=instance)
+  File "/home/taki/Desktop/octopus_crm/apps/core/mixins.py", line 168, in process_formsets
+    formset.save()
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/forms/models.py", line 796, in save
+    return self.save_existing_objects(commit) + self.save_new_objects(commit)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/forms/models.py", line 959, in save_new_objects
+    self.new_objects.append(self.save_new(form, commit=commit))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/forms/models.py", line 1157, in save_new
+    return super().save_new(form, commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/forms/models.py", line 769, in save_new
+    return form.save(commit=commit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/forms/models.py", line 554, in save
+    self.instance.save()
+  File "/home/taki/Desktop/octopus_crm/apps/billing/models.py", line 316, in save
+    self.total_price = self.quantity * self.unit_price
+                       ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
+2025-09-13 16:53:31,273 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:53:32,056 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:53:41,280 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-13 16:53:42,055 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 16:57:28,164 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 16:57:28,969 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:11:17,139 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:15:53,565 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:15:54,402 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:17:21,747 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:17:22,559 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:17:41,536 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:17:42,346 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:17:52,666 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:17:53,451 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:18:51,360 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:18:52,171 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:19:06,287 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:19:07,046 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:19:11,120 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:19:11,952 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:19:19,293 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/forms.py changed, reloading.
+2025-09-13 19:19:20,174 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:22:54,413 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:23:05,119 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:23:37,856 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:25:46,628 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:25:55,331 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:25:56,189 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:25:56,342 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:28:27,793 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:28:28,948 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:28:29,114 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:28:40,645 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:29:37,411 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:29:38,070 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:29:38,876 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:29:39,052 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:29:42,898 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:29:43,640 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:29:57,743 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:30:04,427 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:30:05,512 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:30:06,201 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:30:21,778 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:30:21,962 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:31:05,865 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:31:07,616 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:31:07,790 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:31:10,569 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:31:10,727 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:31:20,465 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:31:28,839 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:32:49,297 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:32:51,322 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:32:51,517 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:33:04,246 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:33:04,427 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:33:19,702 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:33:20,534 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:33:22,389 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:33:22,436 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:33:22,828 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:33:22,922 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7973125e6b60>
+2025-09-13 19:33:23,187 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:33:57,902 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:33:57,939 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x797309e01a80>
+2025-09-13 19:33:58,166 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:34:33,270 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:34:33,301 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7973094c75b0>
+2025-09-13 19:34:33,517 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:34:47,205 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:34:48,039 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:34:56,459 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:34:57,240 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:35:00,485 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:35:00,568 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x723059865ee0>
+2025-09-13 19:35:07,356 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:35:07,390 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x723053e84c70>
+2025-09-13 19:36:02,994 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:36:03,029 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7230506cafc0>
+2025-09-13 19:36:13,307 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:36:32,391 django.request ERROR    Internal Server Error: /quotes/print_quote_pdf/2/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/billing/views.py", line 188, in print_quote_pdf
+    html = render_to_string("snippets/quote_pdf.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(business.logo.url)' from 'request.build_absolute_uri(business.logo.url)'
+2025-09-13 19:36:33,245 django.request ERROR    Internal Server Error: /quotes/print_quote_pdf/2/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/billing/views.py", line 188, in print_quote_pdf
+    html = render_to_string("snippets/quote_pdf.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(business.logo.url)' from 'request.build_absolute_uri(business.logo.url)'
+2025-09-13 19:37:04,673 django.request ERROR    Internal Server Error: /quotes/print_quote_pdf/2/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/billing/views.py", line 188, in print_quote_pdf
+    html = render_to_string("snippets/quote_pdf.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(business.logo.url)' from 'request.build_absolute_uri(business.logo.url)'
+2025-09-13 19:38:39,532 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:38:40,406 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:38:42,238 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:38:42,983 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:39:54,881 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:39:55,669 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:40:12,072 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:40:12,820 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:40:32,262 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:40:33,039 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:40:41,250 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:40:42,016 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:40:53,278 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:40:54,079 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:40:56,579 django.request ERROR    Internal Server Error: /quotes/print_quote_pdf/2/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/billing/views.py", line 188, in print_quote_pdf
+    html = render_to_string("snippets/quote_pdf.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(business.logo.url)' from 'request.build_absolute_uri(business.logo.url)'
+2025-09-13 19:40:58,492 django.request ERROR    Internal Server Error: /quotes/print_quote_pdf/2/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/billing/views.py", line 188, in print_quote_pdf
+    html = render_to_string("snippets/quote_pdf.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '(business.logo.url)' from 'request.build_absolute_uri(business.logo.url)'
+2025-09-13 19:40:58,609 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:41:10,593 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:10,681 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x781b3de8c6d0>
+2025-09-13 19:41:10,948 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:41:11,626 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:11,658 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x781b3ddce660>
+2025-09-13 19:41:11,848 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:41:15,209 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:15,240 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x781b3c219580>
+2025-09-13 19:41:15,445 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:41:30,765 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:41:31,603 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:41:32,642 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:32,725 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7429380b8bd0>
+2025-09-13 19:41:33,012 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:41:34,451 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:34,483 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x74292b14f060>
+2025-09-13 19:41:35,539 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:35,569 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x74292ae044f0>
+2025-09-13 19:41:36,981 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:37,011 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x74292a2ad710>
+2025-09-13 19:41:48,079 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:41:48,882 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:41:49,917 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:49,921 weasyprint   ERROR    Relative URI reference without a base URI: <img src="/media/images/logos/light-logo.png">
+2025-09-13 19:41:50,885 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:50,890 weasyprint   ERROR    Relative URI reference without a base URI: <img src="/media/images/logos/light-logo.png">
+2025-09-13 19:41:52,170 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:41:52,176 weasyprint   ERROR    Relative URI reference without a base URI: <img src="/media/images/logos/light-logo.png">
+2025-09-13 19:41:54,352 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:41:55,216 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:43:15,322 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:43:16,122 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:43:26,894 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:43:27,608 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:43:27,799 weasyprint   ERROR    Failed to load image at 'http://localhost:8000//media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76efefce5210>
+2025-09-13 19:43:29,979 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:43:30,011 weasyprint   ERROR    Failed to load image at 'http://localhost:8000//media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76efed1ccae0>
+2025-09-13 19:43:30,319 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:43:55,808 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:43:56,654 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:44:00,086 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:44:00,168 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7645d02a0400>
+2025-09-13 19:44:01,497 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:44:01,531 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7645ca961d50>
+2025-09-13 19:44:10,434 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:44:10,467 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7645bb050400>
+2025-09-13 19:44:12,192 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:44:12,229 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7645b9d9d1c0>
+2025-09-13 19:44:28,364 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:44:28,393 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7645b9c81760>
+2025-09-13 19:44:28,571 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:44:33,141 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:44:34,849 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:44:47,311 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:44:47,345 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7645caa3f7e0>
+2025-09-13 19:44:47,534 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:44:48,231 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:44:48,263 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7645d028da80>
+2025-09-13 19:44:48,450 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:44:56,546 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:47:39,056 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:47:39,866 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:47:54,206 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:47:54,986 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:47:56,272 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:47:56,353 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b4037e01030>
+2025-09-13 19:47:56,584 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:47:57,725 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:47:57,757 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b40343dee80>
+2025-09-13 19:47:57,951 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:47:58,779 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:47:58,810 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b402789ff10>
+2025-09-13 19:47:58,999 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:47:59,224 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:48:10,526 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:48:11,328 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:48:23,634 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:48:24,444 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:48:29,316 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:48:30,077 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:48:35,178 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:48:35,992 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:48:40,130 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:48:40,919 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:48:42,953 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:48:43,725 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:48:45,488 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:48:45,568 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x70f199f28cc0>
+2025-09-13 19:48:45,886 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:48:47,206 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:48:47,999 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:48:50,840 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:48:50,922 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7e4a2d504e50>
+2025-09-13 19:48:51,214 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:48:52,387 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:48:52,440 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7e4a27dc3e70>
+2025-09-13 19:48:52,685 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:48:52,892 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:49:09,191 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:49:09,989 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:49:16,140 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:49:16,246 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x700ff0c76cf0>
+2025-09-13 19:49:16,588 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:49:32,200 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:49:32,981 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:50:27,409 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:50:28,204 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:50:40,215 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:50:40,297 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x73927319e1b0>
+2025-09-13 19:50:40,583 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:54:24,024 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:54:35,474 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:54:35,581 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02e7be6ac0>
+2025-09-13 19:54:35,903 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:54:37,373 weasyprint   WARNING  Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 26:13, unknown property.
+2025-09-13 19:54:37,405 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02e4327dd0>
+2025-09-13 19:54:37,597 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:54:37,814 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 19:54:54,656 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02d69ab470>
+2025-09-13 19:54:54,842 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:56:58,256 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02d5f75d00>
+2025-09-13 19:56:58,440 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:57:03,135 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:57:15,368 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/Boehringer_Ingelheim_Logo.jpg': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02e630a4d0>
+2025-09-13 19:57:15,549 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:57:50,497 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:57:52,410 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02d5f95940>
+2025-09-13 19:57:52,592 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:58:04,636 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02d55a8e50>
+2025-09-13 19:58:04,967 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:58:06,063 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c02d6994680>
+2025-09-13 19:58:06,335 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:58:19,234 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:58:20,060 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:58:21,535 django.request WARNING  Not Found: /quotes/print_quote_pdf/2/media/images/logos/light-logo_vCMRv5J.png
+2025-09-13 19:58:21,536 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/quotes/print_quote_pdf/2/media/images/logos/light-logo_vCMRv5J.png': HTTPError: HTTP Error 404: Not Found
+2025-09-13 19:58:21,743 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:58:25,513 django.request WARNING  Not Found: /quotes/print_quote_pdf/2/media/images/logos/light-logo_vCMRv5J.png
+2025-09-13 19:58:25,586 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:58:35,482 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:58:36,279 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:58:45,435 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:58:47,215 django.request WARNING  Not Found: /quotes/print_quote_pdf/2/media/images/logos/light-logo_vCMRv5J.png
+2025-09-13 19:58:47,215 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/quotes/print_quote_pdf/2/media/images/logos/light-logo_vCMRv5J.png': HTTPError: HTTP Error 404: Not Found
+2025-09-13 19:58:47,505 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:59:07,430 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 19:59:08,236 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 19:59:09,973 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7368928c8fe0>
+2025-09-13 19:59:10,196 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:59:11,274 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x736890f78ea0>
+2025-09-13 19:59:11,463 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 19:59:12,468 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 20:01:37,129 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:02:04,626 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7076284cc810>
+2025-09-13 20:02:08,008 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x70762a0c42c0>
+2025-09-13 20:02:20,810 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:03:19,796 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:03:36,553 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:03:38,285 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7eb4f1642250>
+2025-09-13 20:03:38,623 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 20:03:40,093 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7eb4e99e1da0>
+2025-09-13 20:03:41,776 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7eb4e8e02b10>
+2025-09-13 20:04:01,251 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:04:46,555 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 20:04:47,384 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:04:55,802 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b3076b0d580>
+2025-09-13 20:04:57,434 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b307406abb0>
+2025-09-13 20:04:57,743 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 20:05:42,807 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b30752b3420>
+2025-09-13 20:05:44,110 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b306ce6c770>
+2025-09-13 20:07:41,382 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7b306ceed260>
+2025-09-13 20:07:52,386 django.request WARNING  Not Found: /media/images/logos/light-logo_vCMRv5J.png'
+2025-09-13 20:10:07,662 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 20:10:08,456 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:10:12,184 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7abb75ef0b30>
+2025-09-13 20:10:13,967 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7abb7459d670>
+2025-09-13 20:10:14,272 django.request WARNING  Not Found: /favicon.ico
+2025-09-13 20:10:20,079 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/views.py changed, reloading.
+2025-09-13 20:10:20,876 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-13 20:10:57,752 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af14d954d60>
+2025-09-13 20:11:05,338 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 20:11:07,307 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-13 20:11:08,797 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af145148400>
+2025-09-13 20:12:09,721 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af1453fbfb0>
+2025-09-13 20:12:15,997 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af145337ba0>
+2025-09-13 20:12:17,276 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af145591260>
+2025-09-13 20:14:16,570 weasyprint   ERROR    Failed to load image at 'file://home/taki/Desktop/octopus_crm/media/images/logos/light-logo.png': URLError: <urlopen error [Errno 2] No such file or directory: '/taki/Desktop/octopus_crm/media/images/logos/light-logo.png'>
+2025-09-13 20:14:17,424 weasyprint   ERROR    Failed to load image at 'file://home/taki/Desktop/octopus_crm/media/images/logos/light-logo.png': URLError: <urlopen error [Errno 2] No such file or directory: '/taki/Desktop/octopus_crm/media/images/logos/light-logo.png'>
+2025-09-13 20:14:23,145 weasyprint   ERROR    Failed to load image at 'file://home/taki/Desktop/octopus_crm/media/images/logos/light-logo.png': URLError: <urlopen error [Errno 2] No such file or directory: '/taki/Desktop/octopus_crm/media/images/logos/light-logo.png'>
+2025-09-13 20:15:35,900 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af1446f49f0>
+2025-09-13 20:15:37,207 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af12df540e0>
+2025-09-13 20:16:14,916 weasyprint   ERROR    Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af145384cc0>
+2025-09-15 09:00:11,234 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:02:35,288 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:03:22,753 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 16:03:23,195 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:03:46,508 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/users/models.py changed, reloading.
+2025-09-16 16:03:46,929 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:06:00,928 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 16:06:01,362 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:06:12,600 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 16:06:13,041 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:06:16,233 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 16:06:16,908 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:06:22,184 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 16:06:22,991 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-16 16:06:33,252 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/models.py changed, reloading.
+2025-09-16 16:06:34,048 django.utils.autoreload INFO     Watching for file changes with StatReloader

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Octoschool</title>
+  <style>
+    body {
+      font-family: 'Roboto', 'Lato', 'Cairo', sans-serif;
+      color: #74787e;
+      line-height: 1.4;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header {
+      font-size: 40px;
+      font-weight: bold;
+      text-align: center;
+      color: #3498db;
+      padding: 20px 0;
+    }
+    .email-box {
+      border: 1px solid #dfe3e8;
+      padding: 20px;
+    }
+    .message {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      color: #000000;
+      margin: 20px 0;
+    }
+    .verification-link {
+      display: block;
+      margin: 15px auto;
+      font-size: 15px;
+      text-decoration: none;
+      background-color: #3498db;
+      color: #fff;
+      border-color: #3498db;
+      border-style: solid;
+      border-width: 15px 20px;
+      border-radius: 3px;
+      text-align: center;
+      max-width: 80%;
+    }
+    .thank-you {
+      font-size: 16px;
+      line-height: 30px;
+      text-align: center;
+      color: #000000;
+      margin: 20px 0;
+    }
+    .footer {
+      font-size: 13px;
+      text-align: center;
+      padding: 20px;
+      color: #000000;
+    }
+    .password-box {
+      background-color: #f8f4ff;
+      border: 2px dashed #3498db;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(74, 36, 107, 0.1);
+    }
+    .password {
+      font-size: 28px;
+      font-weight: bold;
+      color: #3498db;
+      margin-top: 10px;
+    }
+    .contact-info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-weight: bold;
+      border-left: 4px solid #3498db;
+    }
+    .social-links {
+      margin: 25px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #3498db;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="email-box">
+      <div class="header">Octoschool</div>
+      
+      <div class="message">
+        Bonjour, Veuillez utiliser le code ci-dessous <br> pour confirmer votre email
+      </div>
+      
+     
+      <div class="password-box">
+       <div class="password">  {{ verification_url }}</div>
+     </div>
+   <strong>Nous sommes là pour vous accompagner tout au long de votre période d'essai. Si vous avez des questions, n'hésitez pas à nous contacter :</strong>
+        
+     <div class="contact-info">
+       <p>📧 <strong>hello@octopus-consulting.com</strong></p>
+       <p>📞 <strong> 0672 60 66 39</strong></p>
+     </div>
+     
+     
+      <div class="social-links">
+          <a href="https://www.facebook.com/OctopusConsultingAlgerie" style="font-size:16px;" target="_blank">Facebook: OctopusConsulting</a> | 
+          <a href="https://www.instagram.com/octopus.consulting/" style="font-size:16px;" target="_blank">Instagram: OctopusConsulting</a>
+        </div>
+      
+      <div class="thank-you">
+          Merci de nous avoir rejoint! <br>
+          {% comment %} Un pas de plus vers votre boutique optimisée pour le marché algérien! {% endcomment %}
+      </div>
+    </div>
+    
+    <div class="footer">
+      © {{ current_year }} Octoschool. Tous droits réservés.
+    </div>
+  </div>
+</body>
+</html>
+

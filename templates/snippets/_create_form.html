@@ -1,0 +1,91 @@
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load custom_filters %}
+
+<div class="modal-header">
+    <h3 class="modal-title">   
+        {% if form.instance.id %}
+            {{ form_verbose_name|capfirst }} N° {{ form.instance.id }} — {% translate "Edit" %}
+        {% else %}
+            {% translate "Add" %} {{ form_verbose_name|capfirst }}
+        {% endif %}
+    </h3>
+    <!--begin::Close-->
+    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+        <i class="ki-duotone ki-cross fs-1">
+            <span class="path1"></span>
+            <span class="path2"></span>
+        </i>
+    </div>
+    <!--end::Close-->
+</div>
+
+<div class="modal-body scroll-y mx-5 mx-xl-5">
+    <form 
+        {% comment %} # TODO check this include reload_page it is firing a console errror often {% endcomment %}
+        hx-post="{% if form.instance.id %} {{ update_url }} {% else %} {{ create_url }} {% endif %}" 
+        hx-target="#kt_modal_content" 
+        hx-include="[name='reload_page']" 
+        hx-swap="innerHTML" 
+        {{ form.attrs }}
+        enctype="multipart/form-data"
+    >
+        {% csrf_token %}
+    
+        {% include 'forms/horizental-form.html' with margin_class="mb-4" %}
+        {% if formsets %}
+            {% for formset_name, formset in formsets.items %}
+                {% include 'forms/horizontal-formset.html' with formset=formset container_id=formset.prefix|add:"_container" formset_name=formset_name prefix=formset.prefix %}
+            {% endfor %}
+        {% endif %}
+
+        <div class="modal-footer flex-center pb-0">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">{% translate 'Close' %}</button>
+            {% if form.instance.id %}
+                <button 
+                    type="button" 
+                    class="btn btn-danger" 
+                    data-bs-toggle="modal"
+                    data-bs-target="#delete_modal"
+                    hx-get="{{ form.instance.get_delete_url }}"   
+                    hx-target="#delete_modal_body" 
+                    hx-swap="innerHTML"
+                >
+                    {% translate 'Delete' %}
+                </button>
+            {% endif %}
+            {% include 'snippets/_submit_button.html' %}
+        </div>
+    </form>
+    {% if form.instance.id %}
+        <form action="{{ form.instance.get_delete_url }}" method="post" id="deleteSlideForm">
+            {% csrf_token %}
+        </form> 
+    {% endif %}
+</div>
+
+
+
+
+{% if formsets %}
+    {% for formset_name, formset in formsets.items %}
+        {% include 'snippets/formset.html' with 
+            prefix=formset.prefix 
+            container_id=formset.prefix|add:"_container"
+            add_button_id="addButton_"|add:formset.prefix
+            remove_form="remove-item" 
+            form_item_class="item-form" 
+            select2_item_class="form-select" 
+        %}
+    {% endfor %}
+{% endif %}   
+
+
+
+<script>
+    $('[data-control="select2"]').select2({
+        dropdownParent: $('#kt_modal_content')
+    });
+</script>
+

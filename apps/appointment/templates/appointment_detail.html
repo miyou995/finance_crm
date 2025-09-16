@@ -1,0 +1,53 @@
+{% extends "layout/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{% trans "Appointment Details" %}</h2>
+    <div class="card mb-3">
+        <div class="card-header">
+            <strong>{% trans "Subject:" %}</strong> {{ appointment.subject }}
+        </div>
+        <div class="card-body">
+            <p>
+                <strong>{% trans "Date:" %}</strong>
+                {{ appointment.date|date:"D d M Y H:i" }}
+            </p>
+            <p>
+                <strong>{% trans "State:" %}</strong>
+                <span class="badge">
+                    {{ appointment.get_state_display }}
+                </span>
+            </p>
+            {% if appointment.b2b_lead %}
+            <p>
+                <strong>{% trans "B2B Lead:" %}</strong>
+                {{ appointment.b2b_lead }}
+            </p>
+            {% endif %}
+            <p>
+                <strong>{% trans "Users:" %}</strong>
+                {% for user in appointment.users.all %}
+                    <a href="{% url 'users:detail_user' user.pk %}" class="text-decoration-none">
+                        <span class="badge bg-primary text-white">{{ user.get_full_name|default:user.username }}</span>
+                    </a>
+                {% empty %}
+                    <span class="text-muted">{% trans "No users assigned." %}</span>
+                {% endfor %}
+            </p>
+            {% if appointment.notes %}
+            <div class="mb-3">
+                <strong>{% trans "Notes:" %}</strong>
+                <div class="border rounded p-2 bg-light">{{ appointment.notes|safe }}</div>
+            </div>
+            {% endif %}
+            {% if appointment.report %}
+            <div>
+                <strong>{% trans "Report:" %}</strong>
+                <div class="border rounded p-2 bg-light">{{ appointment.report|safe }}</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

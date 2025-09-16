@@ -1,0 +1,37 @@
+{% extends "layout/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="d-block d-md-flex justify-content-between align-items-end mb-4">
+    {% include 'snippets/_breadcrumb.html' %}
+    {% comment %} {% if perms.appointment.add_appointment %}
+        <div class="d-flex align-items-end gap-2">
+            <button 
+                class="btn btn-primary d-flex align-items-end gap-2 shadow"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal"
+                hx-get="{% url 'appointment:create_appointment' %}"
+                hx-target="#kt_modal_content"
+                hx-swap="innerHTML"
+            >
+                <i class="ki-duotone ki-plus fs-2"></i>
+                <span class="fw-semibold">{% trans 'Rendez-vous' %}</span>
+            </button>
+        </div>
+    {% endif %} {% endcomment %}
+</div>
+
+{% include "snippets/toolbar.html" %}
+
+<div id="appointmentTable" 
+    class="table-responsive table-container"
+    hx-get="{% url 'appointment:list_appointment' %}"
+    hx-trigger="refresh_table from:body, load"
+    hx-swap="innerHTML"
+    hx-target="closest .table-responsive"
+>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,293 @@
+{% load custom_filters i18n %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Devis {{ quote.bill_number }}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0mm; /* Override WeasyPrint default margins */
+        }
+
+        * {
+            {% comment %} margin: 0; {% endcomment %}
+            {% comment %} padding: 0; {% endcomment %}
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .invoice {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 32px 40px;
+            border-radius: 12px;
+        }
+
+        /* Header */
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+
+        .invoice-header img {
+            max-height: 60px;
+            width: auto;
+        }
+
+        /* Title */
+        .invoice-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .invoice-title h1 {
+            font-size: 28px;
+        }
+
+        .invoice-title .date {
+            font-size: 18px;
+        }
+
+        /* Business & Client Info */
+        .info-block {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .info-block > div {
+            width: 50%;
+            font-size: 14px;
+        }
+
+        .info-block strong {
+            font-weight: bold;
+        }
+
+        /* Billing */
+        .billing {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .billing > div {
+            width: 50%;
+        }
+
+        .billing-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            border-bottom: 2px solid #e5e5e5;
+            font-size: 15px;
+            color: #888;
+            padding: 12px 8px;
+            text-align: right;
+        }
+
+        thead th:first-child {
+            text-align: left;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        tbody td {
+            padding: 6px;
+            text-align: right;
+        }
+
+        tbody td:first-child {
+            text-align: left;
+        }
+
+        tbody h4 {
+            margin-bottom: 5px;
+        }
+
+        tbody span {
+            font-size: 0.875rem;
+            display: block;
+        }
+
+        /* Totals */
+        .totals {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .totals-notes {
+            width: 58%;
+            font-size: 14px;
+            color: #333;
+        }
+        .totals-inner {
+            width: 42%;
+
+        }
+
+        .totals-row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 8px;
+        }
+
+        .totals-row .label {
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        h4 {
+            font-size: 16px;
+            margin: 0 0 4px 0;
+        }
+        p {
+            margin: 0 0 8px 0;
+        }
+        .justify-content-between {
+            justify-content: space-between!important;
+        }
+        .d-flex {
+            display: flex!important;
+        }
+        .ml-2 {
+            margin-left: 2rem!important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="invoice">
+        <!-- Header -->
+        {% if business.logo %}
+            <div class="invoice-header">
+                <img alt="logo" src="{{ business.logo.url }}">
+            </div>
+        {% endif %}
+{% comment %} DEV file:///home/taki/Desktop/octopus_crm/media/images/logos/light-logo.png {% endcomment %}
+        <!-- Title -->
+        <div class="invoice-title">
+            <h1>Devis {{ quote.bill_number }}</h1>
+            <div class="date">{{ quote.created_at|date:"d M Y" }}</div>
+        </div>
+
+        <!-- Info -->
+        <div class="info-block">
+            <div>
+                RC: <strong>{{ business.rc_code|default:" " }}</strong><br>
+                Art: <strong>{{ business.art_code|default:" " }}</strong><br>
+                NIF: <strong>{{ business.nif_code|default:" " }}</strong><br>
+                NIS: <strong>{{ business.nis_code|default:" " }}</strong><br>
+                Bank: <strong>{{ business.bank_number|default:" " }}</strong>
+            </div>
+            <div>
+                Destinataire: <strong>{{ quote.lead.company }}</strong><br>
+                NIF: <strong>{{ quote.lead.company.nif|default:" " }}</strong><br>
+                NRC: <strong>{{ quote.lead.company.nrc|default:" " }}</strong><br>
+                NIS: <strong>{{ quote.lead.company.nis|default:" " }}</strong><br>
+                NART: <strong>{{ quote.lead.company.nart|default:" " }}</strong><br>
+                Bank: <strong>{{ quote.lead.company.bank_name|default:" " }}</strong>
+            </div>
+        </div>
+
+        <!-- Billing -->
+        <div class="billing">
+            <div>
+                <div class="billing-label">Émis par :</div>
+                <div>{{ business.name_company }}</div>
+                <div class="address">{{ business.address }}</div>
+            </div>
+            <div>
+                <div class="billing-label">Émis pour :</div>
+                <div>{{ quote.lead.company }}</div>
+            </div>
+        </div>
+
+        <!-- Items -->
+        <table>
+            <thead>
+                <tr>
+                    <th>{% translate "Désignation" %}</th>
+                    <th>{% translate "Quantité" %}</th>
+                    <th>{% translate "Prix" %}</th>
+                    <th>{% translate "Remise" %}</th>
+                    <th>{% translate "Total" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in quote_items %}
+                    <tr>
+                        <td>
+                            <h4>{{ item.title }}</h4>
+
+                            {% if item.description %}
+                                <span>{{ item.description|linebreaks }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.unit_price|floatformat:2 }}{% if item.unit %} / {{ item.unit }}{% endif %}</td>
+                        <td>{{ item.discount|default:"0" }}</td>
+                        <td>{{ item.get_total_item|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals d-flex justify-content-between">
+            <div class="totals-notes">
+                <strong>
+                    {% translate "Notes :" %}
+                </strong>
+                <div class="ml-2">
+                    {{ quote.notes|linebreaks }}
+                </div>
+            </div>
+            <div class="totals-inner">
+                <div class="totals-row">
+                    <div class="label">{% translate "Total HT" %}:</div>
+                    <div>{{ quote.get_total_net|floatformat:2 }}</div>
+                </div>
+                {% if taxes %}
+                    {% for tax in taxes %}
+                    <div class="totals-row">
+                        <div class="label">VAT {{ tax.tax }}%</div>
+                        <div>{{ quote.get_total_net|multiply:tax.tax|divide:100|floatformat:2 }} {% translate "DA" %}</div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="totals-row">
+                    <div class="label">{% translate "Total TTC" %}</div>
+                    <div>{{ quote.get_total_ttc|floatformat:2 }} {% translate "DA" %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

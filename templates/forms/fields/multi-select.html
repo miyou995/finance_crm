@@ -1,0 +1,19 @@
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+    {% comment %} <div class="me-5">
+      <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+      </label>
+    </div> {% endcomment %}
+    {% render_field field class="form-select" 
+        data-control="select2" 
+        data-close-on-select="false" 
+        data-placeholder=field.label
+        data-allow-clear="true" 
+        multiple="multiple" 
+    %}
+    {% if field.errors %}
+      <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+    {% endif %}

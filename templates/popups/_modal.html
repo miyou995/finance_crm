@@ -1,0 +1,26 @@
+{% load i18n %}
+{% load widget_tweaks %}
+
+
+{% comment %} on this modal you can add this variables
+variable:
+    {{object}}  
+    {{size_class}} # this could be useful
+{% endcomment %}
+
+{% comment %} 
+<div class="modal fade" id="kt_modal"  role="dialog" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered {{ size_class|default:'modal-lg mw-650px' }}">
+        <div class="modal-content p-3" id="kt_modal_content"></div>
+    </div>
+</div>
+ {% endcomment %}
+
+
+<div class="modal fade" id="kt_modal"  role="dialog" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered {{ size_class|default:'modal-lg mw-650px' }}">
+        <div class="modal-content p-3" id="kt_modal_content">
+        </div>
+    </div>
+</div>
+

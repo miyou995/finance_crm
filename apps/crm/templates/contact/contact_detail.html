@@ -1,0 +1,217 @@
+{% extends "layout/base.html" %}
+ 
+{% load static %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+
+<div class="d-block d-md-flex justify-content-between align-items-end mb-4">
+    {% include 'snippets/_breadcrumb.html' %}
+    <div class="d-block d-md-flex align-items-end gap-2">
+		
+		{% if perms.leads.add_b2clead %}
+			<a  
+				href="#" 
+				class="btn btn-info btn-sm me-3"
+				data-bs-toggle="modal" 
+				data-bs-target="#kt_modal"
+				data-bs-placement="right" 
+				data-bs-toggle="tooltip" 
+				hx-target="#kt_modal_content" 
+				hx-get="{% url 'leads:create_contact_b2clead' object.pk %}"
+				hx-swap="innerHTML">
+				<i class="ki-solid ki-plus-square fs-2"></i> 
+				{% translate "Opportunité" %}
+			</a>
+		{% endif %}
+		{% if perms.crm.change_contact %}
+			<a  
+				href="#" 
+				class="btn btn-primary btn-sm me-3"
+				data-bs-toggle="modal" 
+				data-bs-target="#kt_modal"
+				data-bs-placement="right" 
+				data-bs-toggle="tooltip" 
+				hx-target="#kt_modal_content" 
+				hx-get="{% url 'crm:update_contact' object.pk %}"
+				hx-swap="innerHTML">
+				<i class="ki-solid ki-notepad-edit fs-2"></i> 
+				{% translate "modifier" %}
+			</a>
+		{% endif %}
+		{% if perms.transactions.add_misctransaction %}
+			<button
+				type="button"
+				class="btn btn-success btn-sm me-3"
+				data-bs-toggle="modal"
+				data-bs-target="#kt_modal"
+				hx-get="{% url 'transactions:create_contact_income' contact_pk=object.pk %}"
+				hx-target="#kt_modal_content"
+				hx-trigger="click"
+				data-bs-toggle="tooltip" 
+				hx-swap="innerHTML">
+				<i class="ki-solid ki-plus-square fs-2"></i> 
+				{% translate "Revenue" %}
+			</button>
+			<button
+				type="button"
+				class="btn btn-danger btn-sm"
+				data-bs-toggle="modal"
+				data-bs-target="#kt_modal"
+				hx-get="{% url 'transactions:create_contact_expense' contact_pk=object.pk %}" 
+				hx-target="#kt_modal_content"
+				hx-trigger="click"
+				data-bs-toggle="tooltip" 
+				hx-swap="innerHTML">
+				<i class="ki-solid ki-minus-square fs-2"></i>
+				{% translate "Dépense" %}
+			</button>
+		{% endif %}
+	</div>
+</div>
+<div class="d-flex flex-column flex-lg-row">
+    <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-300px mb-10">
+        <div class="card mb-5 mb-xl-8">
+            <div class="card-body">
+                <div class="d-flex flex-center flex-column py-5">
+                    {% if object.picture %}
+                        <div class="symbol symbol-75px symbol-circle mb-5">
+                            <img src="{{ object.picture.url }}" alt="{{ object.name }}" />
+                        </div>
+                    {% else %}
+                        <div class="symbol symbol-75px symbol-circle mb-5">
+                            <div class="symbol-label fs-2 fw-semibold text-danger text-uppercase">{{object.name|slice:2 }}</div>
+                        </div>
+					{% endif %}
+					<a href="{{ object.get_absolute_url }}" class="fs-3 text-gray-800 text-hover-primary fw-bold mb-3">{{ object.name }}</a>
+					{% if object.company %}
+						<a href="{{ object.company.get_absolute_url}}">
+							<div class="mb-2">
+								<span class="fw-semibold text-gray-800">{% translate "Société" %}: {{ object.company }}</span>
+							</div>
+						</a>
+					{% endif %}
+				</div>
+                    
+                <div class="separator"></div>
+
+                <div class="pb-5 fs-6">
+                    <div class="fw-bold mt-5">{% translate "Téléphone" %}</div>
+
+                    {% for phone in object.phones.all %}
+                        <div class="text-gray-600"><a href="tel:{{ phone }}">{{ phone }}</a></div>
+                    {% endfor %}
+                        
+                     <div class="fw-bold mt-5">{% translate "Email" %}</div>
+
+                    {% for email in object.emails.all %}
+                        <div class="text-gray-600"><a href="mailto:{{ email }}">{{ email }}</a></div>
+                    {% endfor %}
+    
+                    <div class="fw-bold mt-5">{% translate "Poste" %}</div>
+                    <div class="text-gray-600">{{ object.position|default:"-" }}</div>
+
+                    <div class="fw-bold mt-5">{% translate "age" %}</div>
+                    <div class="text-gray-600">{{ object.age|default:"-" }}</div>
+
+					<div class="fw-bold mt-5">{% translate "civility" %}</div>
+					<div class="text-gray-600">{{ object.civility|default:"-" }}</div>
+
+                </div>
+				<div class="separator"></div>
+				 <div class="d-flex flex-stack fs-4 py-3">
+                    <div class="fw-bold rotate collapsible" 
+                        role="button" 
+                        data-bs-toggle="collapse" 
+                        href="#fiscale-data-collapsed" 
+                        aria-expanded="false" 
+                        aria-controls="fiscale-data-collapsed"
+                    >
+                        {% translate "plus de detail" %} 
+                    <span class="ms-2 rotate-180">
+                        <i class="ki-outline ki-up fs-3"></i>
+                    </span></div>
+                </div>
+				<div id="fiscale-data-collapsed" class="collapse">
+					<div class="pb-5 fs-6">
+						<div class="fw-bold mt-5">{% trans "Adresse" %}</div>
+						<div class="text-gray-600">{{ object.address|default:"-" }}</div>
+						{% if object.source.all %}
+							<div class="fw-bold mt-5">{% trans "Source de contact" %}</div>
+							{% for source in object.source.all %}
+						        <div class="text-gray-600">{{ source|default:"-" }}</div>
+						    {% endfor %}
+						{% endif %}
+
+						<div class="fw-bold mt-5">{% trans "notes" %}</div>
+						<div class="text-gray-600">{{ object.notes|default:"-" }}</div>
+					   
+						{% if object.interested.all %}
+						<div class="mb-1">
+							<span class="fs-7 text-gray-500">{% translate "Interesés" %}:</span>
+							{% for group in object.interested.all %}
+								<span class="badge badge-light-primary fs-8 me-1">{{ group.name }}</span>
+							{% empty %}
+								<span class="text-muted fs-8">{% translate "Aucun" %}</span>
+							{% endfor %}
+						</div>
+						{% endif %}
+
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+    <!-- Right Side: Tabs -->
+    <div class="card flex-fill">
+        <div id="kt_app_content" class="card-body">
+            <div id="kt_app_content_container" class="app-container container-fluid">
+                <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-8">
+					{% if  perms.transactions.view_misctransaction %}
+						<li class="nav-item">
+							<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_tab_transactions">
+								{% translate "Transactions" %}
+							</a>
+						</li>
+					{% endif %}
+					{% if perms.leads.view_b2clead %}
+					<li class="nav-item">
+						<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_tab_opportunities">
+							{% translate "Opportunités" %}
+						</a>
+					</li>
+					{% endif %}
+                </ul>
+                <!-- Tab Content Placeholder -->
+                <div class="tab-content">
+					{% if perms.transactions.view_misctransaction %}
+						<div class="tab-pane fade" id="kt_tab_transactions">
+							<div class="table-responsive table-container"
+								hx-get="{% url 'transactions:list_contact_misctransaction' object.pk %}"
+								hx-trigger="refresh_table_transactions_table from:body, load"
+								hx-swap="innerHTML"
+								hx-target="this"
+							>
+							</div>
+						</div>
+					{% endif %}
+					{% if perms.leads.view_b2clead %}
+						<div class="tab-pane fade" id="kt_tab_opportunities">
+							<div class="table-responsive table-container"
+								hx-get="{% url 'leads:contact_leads' object.pk %}"
+								hx-trigger="refresh_table from:body, load"
+								hx-swap="innerHTML"
+								hx-target="this"
+							>
+							</div>
+						</div>
+					{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" name="reload_page" value="true">
+{% endblock content %}

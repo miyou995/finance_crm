@@ -1,0 +1,5 @@
+{% load l10n %}
+{% for commune in communes %}
+    <option value="{{ commune.id|unlocalize }}">{{ commune.name }}</option>
+{% endfor %}
+

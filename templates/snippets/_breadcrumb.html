@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="page-title d-flex flex-column justify-content-center flex-wrap m-3">
+    <h1 class="page-heading text-capitalize d-flex text-gray fw-bold fs-3 flex-column justify-content-center my-0">{{ title }}</h1>
+    <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+        <li class="breadcrumb-item text-muted">
+            <a href="{% url 'core:index' %}" class="text-muted text-hover-primary">{% translate 'Home' %}</a>
+        </li>
+        <li class="breadcrumb-item">
+            <span class="bullet bg-gray-400 w-5px h-2px"></span>
+        </li>
+        {% if parent_page %}
+            <li class="breadcrumb-item text-muted"> <a href="{{ parent_url }}" class="text-muted text-hover-primary">{{ parent_page }}</a></li>
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+        {% endif %}
+        <li class="breadcrumb-item text-muted text-capitalize">{{ page_title }}</li>
+    </ul>
+</div>
+

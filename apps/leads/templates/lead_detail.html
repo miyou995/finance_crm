@@ -1,0 +1,198 @@
+{% extends "layout/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+{% load button_tags %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+
+<div class="d-block d-md-flex justify-content-between align-items-end mb-4">
+    {% include 'snippets/_breadcrumb.html' %}
+    {% block create_appointment_button %}   
+        <div class="d-flex align-items-center gap-2">
+            {% if perms.appointment.add_appointment %}
+                <button 
+                    type="button"
+                    class="btn btn-info btn-sm d-flex align-items-center gap-2"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#kt_modal"
+                    title="{% translate 'Ajouter un rappel' %}"
+                    hx-vals='{"reload_page": "true"}'
+                    hx-target="#kt_modal_content"
+                    hx-get="{% url 'appointment:create_lead_b2b_appointment' lead.pk %}"
+                    hx-swap="innerHTML"
+                >
+                    <i class="fa fa-calendar-plus fs-5"></i>
+                    <span>{% translate "Ajouter un rendez-vous" %}</span>
+                </button>
+            {% endif %}
+            {% if perms.leads.change_b2blead  %}
+                <a  
+                    href="#" 
+                    class="btn btn-primary btn-sm me-3"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#kt_modal"
+                    data-bs-placement="right" 
+                    data-bs-toggle="tooltip" 
+                    hx-target="#kt_modal_content" 
+                    hx-get="{% url 'leads:update_b2blead' object.pk %}"
+                    hx-swap="innerHTML">
+                    <i class="ki-solid ki-notepad-edit fs-2"></i> 
+                    {% translate "modifier" %}
+                </a>
+            {% endif %}
+        </div>
+    {% endblock create_appointment_button %}
+</div>
+<div class="d-flex flex-column flex-lg-row">
+    <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
+        <div class="card mb-5 mb-xl-8">
+            <div class="card-body">
+                <div class="d-flex flex-center flex-column py-5">
+                    {% if company.logo %}
+                        <div class="symbol symbol-75px symbol-circle mb-5">
+                            <img src="{{ company.logo.url }}" alt="{{ company.name }}" />
+                        </div>
+                    {% else %}
+                        <div class="symbol symbol-75px symbol-circle mb-5">
+                            <div class="symbol-label fs-2 fw-semibold text-danger text-uppercase">{{company.name|slice:2 }}</div>
+                        </div>
+                        {% endif %}
+                        <a href="{{ company.get_absolute_url }}" class="fs-3 text-gray-800 text-hover-primary fw-bold mb-3">{{ company.name }}</a>
+                    <div class="mb-9">
+                        <div class="badge badge-lg badge-light-primary d-inline">{{ lead.current_state_user|default:"NON AFFECTE" }}</div>
+                    </div>
+                    <div class="d-flex flex-wrap flex-center">
+                        <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                            <div class="fs-4 fw-bold text-gray-700">
+                                <span class="w-75px">{{ company.projects_count|default:'0' }}</span>
+                            </div>
+                            <div class="fw-semibold text-muted">{% translate "Projets" %}</div>
+                        </div>
+                        <div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
+                            <div class="fs-4 fw-bold text-gray-700">
+                                <span class="w-50px">{{ company.projects_count|default:'0' }}</span>
+                            </div>
+                            <div class="fw-semibold text-muted">{% translate "Gagnés" %}</div>
+                        </div>
+                        <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                            <div class="fs-4 fw-bold text-gray-700">
+                                <span class="w-50px">{{ company.projects_count|default:'0' }}</span>
+                            </div>
+                            <div class="fw-semibold text-muted">{% translate "Pérdus" %}</div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="separator"></div>
+
+                <div class="pb-5 fs-6">
+                    <div class="fw-bold mt-5">{% translate "Téléphone" %}</div>
+
+                    {% for phone in company.phones.all %}
+                        <div class="text-gray-600"><a href="tel:{{ phone }}">{{ phone }}</a></div>
+                    {% endfor %}
+                        
+                     <div class="fw-bold mt-5">{% translate "Email" %}</div>
+
+                    {% for email in company.emails.all %}
+                        <div class="text-gray-600"><a href="mailto:{{ email }}">{{ email }}</a></div>
+                    {% endfor %}
+    
+                {% block related_data %}
+
+                    {% if company.business_owner %}
+                        <div class="fw-bold mt-5">{% translate "Gérant" %}</div>
+                        <div class="text-gray-600">{{ company.business_owner }}</div>
+                    {% endif %}
+
+                    <div class="fw-bold mt-5">{% get_verbose_field_name company "annual_tax" %}</div>
+                    <div class="text-gray-600">
+                        {{ company.annual_tax|default:"N/A" }} <span class="text-muted">{% translate "DA" %}</span>
+                    </div>
+
+                    <div class="fw-bold mt-5">{% get_verbose_field_name company "annual_goal" %}</div>
+                    <div class="text-gray-600">
+                        <a href="#" class="text-gray-600 text-hover-primary">{{ company.annual_goal|default:"N/A" }}  <span class="text-muted">{% translate "DA" %}</span></a>
+                    </div>
+                    
+                    <div class="fw-bold mt-5">{% get_verbose_field_name company "annual_tax" %}</div>
+                    <div class="text-gray-600">
+                        {{ company.annual_tax|default:"N/A" }} <span class="text-muted">{% translate "DA" %}</span>
+                    </div>
+                    <div class="fw-bold mt-5">{% get_verbose_field_name company "address" %}</div>
+                    <div class="text-gray-600">
+                        {{ company.address|default:"N/A" }}
+                    </div>
+
+                    <div class="fw-bold mt-5">{% get_verbose_field_name company "employees_count" %}</div>
+                    <div class="text-gray-600">{{ company.employees_count|default:"0" }}</div>
+                {% endblock related_data %}
+                    
+                    <div class="fw-bold mt-5">{% translate "Wilaya" %}</div>
+                    <div class="text-gray-600">{{ company.wilaya|default:"N/A" }}</div>
+
+                    <div class="fw-bold mt-5">{% translate "Commune" %}</div>
+                    <div class="text-gray-600">{{ company.commune|default:"N/A" }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-lg-row-fluid ms-lg-15">
+        <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-8">
+            <li class="nav-item">
+                <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#kt_user_view_overview_tab">{% translate "Historique" %}</a>
+            </li>
+            <li class="nav-item ms-auto">
+                <div class="badge fs-1 badge-light-{{lead.get_status_color}} ">{{lead.get_current_state|title}}</div> 
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">
+                <div class="card card-flush mb-6 mb-xl-9">
+                    <div class="card-header mt-6">
+                        
+                        <div class="d-flex flex-wrap flex-stack gap-2 ">
+                            {% if user.is_commercial %}   
+                                {% render_buttons lead %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-body p-9 pt-4">
+                        <div class="tab-content">
+                            <div id="leadStates"  class="tab-pane fade show active"
+                                hx-get="{{ request.path }}"  
+                                hx-trigger="refresh_states from:body" 
+                                hx-swap="outerHTML"
+                                hx-target="#leadStates"
+                                hx-select="#leadStates" 
+                            >
+                                {% for state in lead_states %}
+                                    <div class="d-flex flex-stack position-relative mt-6">
+                                        <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
+                                        <div class="fw-semibold ms-5">
+                                            <div class="fs-7 mb-1">{{ state.created_at|date:"d M Y H:i" }}</div>
+                                            <a href="#" class="fs-5 fw-bold text-hover-primary mb-2 text-{{ state.get_state_color }}">{{ state.get_state_display }}</a>
+                                            <div class="fs-7">{{ state.notes|default:"" }}</div>
+                                            <div class="fs-7 text-muted">{% translate "Creer par" %} 
+                                            <a href="#">{{ state.created_by }}</a></div>
+                                             {% comment %} <span>user that change the state{{state.user}}</span>    {% endcomment %}
+                                        </div>
+                                        {% comment %} <a href="#" class="btn btn-light bnt-active-light-primary btn-sm">View</a> {% endcomment %}
+                                    </div>
+                                {% endfor %}
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" name="reload_page" value="true">
+
+{% endblock content %}

@@ -1,0 +1,154 @@
+{% load i18n %} 
+
+{% load custom_filters %}
+{% comment %} <a
+    href="#" 
+    class="btn btn-sm btn-warning text-dark" 
+    data-bs-toggle="modal"
+    data-bs-target="#sg_create_modal" 
+    hx-get="{% url 'leads:manage_recalled_lead' lead.pk %}"
+    hx-target="#sg_create_modal_content" 
+    hx-swap="innerHTML">
+        <i class="ki-solid ki-notification-on fs-3 text-dark"></i>
+    {% translate 'rappeler' %}
+</a> {% endcomment %}
+{% comment %} {% if buttons.edit_button %}
+    <a href="{% url 'leads:lead_update' lead.pk %}" class="btn btn-primary btn-sm">
+        <i class="fas fa-edit fs-3"></i> Modifier
+    </a>
+{% endif %} {% endcomment %}
+
+
+{% for name, btn in action_buttons.items %}
+    <a
+        href="#"
+        class="btn btn-sm {{ btn.class }}"
+        data-bs-toggle="modal"
+        data-bs-target="#kt_modal"
+        hx-get="{% format_change_state_url lead btn.state %}" 
+        hx-target="#kt_modal_content"
+        hx-swap="innerHTML"
+    >
+        <i class="{{ btn.icon }} fs-3"></i> {{ btn.label }}
+    </a>
+{% endfor %}
+
+
+
+{% comment %}
+
+    {% if buttons.non_traite_button %}
+            <a 
+                href="#" 
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="modal" 
+                data-bs-target="#kt_modal" 
+                hx-get="{% format_change_state_url lead 2 %}"   
+                hx-target="#kt_modal_content" 
+                hx-swap="innerHTML">
+                <i class="fas fa-circle-info fs-3"></i> Non Traité
+            </a>
+    {% endif %} 
+
+
+    {% if buttons.non_qualifie_button %}
+    
+        <a 
+            href="#" 
+            class="btn btn-info btn-sm"
+            data-bs-toggle="modal" 
+            data-bs-target="#kt_modal"
+
+            hx-get="{% format_change_state_url lead 3 %}"   
+            hx-target="#kt_modal_content"
+            hx-swap="innerHTML">
+            <i class="fas fa-user-times fs-3"></i> Non Qualifié
+        </a>
+    {% endif %}
+
+    {% if buttons.qualifie_button %}
+        <a 
+            href="#" 
+            class="btn btn-success btn-sm"
+            data-bs-toggle="modal" 
+            data-bs-target="#kt_modal" 
+            hx-get="{% format_change_state_url lead 4 %}"   
+            hx-target="#kt_modal_content" 
+            hx-swap="innerHTML">
+            <i class="fas fa-user-check fs-3"></i> Qualifié
+        </a>
+    {% endif %}
+
+    {% if buttons.injoignable_button %}
+        <a 
+            href="#" 
+            class="btn btn-danger btn-sm"
+            data-bs-toggle="modal" 
+            data-bs-target="#kt_modal" 
+            hx-get="{% format_change_state_url lead 5 %}"   
+            hx-target="#kt_modal_content" 
+            hx-swap="innerHTML">
+            <i class="fas fa-phone-slash fs-3"></i> Injoignable
+        </a>
+    {% endif %}
+
+    {% if buttons.non_interesse_button %}
+
+        <a 
+            href="#" 
+            class="btn btn-dark btn-sm"
+            data-bs-toggle="modal" 
+            data-bs-target="#kt_modal" 
+            hx-get="{% format_change_state_url lead 6 %}"   
+            hx-target="#kt_modal_content" 
+            hx-swap="innerHTML">
+            <i class="fas fa-thumbs-down fs-3"></i> Non Intéressé
+        </a>
+    {% endif %}
+
+    {% if buttons.deja_appele_button %}
+  
+         <a 
+            href="#" 
+            class="btn btn-primary btn-sm"
+            data-bs-toggle="modal" 
+            data-bs-target="#kt_modal" 
+            hx-get="{% format_change_state_url lead 7 %}"   
+            hx-target="#kt_modal_content" 
+            hx-swap="innerHTML">
+            <i class="fa-solid fa-headset fs-3"></i> Déjà Appelé
+        </a>
+    {% endif %}
+    {% if buttons.completed_button %}
+  
+         <a 
+            href="#" 
+            class="btn btn-sm btn-outline btn-outline-dashed btn-outline-success btn-active-light-success"
+            data-bs-toggle="modal" 
+            data-bs-target="#kt_modal" 
+            hx-get="{% format_change_state_url lead 8 %}"   
+            hx-target="#kt_modal_content" 
+            hx-swap="innerHTML">
+              <i class="fa-solid fa-check fs-3"></i> vente complète
+        </a>
+    {% endif %}
+{% endif %} {% endcomment %}
+
+
+{% if buttons.delete_button %} 
+	<div class="menu-item px-3">
+		<button
+			class="btn btn-danger btn-md me-lg-n7"
+			data-bs-toggle="modal"
+			data-bs-target="#delete_modal"
+			hx-get="{{ lead.get_delete_url }}"
+			hx-target="#delete_modal_body"
+			hx-swap="innerHTML"
+		>
+			<i class="fas fa-trash-alt  fs-3"></i>
+			{% translate 'Supprimé' %}
+		</button>
+	</div>
+{% endif %} 
+
+

@@ -1,0 +1,94 @@
+{% load widget_tweaks %}
+{{ form.media }}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+    {% for field in form.visible_fields %}
+        {% if field.name != "query" %}
+            {% if field|widget_type|slugify == "checkboxinput" %}
+                {% include 'forms/fields/switcher_input.html' %}
+            {% elif field|widget_type|slugify == "selectmultiple" %}
+                <div class="row {{margin_class}}">
+                    <label class="col-sm-3 col-form-label d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    <div class="col-sm-9">
+                        {% include 'forms/fields/multi-select.html' %}
+                        <div class="fs-7 fw-semibold text-muted">{{ field.help_text }}</div>
+                    </div>
+                </div>
+            {% elif field|widget_type|slugify == "select" %}
+                <div class="row {{margin_class}} fv-row">
+                    <label class="col-sm-3 col-form-label align-items-center fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    <div class="col-sm-9">
+                        {% include 'forms/fields/select.html' %}
+                    </div>
+                </div>
+            {% elif field|widget_type|slugify == "richselect" %}
+                <div class="row {{margin_class}} fv-row">
+                    <label class="col-sm-3 col-form-label align-items-center fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    <div class="col-sm-9">
+                           {% render_field 
+                                field 
+                                class="form-select form-control form-control-solid" 
+                                data-control="select2" 
+                                data-allow-clear="true" 
+                                data-kt-rich-content="true"
+                            %}
+                        <span class="form-check-label fw-semibold text-gray">{{ field.help_text }}</span>
+                        {% if field.errors %}
+                            <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+                        {% endif %}
+ 
+                    </div>
+                </div>
+            {% elif field|widget_type|slugify == "clearablefileinput" %}
+                <div class="row {{margin_class}} fv-row">
+                    <label class="col-sm-3 col-form-label d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    <div class="col-sm-9">
+                        {% render_field field|add_class:'form-control' %}
+                        {% if field.errors %}
+                            <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+                        {% else %}
+                            <span class=""> {{ field.help_text }} </span>
+                        {% endif %}
+                    </div>
+                </div>
+            {% elif field|widget_type == "rangewidget" %}
+                <div class="row {{margin_class}}">
+                    <label class="col-sm-3 col-form-label d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    <div class="col-sm-9">
+                        {% render_field field class="form-control form-control-solid w-250px ps-14 bg-primary text-white border-secondary"  placeholder="Search Order" %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="row {{margin_class}} fv-row">
+                    <label class="col-sm-3 col-form-label d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span {% if field.field.required %}class="required"{% endif %}>{{ field.label }}</span>
+                    </label>
+                    <div class="col-sm-9">
+                        {% render_field field|add_class:'form-control' %}
+                        {% if field.errors %}
+                            <span class="form-check-label fw-semibold text-danger">{{ field.errors }}</span>
+                        {% else %}
+                            <div class="fs-7 fw-semibold text-muted">{{ field.help_text }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+{% endwith %}
+
+
+
+

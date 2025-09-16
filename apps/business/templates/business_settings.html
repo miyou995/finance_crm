@@ -1,0 +1,86 @@
+{% extends "layout/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    {% include 'snippets/_breadcrumb.html' %}
+    <h2 class="fw-bold mb-0">{% translate "Paramètres de l'entreprise" %}</h2>
+</div>
+
+<ul class="nav nav-tabs nav-line-tabs fs-6 fw-semibold gap-2 mb-3" id="configTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active d-flex align-items-center px-4 py-2"
+            data-bs-toggle="tab"
+            href="#informationTab"
+            hx-target="#informationTab"
+            hx-swap="innerHTML"
+            hx-trigger="load"
+            hx-get="{% url 'business:create_businesssettings' %}"
+            aria-selected="true"
+            role="tab">
+            <i class="ki-outline ki-cloud fs-2x me-2"></i>
+            <span>{% translate "Information" %}</span>
+        </a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link d-flex align-items-center px-4 py-2"
+            data-bs-toggle="tab"
+            href="#socialMediaTab"
+            hx-target="#socialMediaTab"
+            hx-swap="innerHTML"
+            hx-trigger="load"
+            hx-get="{% url 'business:create_social_media' %}"
+            aria-selected="false"
+            role="tab"
+        >
+            <i class="ki-outline ki-instagram fs-2x me-2"></i>
+            <span>{% translate "Réseaux sociaux" %}</span>
+        </a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link d-flex align-items-center px-4 py-2"
+            data-bs-toggle="tab"
+            href="#AbstractLegalTab"
+            hx-target="#AbstractLegalTab"
+            hx-swap="innerHTML"
+            hx-trigger="load"
+            hx-get="{% url 'business:create_abstractlegal' %}"
+            aria-selected="false"
+            role="tab"
+        >
+            <i class="ki-outline ki-briefcase fs-2x me-2"></i>
+            <span>{% translate "Informations juridiques" %}</span>
+        </a>
+    </li>
+</ul>
+
+<div class="card shadow-sm mb-4">
+    {% if perms.business.add_businesssettings  %}
+        <div class="card-body tab-content" id="configTabsContent">
+            <div class="tab-pane fade show active" id="informationTab" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="fw-semibold mb-0">{% translate "Information générale" %}</h3>
+                </div>
+                <!-- Content loaded via HTMX -->
+            </div>
+            <div class="tab-pane fade" id="socialMediaTab" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="fw-semibold mb-0">{% translate "Réseaux sociaux" %}</h3>
+                </div>
+                <!-- Content loaded via HTMX -->
+            </div>
+            <div class="tab-pane fade" id="AbstractLegalTab" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="fw-semibold mb-0">{% translate "Informations juridiques" %}</h3>
+                </div>
+                <!-- Content loaded via HTMX -->
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

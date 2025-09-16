@@ -1,0 +1,32 @@
+{% load widget_tweaks %}
+{{ form.media }}
+<div class="mb-10">
+    <h3 class="text-center">{{formset_title}}</h3>
+    <div class="d-flex flex-column gap-5" data-kt-element="items">
+        {{ formset.management_form }}
+        <div id="{{container_id}}">
+            {% for line in formset %}
+                {% include "forms/line-formset.html" with formset_prefix=formset.prefix %}
+                {% for hidden in line.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        {% if add_button %}
+            <div class="mt-5">
+                <a class="btn btn-light-primary" id="addButton">
+                    <i class="ki-duotone ki-plus fs-3"></i>
+                    {% translate 'Add item' %}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% include 'snippets/formset.html' with 
+    prefix=formset.prefix
+    remove_form="remove-item"
+    form_item_class="item-form"
+
+%}

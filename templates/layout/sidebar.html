@@ -1,0 +1,323 @@
+<div id="kt_app_sidebar" class="app-sidebar flex-column " 
+	data-kt-drawer="true" 
+	data-kt-drawer-name="app-sidebar" 
+	data-kt-drawer-activate="{default: true, lg: false}" 
+	data-kt-drawer-overlay="true" 
+	data-kt-drawer-width="250px" 
+	data-kt-drawer-direction="start" 
+	data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
+	<div class="app-sidebar-wrapper">
+		<div id="kt_app_sidebar_wrapper" class="hover-scroll-y my-5 my-lg-2 mx-4 text-capitalize" 
+			data-kt-scroll="true" 
+			data-kt-scroll-activate="{default: false, lg: true}" 
+			data-kt-scroll-height="auto" 
+			data-kt-scroll-dependencies="#kt_app_header" 
+			data-kt-scroll-wrappers="#kt_app_sidebar_wrapper" 
+			data-kt-scroll-offset="5px"
+		>
+			<div id="#kt_app_sidebar_menu" 
+				data-kt-menu="true" 
+				data-kt-menu-expand="false" class="app-sidebar-menu-primary menu menu-column menu-rounded menu-sub-indention menu-state-bullet-primary px-3 mb-5 "
+			>
+				
+				{% comment %} {% if perms.appointment.view_appointment %} {% endcomment %}
+					<div class="menu-item">
+						<a href="{% url 'core:index' %}" class="menu-link ">
+							<span class="menu-icon">
+								<i class="ki-outline ki-home-2 fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Accueil" %}</span>
+						</a>
+					</div>
+				{% comment %} {% endif %} {% endcomment %}
+				{% if perms.appointment.view_appointment %}
+					<div class="menu-item">
+						<a href="{% url 'appointment:list_appointment' %}" class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-watch fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Rendez-vous" %}</span>
+						</a>
+					</div>
+				{% endif %}
+
+				{% if perms.crm.view_company %}
+					<div class="menu-item">
+						<a href="{% url 'crm:list_company' %}" class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-briefcase fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Sociétés" %}</span>
+						</a>
+					</div>
+				{% endif %}
+
+
+				{% if perms.crm.view_contact %}
+					<div class="menu-item">
+						<a href="{% url 'crm:list_contact' %}" class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-user fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Contacts" %}</span>
+						</a>
+					</div>
+				{% endif %}
+
+				{% if perms.leads.view_b2blead %}
+					<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+					<span class="menu-link">
+						<span class="menu-icon">
+							<i class="ki-outline ki-focus fs-1"></i>
+						</span>
+						<span class="menu-title">{% translate "Opportunités" %}</span>
+						<span class="menu-arrow"></span>
+					</span>
+					<div class="menu-sub menu-sub-accordion">
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:list_lead' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Tous" %}</span>
+							</a>
+						</div>
+						{% comment %} {% if not user.is_commercial %} {% endcomment %}
+							<div class="menu-item">
+								<a class="menu-link" href="{% url 'leads:new_b2b_lead_list' %}">
+									<span class="menu-bullet">
+										<span class="bullet bullet-dot"></span>
+									</span>
+									<span class="menu-title">{% translate "Nouveaux" %}</span>
+								</a>
+							</div>
+						{% comment %} {% endif %} {% endcomment %}
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:untreated_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Non Traité" %}</span>
+							</a>
+						</div>
+
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:non_interesse_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Non Intéressé" %}</span>
+							</a>
+						</div>
+						
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:duplicated_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "déjà appelé" %}</span>
+							</a>
+						</div>
+						
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:qualified_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Qualifié" %}</span>
+							</a>
+						</div>
+
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:injoignable_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Injoignable" %}</span>
+							</a>
+						</div>
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:non_qualified_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Non Qualifié" %}</span>
+							</a>
+						</div>
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:lost_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Perdue" %}</span>
+							</a>
+						</div>
+						<div class="menu-item">
+							<a class="menu-link" href="{% url 'leads:completed_b2b_lead_list' %}">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">{% translate "Gagnée" %}</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% if perms.transactions.view_invoicepayment or perms.transactions.view_staffpayment or perms.transactions.view_misctransaction or perms.transactions.view_ledgerentry %}
+					<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+						<span class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-wallet fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Finance" %}</span>
+							<span class="menu-arrow"></span>
+						</span>
+						<div class="menu-sub menu-sub-accordion">
+							{% if perms.transactions.view_invoicepayment %}
+								<div class="menu-item">
+									<a class="menu-link" href="{% url 'transactions:list_invoicepayment' %}">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "Paiements Factures" %}</span>
+									</a>
+								</div>
+							{% endif %}
+						
+							{% if perms.transactions.view_staffpayment %}
+								<div class="menu-item">
+									<a class="menu-link" href="{% url 'transactions:list_staffpayment' %}">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "Paiements personnel" %}</span>
+									</a>
+								</div>
+							{% endif %}
+							{% if perms.transactions.view_misctransaction %}
+								<div class="menu-item">
+									<a class="menu-link" href="{% url 'transactions:list_misctransaction' %}">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "Autres Transactions" %}</span>
+									</a>
+								</div>
+							{% endif %}
+							{% if perms.transactions.view_ledgerentry %}
+								<div class="menu-item">
+									<a class="menu-link" href="{% url 'transactions:ledger_entry' %}">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "livre des comptes" %}</span>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				{% endif %}
+					
+				{% if perms.billing.view_quote %}
+					<div class="menu-item">
+						<a href="{% url 'billing:list_quote' %}" class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-questionnaire-tablet fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Devis" %}</span>
+						</a>
+					</div>
+				{% endif %}
+
+				{% if perms.billing.view_invoice %}
+					<div class="menu-item">
+						<a href="{% url 'billing:list_invoice' %}" class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-notepad-bookmark fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Factures" %}</span>
+						</a>
+					</div>
+				{% endif %}
+
+
+
+				
+
+				{% if perms.statistics.can_view_statistique %} 
+					<div class="menu-item ">
+						<a href="{% url 'core:statistics' %}" class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-graph-3 fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Statistiques" %}</span>
+						</a>
+					</div>
+				{% endif %}
+
+
+				{% if perms.auth.view_roles or perms.business.can_view_businesssettings or perms.users.view_user or perms.statistics.view_module or perms.rooms.view_salle or perms.core.view_leadsource or perms.core.view_tax or perms.core.view_potential or perms.statistics.view_formation or perms.crm.view_activitysector %} 
+					<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+						<span class="menu-link">
+							<span class="menu-icon">
+								<i class="ki-outline ki-setting-2 fs-1"></i>
+							</span>
+							<span class="menu-title">{% translate "Paramètres" %}</span>
+							<span class="menu-arrow"></span>
+						</span>
+						<div class="menu-sub menu-sub-accordion">
+							{% if perms.users.view_user %} 
+								<div class="menu-item ">
+									<a href="{% url 'users:list_user' %}" class="menu-link">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "Utilisateurs" %}</span>
+										
+									</a>
+								</div>
+							{% endif %}
+
+							{% if perms.auth.view_group %} 
+								<div class="menu-item ">
+									<a href="{% url 'users:grouplist' %}" class="menu-link">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "Roles & Permissions" %}</span>
+										
+									</a>
+								</div>
+							{% endif %}
+
+							{% if perms.statistics.view_module or perms.rooms.view_salle or perms.core.view_leadsource or perms.core.view_tax or perms.core.view_potential or perms.statistics.view_formation or perms.crm.activitysector %}
+								<div class="menu-item">
+									<a class="menu-link" href="{% url 'core:configuration' %}">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "Configuration" %}</span>
+										{% comment %} inclus les modules les salles wilays communes  ...etc {% endcomment %}
+									</a>
+								</div>
+							{% endif %}
+
+							{% if perms.business.view_businesssettings %}
+								<div class="menu-item">
+									<a class="menu-link" href="{% url 'business:business_settings' %}">
+										<span class="menu-bullet">
+											<span class="bullet bullet-dot"></span>
+										</span>
+										<span class="menu-title">{% translate "Paramètres généraux" %}</span>
+										{% comment %} inclus les modules les salles wilays communes  ...etc {% endcomment %}
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>

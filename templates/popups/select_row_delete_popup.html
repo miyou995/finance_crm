@@ -1,0 +1,87 @@
+<div class="modal-header">
+	<h5 class="modal-title text-danger" id="deleteConfirmationLabel">
+		<i class="bi bi-exclamation-triangle"></i>
+		
+		{% if protected %}
+			{% translate "Suppression impossible" %}
+
+		{% else %}
+			{% translate "Confirmation de suppression" %}
+		{% endif %}
+			
+	</h5>
+	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<div class="modal-body">
+	{% if perms_lacking %}
+		<p>
+			{% translate "Vous n’avez pas la permission de supprimer les types d’objets suivants liés aux éléments sélectionnés :" %}
+		</p>
+		<ul class="list-group mb-3">
+			{{ perms_lacking|unordered_list }}
+		</ul>
+
+	{% elif protected %}
+		<h5>
+			{% translate "La suppression des éléments sélectionnés est impossible en raison de la présence des objets protégés suivants :" %}
+		</h5>
+		<ul class="list-group mb-3">
+			{{ protected|unordered_list }}
+		</ul>
+
+	{% else %}
+		<p>
+			{% translate "Êtes-vous sûr de vouloir supprimer les éléments sélectionnés ? Tous les objets suivants et leurs éléments liés seront supprimés :" %}
+		</p>
+
+		<div class="mb-3">
+			<h6>{% translate "Résumé des suppressions" %}</h6>
+			{% include "admin/includes/object_delete_summary.html" %}
+		</div>
+
+		<div class="mb-3">
+			<h6 class="fw-bold mb-3">{% translate "Objets à supprimer" %}</h6>
+			{% for deletable_object in deleted_objects %}
+				<ul>{{ deletable_object|unordered_list }}</ul>
+			{% endfor %}
+		</div>
+	{% endif %}
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+		{% translate "Annuler" %}
+	</button>
+
+	{% if not perms_lacking and not protected %}
+		<form method="post" hx-post="{{ request.path }}" hx-swap="innerHTML" hx-target="{{ target }}" class="d-inline">
+			{% csrf_token %}
+
+			{% for obj in queryset %}
+				<input type="hidden" name="selected_rows" value="{{ obj.pk|unlocalize }}">
+			{% endfor %}
+			<input type="hidden" name="action" value="delete_selected">
+			<input type="hidden" name="post" value="yes">
+
+			<button type="submit" class="btn btn-danger">
+				<i class="bi bi-trash"></i> {% translate "Oui, je confirme" %}
+			</button>
+		</form>
+	{% endif %}
+</div>
+
+
+
+{% comment %} 
+<script>
+	$(document).ready(function() {
+	$('#delete_selected_rows_modal').modal('show');
+	// Add event listener for modal close
+	
+
+	$('#cancelButton').on('click', function() {
+		$('#delete_selected_rows_modal').modal('hide');
+	});
+	});
+</script> {% endcomment %}

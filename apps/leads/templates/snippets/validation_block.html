@@ -1,0 +1,31 @@
+{% load custom_filters %}
+<div class="modal-header border-bottom pb-3">
+    <h3 class="modal-title fw-bold text-dark">{% translate "Nouveau statut pour" %} {{object}}</h3>
+    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+        <i class="ki-outline ki-shield-tick fs-3x text-success"></i>
+    </div>
+</div>
+<div class="modal-body py-4">
+    <form action="{% format_change_state_url object target_state %}" method="post" id="stateForm">
+        {% csrf_token %}
+        <div class="d-flex align-items-center mb-3">
+            <i class="ki-outline ki-information-5 fs-2x text-warning me-3"></i>
+            <p class="fs-6 mb-0">{% translate "Êtes-vous sûr de vouloir changer le statut a" %}  <strong>{{target_state.label}} </strong>?</p>
+        </div>
+        <div class="mb-3">
+            <textarea name="notes" id="" class="form-control  ms-3" placeholder="{% translate 'Notes (facultatif)' %}">{{object.notes|default_if_none:''}}</textarea>
+        </div>
+    </form>
+
+</div>
+<div class="modal-footer border-top pt-3">
+    <button type="button" class="btn btn-sm btn-light-danger" data-bs-dismiss="modal">
+        <i class="ki-outline ki-arrow-left fs-2 "></i>
+        {% translate "Annuler" %}
+    </button>
+    {% csrf_token %}
+    <button type="submit" form="stateForm" class="btn btn-sm btn-light-success">
+        <i class="ki-outline ki-check fs-2 me-2"></i>
+        {% translate "Changer" %}
+    </button>
+</div>

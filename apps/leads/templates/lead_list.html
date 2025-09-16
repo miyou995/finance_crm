@@ -1,0 +1,71 @@
+{% extends "layout/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+    <div class="d-block d-md-flex justify-content-between align-items-end mb-4">
+        {% include 'snippets/_breadcrumb.html' %}
+        {% comment %} <div class="d-flex align-items-end gap-2">
+            {% if perms.leads.add_b2blead %}
+                {% include "snippets/_import_button.html" %}
+            {% endif %}
+            {% if perms.leads.view_b2blead %}
+                {% include "snippets/_export_button.html" with  modal_id="export_id" %}
+            {% endif %}
+        </div> {% endcomment %}
+    </div>
+    <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x text-uppercase border-transparent fs-5 fw-bold">
+        <li class="nav-item mt-2" role="presentation">
+            <a  class="nav-link pb-4 active d-flex align-items-center gap-2"
+                data-bs-toggle="tab"
+                role="tab"
+                href="#kt_tab_container"
+                hx-get= "{{ b2b_lead_url }}"
+                hx-trigger="refresh_b2b_table from:body, click"
+                hx-swap="innerHTML"
+                hx-target="div.table-responsive"
+            >
+                <i class="ki-outline ki-bank fs-2"></i>
+                {% trans 'B2B Leads' %}
+            </a>
+        </li>
+        <li class="nav-item mt-2" role="presentation">
+            <a class="nav-link pb-4 d-flex align-items-center gap-2"
+                data-bs-toggle="tab"
+                role="tab"
+                href="#kt_tab_container"
+                hx-get= "{{ b2c_lead_url }}"
+                hx-swap="innerHTML"
+                hx-trigger="refresh_b2c_table from:body, click"
+                hx-target="div.table-responsive"
+            >
+                <i class="ki-outline ki-profile-user fs-2"></i>
+                {% trans 'B2C Leads' %}
+            </a>
+        </li>
+    </ul>
+
+    {% include "snippets/toolbar.html" %}
+    <div class="d-flex flex-column flex-lg-row">
+        <div class="flex-lg-row-fluid ">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade active show" id="kt_tab_container" role="tabpanel">
+                    <div class="card-body pt-0 table-responsive" id="tableContainer">
+                        {% render_table table %}
+                    </div>
+                </div>							
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+{% comment %} 
+{% block modal %}
+    {% include "popups/export_modal.html" with export_url=export_url modal_id="export_id" %}  
+
+    {% include "popups/import_modal.html" with import_url=import_url  %}
+{% endblock modal %} {% endcomment %}
+
+

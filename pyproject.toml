@@ -1,0 +1,36 @@
+[project]
+name = "octopus-crm"
+version = "0.1.0"
+description = "this project was extracted from the CRM app into a standalone project to be reused where we need a crm and finance app"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "black>=25.1.0",
+    "celery>=5.5.3",
+    "django==5.2.5",
+    "django-celery-beat>=2.8.1",
+    "django-dbbackup>=4.3.0",
+    "django-debug-toolbar>=5.2.0",
+    "django-extensions>=4.1",
+    "django-filter>=25.1",
+    "django-htmx>=1.23.2",
+    "django-import-export>=4.3.8",
+    "django-rosetta>=0.10.2",
+    "django-tables2>=2.7.5",
+    "django-tinymce>=4.1.0",
+    "django-widget-tweaks>=1.5.0",
+    "facebook-business>=23.0.0",
+    "flower>=2.0.1",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.0",
+    "pillow>=11.2.1",
+    "pip>=25.2",
+    "psycopg>=3.2.9",
+    "psycopg-pool>=3.2.6",
+    "pydot>=4.0.1",
+    "pyparsing>=3.2.4",
+    "redis>=6.2.0",
+    "ruff>=0.12.8",
+    "weasyprint==66.*",
+    "whitenoise>=6.9.0",
+]
