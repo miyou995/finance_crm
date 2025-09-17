@@ -106,20 +106,21 @@ class ContactDetailView(BreadcrumbMixin, DetailView):
         return template_name
 
 
+
 class CompanyChartView(ChartMixin):
     model = Company
     # field_to_aggregate = 'payments__b2bleads__'
-    field_to_aggregate = "leads__invoices__payments__amount"
+    field_to_aggregate = "leads__bills__payments__amount"
     aggregate_function = Sum
     chart_id = "revenue"
     chart_title = _("Somme des paiements")
-    date_field = "created_at"
-    group_by_field = "name"
+    date_field = "leads__bills__payments__created_at"
     chart_type = "line"
 
     def get_queryset(self):
         """Optimize with select_related."""
-        return super().get_queryset().select_related("source")
+        return super().get_queryset().filter(id=self.kwargs.get("pk"))
+
 
 
 class ManageContactHTMX(BaseManageHtmxFormView):
@@ -465,7 +466,7 @@ class CompanyDetailView(BreadcrumbMixin, DetailView):
         context["contacts_count"] = self.object.contacts.count()
         context["leads_count"] = self.object.leads.count()
         context["payments_count"] = ClientPayment.objects.filter(
-            invoices__lead__company=self.object
+            bill__lead__company=self.object
         ).count()
         context["invoices_count"] = Invoice.objects.filter(
             lead__company=self.object
@@ -484,21 +485,6 @@ class CompanyDetailView(BreadcrumbMixin, DetailView):
         else:
             template_name = "company/company_detail.html"
         return template_name
-
-
-class CompanyChartView(ChartMixin):
-    model = Company
-    # field_to_aggregate = 'payments__b2bleads__'
-    field_to_aggregate = "leads__invoices__payments__amount"
-    aggregate_function = Sum
-    chart_id = "revenue"
-    chart_title = _("Somme des paiements")
-    date_field = "leads__invoices__payments__created_at"
-    chart_type = "line"
-
-    def get_queryset(self):
-        """Optimize with select_related."""
-        return super().get_queryset().filter(id=self.kwargs.get("pk"))
 
 
 ######################################### secteur d'activité #########################################

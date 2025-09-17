@@ -37,11 +37,12 @@ class StaffPaymentAdmin(admin.ModelAdmin):
 @admin.register(ClientPayment)
 class ClientPaymentAdmin(admin.ModelAdmin):
     list_display = (
-        "invoice",
+        "bill",
+        "bill__bill_number",
         "amount",
         "date",
     )
-    search_fields = ("invoice__number",)
+    search_fields = ("bill__bill_number",)
     list_filter = ("date",)
     ordering = ("-date",)
     list_per_page = 20

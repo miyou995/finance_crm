@@ -179,7 +179,7 @@ class UserQueryset(models.QuerySet):
             annotations["annual_realisation"] = Subquery(
                 apps.get_model("transactions", "ClientPayment")
                 .objects.filter(
-                    invoice__lead__current_state_user=OuterRef("pk"),
+                    bill__lead__current_state_user=OuterRef("pk"),
                     updated_at__year=now.year,
                 )
                 .values("id")
@@ -193,7 +193,7 @@ class UserQueryset(models.QuerySet):
             annotations["monthly_realisation"] = Subquery(
                 apps.get_model("transactions", "ClientPayment")
                 .objects.filter(
-                    invoice__lead__current_state_user=OuterRef("pk"),
+                    bill__lead__current_state_user=OuterRef("pk"),
                     updated_at__month=now.month,
                 )
                 .values("id")

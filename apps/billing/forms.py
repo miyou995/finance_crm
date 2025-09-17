@@ -1,4 +1,4 @@
-from apps.billing.models import Invoice, InvoiceItem, Quote, QuoteItem
+from apps.billing.models import Bill, Invoice, Quote, BillLine
 from django import forms
 from django.forms.models import inlineformset_factory
 from apps.core.widgets import RichSelect
@@ -31,6 +31,7 @@ class InvoiceModelForm(forms.ModelForm):
 
         widgets = {
             "due_date": forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
+            "creation_date": forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
         }
 
     def __init__(self, *args, company_pk=None, **kwargs):
@@ -46,7 +47,7 @@ class InvoiceModelForm(forms.ModelForm):
 
 class InvoiceItemForm(forms.ModelForm):
     class Meta:
-        model = InvoiceItem
+        model = BillLine
         fields = (
             "title",
             "quantity",
@@ -74,8 +75,9 @@ class InvoiceItemForm(forms.ModelForm):
 
 InvoiceItemModelFormSet = inlineformset_factory(
     Invoice,
-    InvoiceItem,
+    BillLine,
     form=InvoiceItemForm,
+    
     extra=0,
     min_num=1,
     can_delete=True,
@@ -83,13 +85,14 @@ InvoiceItemModelFormSet = inlineformset_factory(
 )
 
 
+
 ############################# Quote Forms #############################
 
 
-class QuoteModelForm(forms.ModelForm):
 
+class QuoteModelForm(forms.ModelForm):
     state = forms.ChoiceField(
-        choices=Quote.States.choices,
+        choices=Bill.BillStates.choices,  # noqa: F821
         widget=forms.Select(attrs={"class": "form-select"}),
     )
 
@@ -136,7 +139,7 @@ class QuoteModelForm(forms.ModelForm):
 
 class QuoteItemForm(forms.ModelForm):
     class Meta:
-        model = QuoteItem
+        model = BillLine
         fields = (
             "title",
             "description",
@@ -173,7 +176,7 @@ class QuoteItemForm(forms.ModelForm):
 
 QuoteItemModelFormSet = inlineformset_factory(
     Quote,
-    QuoteItem,
+    BillLine,
     form=QuoteItemForm,
     extra=0,
     min_num=1,

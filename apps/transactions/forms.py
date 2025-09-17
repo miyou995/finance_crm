@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from apps.billing.models import Invoice
 from apps.core.widgets import RichSelect
-from apps.crm.models.contact import Contact
+from apps.crm.models import Contact, Company
 from .models import (
     ClientPayment,
     StaffPayment,
@@ -17,9 +17,9 @@ User = get_user_model()
 
 
 
-class InvoicePaiementModelForm(forms.ModelForm):
+class BillPaiementModelForm(forms.ModelForm):
     amount = forms.IntegerField(required=False, label="Montant")
-    invoice = forms.ModelChoiceField(
+    bill = forms.ModelChoiceField(
         queryset=Invoice.objects.all(),
         widget=RichSelect(
             attrs={
@@ -29,57 +29,65 @@ class InvoicePaiementModelForm(forms.ModelForm):
             data_subcontent_field="rest_amount",
         ),
         label=_("Facture"),
+        required=False,
     )
 
     class Meta:
         model = ClientPayment
-        fields = ("invoice", "amount", "notes")
+        fields = ("bill", "amount", "notes")
         widgets = {
             "notes": forms.Textarea(
                 attrs={"rows": 2, "placeholder": "Notes supplémentaires..."}
             ),
         }
 
-    def __init__(self, *args, company_pk=None, invoice_pk=None, **kwargs):
+    def __init__(self, *args, company_pk=None, bill_pk=None, **kwargs):
         super().__init__(*args, **kwargs)
-
+        self.company_pk = company_pk
+        
         if company_pk:
-            self.fields["invoice"].queryset = Invoice.objects.filter(
+            self.fields["bill"].queryset = Invoice.objects.filter(
                 lead__company__pk=company_pk
             )
 
-        self._invoice_pk = invoice_pk
-        if invoice_pk is not None:
-            self.fields.pop("invoice")
+        self._bill_pk = bill_pk
+        if bill_pk is not None:
+            self.fields.pop("bill")
 
     def clean_amount(self):
         amount = self.cleaned_data.get("amount")
-        invoice = self.cleaned_data.get("invoice")
-        invoice_pk = getattr(self, "_invoice_pk", None)
-        if invoice_pk:
-            invoice = get_object_or_404(Invoice, pk=invoice_pk)
-        if not amount or amount < 0:
-            raise forms.ValidationError(
-                _("Montant est requis et doit être supérieur à zéro")
-            )
-        if amount > invoice.rest_amount:
-            raise forms.ValidationError(
-                _(
-                    "Montant ne peut pas être supérieur au montant restant de la facture."
+        bill = self.cleaned_data.get("bill")
+        bill_pk = getattr(self, "_bill_pk", None)
+        print('YA BABAOOR LARGEEEE \n \n ', bill_pk)
+        if bill_pk:
+            bill = get_object_or_404(Invoice, pk=bill_pk)
+            if not amount or amount < 0:
+                raise forms.ValidationError(
+                    _("Montant est requis et doit être supérieur à zéro")
                 )
-            )
+            if amount > bill.rest_amount:
+                raise forms.ValidationError(
+                    _(
+                        "Montant ne peut pas être supérieur au montant restant de la facture."
+                    )
+                )
+            
+        print('YA BABAOOR LARGEEEE \n \n ', Invoice.objects.filter(pk=bill_pk).first().rest_amount if bill_pk else 'no bill pk')
         return amount
 
     def save(self, commit=True):
         # 3) Bind the FK on the instance if it was “hidden”
         obj = super().save(commit=False)
-        if getattr(self, "_invoice_pk", None):
-            obj.invoice_id = self._invoice_pk
-            obj.client = obj.invoice.lead.company
+        
+        print('self._bill_pk>>>', self._bill_pk)
+        if getattr(self, "_bill_pk", None):
+            obj.bill_id = self._bill_pk
+            obj.client = Invoice.objects.filter(pk=self._bill_pk).first().lead.company
+        elif self.company_pk:
+            obj.client = get_object_or_404(Company, pk=self.company_pk)
         if commit:
             obj.save()
         return obj
-
 
 
 

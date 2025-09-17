@@ -1,5 +1,5 @@
 import django_filters
-from apps.billing.models import Invoice, Quote
+from apps.billing.models import Bill, Invoice, Quote
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 from apps.crm.models.company import Company
@@ -18,8 +18,8 @@ class InvoiceFilterSet(django_filters.FilterSet):
     )
     state = django_filters.ChoiceFilter(
         choices=[
-            (Invoice.States.PENDING, _("En attente")),
-            (Invoice.States.PAID, _("Payé")),
+            (Bill.BillStates.PENDING, _("En attente")),
+            (Bill.BillStates.PAID, _("Payé")),
         ],
         label="State",
         field_name="state",
@@ -56,9 +56,9 @@ class QuoteFilterSet(django_filters.FilterSet):
     )
     state = django_filters.ChoiceFilter(
         choices=[
-            (Quote.States.PENDING, _("En attente")),
-            (Quote.States.ACCEPTED, _("Accepté")),
-            (Quote.States.SENT, _("Envoyé")),
+            (Bill.BillStates.PENDING, _("En attente")),
+            (Bill.BillStates.ACCEPTED, _("Accepté")),
+            (Bill.BillStates.SENT, _("Envoyé")),
         ],
         label="State",
         field_name="state",

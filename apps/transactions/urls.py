@@ -48,44 +48,45 @@ urlpatterns = [
 
     # 	ClientPayment
     path(
-        "paiements/invoices/", InvoicesPaymentView.as_view(), name="list_invoicepayment"
+        "paiements/invoices/", InvoicesPaymentView.as_view(), name="list_clientpayment"
     ),
     # ClientPayment for company
     path(
         "paiements/invoices/create",
         ManageInvoicePaiementHtmx.as_view(),
-        name="create_invoicepayment",
+        name="create_clientpayment",
     ),
     path(
         "paiements/invoices/company/create/<int:company_pk>/",
         CreateCompanyInvoicePaiment.as_view(),
-        name="create_company_invoicepayment",
+        name="create_company_clientpayment",
     ),
+    
     path(
-        "paiements/invoices/invoice/create/<int:invoice_pk>/",
+        "paiements/invoices/invoice/create/<int:bill_pk>/",
         CreateInvoiceClientPayment.as_view(),
-        name="create_invoice_invoicepayment",
+        name="create_bill_clientpayment",
     ),
     # ClientPayment for invoice
     path(
-        "paiements/invoice/invoicepayment/<int:invoice_pk>/",
+        "paiements/invoice/invoicepayment/<int:bill_pk>/",
         CreateInvoiceClientPayment.as_view(),
-        name="create_invoice_invoicepayment",
+        name="create_invoice_clientpayment",
     ),
     path(
         "invoices-paiements/<int:pk>/update",
         ManageInvoicePaiementHtmx.as_view(),
-        name="update_invoicepayment",
+        name="update_clientpayment",
     ),
     path(
         "invoices-paiements/<int:pk>/delete",
         DeleteInvoicePaiement.as_view(),
-        name="delete_invoicepayment",
+        name="delete_clientpayment",
     ),
     path(
         "invoices-paiements/bulk-delete",
         DeleteBulkClientPayments.as_view(),
-        name="bulk_delete_invoicepayment",
+        name="bulk_delete_clientpayment",
     ),
     path(
         "invoices-paiements/company_invoices_payment/<int:pk>/",
@@ -95,7 +96,7 @@ urlpatterns = [
     path(
         "export/invoicepayment/",
         ExportClientPayment.as_view(),
-        name="export_invoicepayment",
+        name="export_clientpayment",
     ),
     # 	Paiement
     

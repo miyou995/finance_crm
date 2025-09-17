@@ -83,8 +83,8 @@ class FilterTransactionMixin(django_filters.FilterSet):
 
 class ClientPaymentFilter(FilterTransactionMixin):
     search_lookups = [
-        "invoice__bill_number__icontains",
-        "invoice__lead__company__name__icontains",
+        "bill__bill_number__icontains",
+        "bill__lead__company__name__icontains",
     ]
 
     class Meta:
@@ -125,7 +125,7 @@ class LedgerEntryFilter(FilterTransactionMixin):
         "entry_type__icontains",
         "account__icontains",
         "created_by__icontains",
-        "client_payment__invoice__bill_number__icontains",
+        "client_payment__bill__bill_number__icontains",
         "staff_payment__staff_member__full_name__icontains",
         "misc_transaction__description__icontains",
     ]

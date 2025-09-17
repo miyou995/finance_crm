@@ -17,24 +17,24 @@ class ClientPaymentQuerySet(models.QuerySet):
         if query:
             return self.filter(
                 Q(amount__icontains=query)
-                | Q(invoice__bill_number__icontains=query)
-                | Q(invoice__lead__company__name__icontains=query)
+                | Q(bill__bill_number__icontains=query)
+                | Q(bill__lead__company__name__icontains=query)
             ).distinct()
         return self
 
     def limit_user(self, user):
         if user.is_superuser:
             return self.all()
-        elif user.is_staff and user.has_perm("billing.view_invoicepayment"):
+        elif user.is_staff and user.has_perm("billing.view_clientpayment"):
             return self.all()
         elif User.objects.filter(supervisor=user).exists():
             user_team_ids = user.team_members.values_list("id", flat=True)
             return self.filter(
-                Q(invoice__lead__users__in=[user.id])
-                | Q(invoice__lead__users__in=user_team_ids)
+                Q(bill__lead__users__in=[user.id])
+                | Q(bill__lead__users__in=user_team_ids)
             ).distinct()
         elif user.is_commercial:
-            return self.filter(Q(invoice__lead__users__in=[user.id])).distinct()
+            return self.filter(Q(bill__lead__users__in=[user.id])).distinct()
         else:
             return self.none()
 
@@ -145,8 +145,11 @@ class ClientPayment(Transaction):
     client = models.ForeignKey(
         "crm.Company", on_delete=models.PROTECT, related_name="payments"
     )
-    invoice = models.ForeignKey(
-        "billing.Invoice", on_delete=models.PROTECT, related_name="payments", null=True, blank=True
+    
+    bill = models.ForeignKey(
+        "billing.Bill",
+        on_delete=models.CASCADE,
+        related_name="payments",
     )
 
     
@@ -157,42 +160,31 @@ class ClientPayment(Transaction):
         verbose_name_plural = _("Paiements Facture")
 
     @property
-    def invoice_remaining_amount(self):
-        return self.invoice.get_total_ttc - self.invoice.paid_amount
-
-    # @classmethod
-    # def get_create_url(cls):
-    #     return reverse(f"{cls._meta.app_label}:create_{cls._meta.model_name}")
+    def bill_remaining_amount(self):
+        return self.bill.get_total_ttc - self.bill.paid_amount
 
     @classmethod
-    def get_create_url(cls, company_pk=None, invoice_pk=None):
+    def get_create_url(cls, company_pk=None, bill_pk=None):
         if company_pk:
             return reverse(
-                f"{cls._meta.app_label}:create_company_invoicepayment",
+                f"{cls._meta.app_label}:create_company_clientpayment",
                 kwargs={"company_pk": company_pk},
             )
-        elif invoice_pk:
+        elif bill_pk:
             return reverse(
-                f"{cls._meta.app_label}:create_invoice_invoicepayment",
-                kwargs={"invoice_pk": invoice_pk},
+                f"{cls._meta.app_label}:create_bill_clientpayment",
+                kwargs={"bill_pk": bill_pk},
             )
         else:
             return reverse(f"{cls._meta.app_label}:create_{cls._meta.model_name}")
 
     @classmethod
     def get_bulk_delete_url(cls):
-        return reverse("transactions:bulk_delete_invoicepayment")
+        return reverse("transactions:bulk_delete_clientpayment")
 
     @classmethod
     def get_export_url(cls):
-        return reverse("transactions:export_invoicepayment")
-
-
-class PaymentInvoice(models.Model):
-    payment = models.ForeignKey(ClientPayment, on_delete=models.CASCADE)
-    invoice = models.ForeignKey("billing.Invoice", on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=12, decimal_places=2)
-
+        return reverse("transactions:export_clientpayment")
 
 class MiscTransaction(Transaction):
     """

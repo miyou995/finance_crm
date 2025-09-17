@@ -164,7 +164,7 @@
 				</div>
 				{% endif %}
 
-				{% if perms.transactions.view_invoicepayment or perms.transactions.view_staffpayment or perms.transactions.view_misctransaction or perms.transactions.view_ledgerentry %}
+				{% if perms.transactions.view_clientpayment or perms.transactions.view_staffpayment or perms.transactions.view_misctransaction or perms.transactions.view_ledgerentry %}
 					<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
 						<span class="menu-link">
 							<span class="menu-icon">
@@ -174,9 +174,9 @@
 							<span class="menu-arrow"></span>
 						</span>
 						<div class="menu-sub menu-sub-accordion">
-							{% if perms.transactions.view_invoicepayment %}
+							{% if perms.transactions.view_clientpayment %}
 								<div class="menu-item">
-									<a class="menu-link" href="{% url 'transactions:list_invoicepayment' %}">
+									<a class="menu-link" href="{% url 'transactions:list_clientpayment' %}">
 										<span class="menu-bullet">
 											<span class="bullet bullet-dot"></span>
 										</span>

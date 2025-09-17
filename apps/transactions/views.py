@@ -12,7 +12,7 @@ from apps.crm.models.contact import Contact
 from .forms import (
     ExpenseModelForm,
     IncomeModelForm,
-    InvoicePaiementModelForm,
+    BillPaiementModelForm,
     StaffPaymentModelForm,
 )
 import weasyprint
@@ -40,7 +40,7 @@ from .filters import (
     StaffPaymentsFilter,
     AutreTransactionFilter,
 )
-from django.db.models import Sum, F, DecimalField
+from django.db.models import Sum, F, DecimalField, Q
 
 from django.template.loader import render_to_string
 from django.contrib.auth import get_user_model
@@ -59,7 +59,7 @@ User = get_user_model()
 class InvoicesPaymentView(
     BreadcrumbMixin, PermissionRequiredMixin, SingleTableMixin, FilterView
 ):
-    permission_required = "transactions.view_invoicepayment"
+    permission_required = "transactions.view_clientpayment"
     table_class = ClientPaymentHTMxTable
     filterset_class = ClientPaymentFilter
     paginate_by = 15
@@ -67,10 +67,9 @@ class InvoicesPaymentView(
 
     def get_queryset(self):
         queryset = ClientPayment.objects.select_related(
-            "invoice", "created_by", "updated_by"
+            "bill", "created_by", "updated_by"
         ).order_by("-created_at")
         filters = self.filterset_class(self.request.GET, queryset=queryset)
-        print('filters.qs.count()<>>>', filters.qs.count())
         return filters.qs
 
     def get_context_data(self, **kwargs):
@@ -86,7 +85,7 @@ class InvoicesPaymentView(
         context["create_url"] = self.get_queryset().model.get_create_url()
         context["export_url"] = self.model.get_export_url()
         context["has_perms"] = self.request.user.has_perm(
-            "transactions.add_invoicepayment"
+            "transactions.add_clientpayment"
         )
         return context
 
@@ -103,7 +102,7 @@ class CompanyInvoicesPaymentTable(InvoicesPaymentView):
         queryset = super().get_queryset()
         pk = self.kwargs.get("pk")
         queryset = ClientPayment.objects.filter(
-            invoice__lead__company__pk=pk
+            Q(bill__lead__company__pk=pk ) | Q(client__pk=pk)
         ).order_by("-created_at")
         return queryset
 
@@ -112,10 +111,9 @@ class CompanyInvoicesPaymentTable(InvoicesPaymentView):
 
 
 class ManageInvoicePaiementHtmx(BaseManageHtmxFormView):
-    permission_required = "transactions.add_invoicepayment"
-    form_class = InvoicePaiementModelForm
+    permission_required = "transactions.add_clientpayment"
+    form_class = BillPaiementModelForm
     model = ClientPayment
-
     hx_triggers = {
         "closeModal": "kt_modal",
         "refresh_table": None,
@@ -133,7 +131,7 @@ class CreateCompanyInvoicePaiment(ManageInvoicePaiementHtmx):
 
 
 class CreateInvoiceClientPayment(ManageInvoicePaiementHtmx):
-    parent_url_kwarg = "invoice_pk"
+    parent_url_kwarg = "bill_pk"
 
 
 class DeleteInvoicePaiement(DeleteMixinHTMX):
@@ -145,10 +143,10 @@ class DeleteBulkClientPayments(BulkDeleteMixinHTMX):
 
 
 class ExportClientPayment(PermissionRequiredMixin, ExportDataMixin, View):
-    permission_required = "transactions.view_invoicepayment"
+    permission_required = "transactions.view_clientpayment"
     model = ClientPayment
     fields = [
-        "invoice",
+        "bill",
         "amount",
         "rest_amount",
         "notes",
@@ -336,7 +334,7 @@ class StatisticClientPaymentPerMonth(ChartMixin):
     aggregate_function = Sum  # ensure Sum is used
 
     def get_queryset(self):
-        qs = super().get_queryset().select_related('invoice')
+        qs = super().get_queryset().select_related('bill')
         # annotate a DB expression for remaining amount per payment (works for aggregation)
         qs = qs.annotate(
             invoice_remaining_amount=ExpressionWrapper(

@@ -1,6 +1,6 @@
 import logging
 from django.dispatch import receiver
-from apps.billing.models import Invoice
+from apps.billing.models import Bill, Invoice
 from django.db.models.signals import post_save, post_delete
 from apps.transactions.models import (
     ClientPayment,
@@ -27,7 +27,7 @@ def create_ledger_entry_signal(sender, instance, created, **kwargs):
                 new_entry.client_payment = instance
                 new_entry.entry_type = "income"
                 new_entry.description = (
-                    f"{instance.invoice.lead.company} {instance.invoice.bill_number}"
+                    f"{instance.bill.lead.company} {instance.bill.bill_number}"
                 )
 
             elif isinstance(instance, StaffPayment):
@@ -58,16 +58,16 @@ post_save.connect(create_ledger_entry_signal, sender=MiscTransaction)
 
 @receiver(post_save, sender=ClientPayment)
 def change_invoice_state_paid(sender, instance, **kwargs):
-    if instance.invoice.rest_amount == 0:
-        instance.invoice.state = Invoice.States.PAID
+    if instance.bill and instance.bill.rest_amount == 0:
+        instance.bill.state = Bill.BillStates.PAID
         print("------------------>>>>>>>>Invoice is fully paid, changing state to PAID")
-    instance.invoice.save()
+        instance.bill.save()
 
 
 @receiver(post_delete, sender=ClientPayment)
 def change_invoice_state_unpaid(sender, instance, **kwargs):
     print("pre_delete signal triggered for ClientPayment")
-    if instance.invoice.rest_amount > 0:
-        print("Invoice is not fully paid, changing state to PENDING")
-        instance.invoice.state = Invoice.States.PENDING
-    instance.invoice.save()
+    # if instance.bill and instance.bill.rest_amount > 0:
+    #     print("Invoice is not fully paid, changing state to PENDING")
+    #     instance.bill.state = Bill.BillStates.PENDING
+    #     instance.bill.save()

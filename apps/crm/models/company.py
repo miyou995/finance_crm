@@ -40,21 +40,21 @@ class CompanyQuerySet(models.QuerySet):
     def include_revenue(self):
         return self.annotate(
             current_year_revenue=models.Sum(
-                "leads__invoices__payments__amount",
+                "leads__bills__payments__amount",
                 filter=models.Q(
-                    leads__invoices__payments__created_at__year=timezone.now().year
+                    leads__bills__payments__created_at__year=timezone.now().year
                 ),
             ),
             current_month_revenue=models.Sum(
-                "leads__invoices__payments__amount",
+                "leads__bills__payments__amount",
                 filter=models.Q(
-                    leads__invoices__payments__created_at__month=timezone.now().month
+                    leads__bills__payments__created_at__month=timezone.now().month
                 ),
             ),
             last_month_revenue=models.Sum(
-                "leads__invoices__payments__amount",
+                "leads__bills__payments__amount",
                 filter=models.Q(
-                    leads__invoices__payments__created_at__month=timezone.now().month
+                    leads__bills__payments__created_at__month=timezone.now().month
                     - 1
                 ),
             ),

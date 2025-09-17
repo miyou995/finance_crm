@@ -631,12 +631,12 @@ class TransactionsInvoicepayment(models.Model):
     date = models.DateField()
     notes = models.TextField(blank=True, null=True)
     created_by = models.ForeignKey('UsersUser', models.DO_NOTHING, blank=True, null=True)
-    invoice = models.ForeignKey(BillingInvoice, models.DO_NOTHING)
+    bill = models.ForeignKey(BillingInvoice, models.DO_NOTHING)
     updated_by = models.ForeignKey('UsersUser', models.DO_NOTHING, related_name='transactionsinvoicepayment_updated_by_set', blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'transactions_invoicepayment'
+        db_table = 'transactions_clientpayment'
 
 
 class TransactionsLedgerentry(models.Model):

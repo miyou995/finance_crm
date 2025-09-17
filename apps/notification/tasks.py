@@ -12,7 +12,7 @@ def payment_mixin(num_days):
     invoice = Invoice.objects.filter(
         due_date__gte=today,
         due_date__lte=today + timezone.timedelta(days=num_days),
-        state=Invoice.States.PENDING,
+        state=Bill.BillStates.PENDING,
     ).select_related("lead")
     for inv in invoice:
         Notification.objects.create(

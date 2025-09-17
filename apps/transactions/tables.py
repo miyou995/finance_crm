@@ -42,7 +42,7 @@ class ClientPaymentHTMxTable(TransactionBaseTable):
         accessor="invoice", verbose_name=_("Facture"), orderable=True, linkify=True
     )
     company = tables.Column(
-        accessor="invoice__lead__company",
+        accessor="bill__lead__company",
         verbose_name=_("Société"),
         orderable=True,
         linkify=True,
@@ -54,10 +54,10 @@ class ClientPaymentHTMxTable(TransactionBaseTable):
     rest_amount = tables.TemplateColumn(
         verbose_name=_("Montant restant"),
         template_code="""
- 				{% if record.invoice.rest_amount == 0 %}
+ 				{% if record.bill.rest_amount == 0 %}
                 	<span style="color: green;">payé</span>
                 {% else %}
-                	<span style="color: red;">{{ record.invoice.rest_amount }}</span>
+                	<span style="color: red;">{{ record.bill.rest_amount }}</span>
                 {% endif %}""",
     )
 
@@ -91,7 +91,7 @@ class ClientPaymentHTMxTable(TransactionBaseTable):
             return reverse(
                 "transactions:company_invoices_payment", kwargs={"pk": self.company_pk}
             )
-        return reverse("transactions:list_invoicepayment")
+        return reverse("transactions:list_clientpayment")
 
 
 class AutreTransactionTableHTMxTable(TransactionBaseTable):

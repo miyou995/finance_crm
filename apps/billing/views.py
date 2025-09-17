@@ -104,6 +104,7 @@ class ManageInvoiceHTMX(BaseManageHtmxFormView):
 
     def get_formsets(self):
         instance = self.get_object()
+        print('instance:', instance)
         return {
             "invoice_items": InvoiceItemModelFormSet(
                 self.request.POST or None, instance=instance, prefix="invoice_items"
@@ -329,8 +330,7 @@ class ExportQuotes(PermissionRequiredMixin, ExportDataMixin, View):
 def convert_quote_to_invoice(request, quote_id):
     quote = get_object_or_404(Quote, id=quote_id)
     invoice = quote.convert_to_invoice()
-    items = quote.lines.all()
-    items = [item.convert_to_invoice_item(invoice) for item in items]
+
     message = "Devis converti en facture avec succès."
     messages.success(request, str(message))
     return HttpResponseRedirect(
