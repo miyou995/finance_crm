@@ -61,7 +61,7 @@ class RichSelect(forms.Select):
 
             if instance:
                 if self.data_subcontent_field:
-                    sub = getattr(instance, self.data_subcontent_field, "MIYOU")
+                    sub = getattr(instance, self.data_subcontent_field, "")
                     option_dict["attrs"]["data-kt-rich-content-subcontent"] = sub
                 if self.data_icon_field:
                     icon = getattr(instance, self.data_icon_field, "")

@@ -131,7 +131,7 @@ class ManageContactHTMX(BaseManageHtmxFormView):
         "closeModal": "kt_modal",
         "refresh_table": None,
     }
-    parent_url_kwarg = "company_pk"
+    parent_url_kwarg = ("company_pk",)
 
     def get_formsets(self):
         instance = self.get_object()
@@ -352,7 +352,7 @@ class ManageCompanyDocumentHTMX(BaseManageHtmxFormView):
     permission_required = "crm.add_company"
     form_class = CompanyDocumentModelForm
     model = CompanyDocument
-    parent_url_kwarg = "company_pk"
+    parent_url_kwarg = ("company_pk",)
     hx_triggers = {
         "closeModal": "kt_modal",
         "refresh_table": None,

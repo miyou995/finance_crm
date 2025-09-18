@@ -148,14 +148,14 @@
 						<div class="text-gray-600">{{ object.notes|default:"-" }}</div>
 					   
 						{% if object.interested.all %}
-						<div class="mb-1">
-							<span class="fs-7 text-gray-500">{% translate "Interesés" %}:</span>
-							{% for group in object.interested.all %}
-								<span class="badge badge-light-primary fs-8 me-1">{{ group.name }}</span>
-							{% empty %}
-								<span class="text-muted fs-8">{% translate "Aucun" %}</span>
-							{% endfor %}
-						</div>
+							<div class="mb-1">
+								<span class="fs-7 text-gray-500">{% translate "Interesés" %}:</span>
+								{% for group in object.interested.all %}
+									<span class="badge badge-light-primary fs-8 me-1">{{ group.name }}</span>
+								{% empty %}
+									<span class="text-muted fs-8">{% translate "Aucun" %}</span>
+								{% endfor %}
+							</div>
 						{% endif %}
 
 					</div>
@@ -170,7 +170,7 @@
                 <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-8">
 					{% if  perms.transactions.view_misctransaction %}
 						<li class="nav-item">
-							<a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_tab_transactions">
+							<a class="nav-link active text-active-primary pb-4 " data-bs-toggle="tab" href="#kt_tab_transactions">
 								{% translate "Transactions" %}
 							</a>
 						</li>
@@ -186,7 +186,7 @@
                 <!-- Tab Content Placeholder -->
                 <div class="tab-content">
 					{% if perms.transactions.view_misctransaction %}
-						<div class="tab-pane fade" id="kt_tab_transactions">
+						<div class="tab-pane fade active show" id="kt_tab_transactions">
 							<div class="table-responsive table-container"
 								hx-get="{% url 'transactions:list_contact_misctransaction' object.pk %}"
 								hx-trigger="refresh_table_transactions_table from:body, load"
@@ -200,7 +200,7 @@
 						<div class="tab-pane fade" id="kt_tab_opportunities">
 							<div class="table-responsive table-container"
 								hx-get="{% url 'leads:contact_leads' object.pk %}"
-								hx-trigger="refresh_table from:body, load"
+								hx-trigger="refresh_table from:body, revealed"
 								hx-swap="innerHTML"
 								hx-target="this"
 							>

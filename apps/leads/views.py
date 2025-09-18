@@ -167,7 +167,8 @@ class ManageB2bLeadHTMX(BaseManageHtmxFormView):
     permission_required = "leads.add_b2blead"
     form_class = B2bLeadModelForm
     model = B2BLead
-    parent_url_kwarg = "company_pk"
+    parent_url_kwarg = ("company_pk",)
+    
 
     hx_triggers = {
         "closeModal": "kt_modal",
@@ -238,7 +239,7 @@ class ManageB2cLeadHTMX(BaseManageHtmxFormView):
     permission_required = "leads.add_b2clead"
     form_class = B2cLeadModelForm
     model = B2CLead
-    parent_url_kwarg = "contact_pk"
+    parent_url_kwarg = ("contact_pk",)
     hx_triggers = {
         "closeModal": "kt_modal",
         "refresh_table": None,

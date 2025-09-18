@@ -2,7 +2,6 @@ import re
 from datetime import date
 
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 from django.urls import reverse
@@ -15,6 +14,7 @@ User = get_user_model()
 
 
 class BillQuerySet(models.QuerySet):
+        
     def invoices(self):
         return self.filter(bill_type="invoice")
 
@@ -41,11 +41,18 @@ class BillQuerySet(models.QuerySet):
             return self.none()
 
 
-class BillType(models.TextChoices):
-    QUOTE = "quote", _("Devis")
-    INVOICE = "invoice", _("Facture")
-    CREDIT_NOTE = "credit_note", _("Avoir")
-    OTHER = "other", _("Autre")
+class BillManager(models.Manager):
+    def __init__(self, bill_type, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.bill_type = bill_type
+
+    def get_queryset(self):
+        return BillQuerySet(self.model, using=self._db).filter(bill_type=self.bill_type)
+
+    def limit_user(self, user):
+        return self.get_queryset().limit_user(user)
+
+
 
 
 
@@ -53,6 +60,12 @@ class BillType(models.TextChoices):
     
     
 class Bill(CRUDUrlMixin, TimestampedModel):
+    
+    class BillTypes(models.TextChoices):
+        QUOTE = "quote", _("Devis")
+        INVOICE = "invoice", _("Facture")
+        CREDIT_NOTE = "credit_note", _("Avoir")
+        OTHER = "other", _("Autre")
     
     class BillStates(models.IntegerChoices):
         PENDING = 1, _("En attente")
@@ -63,37 +76,15 @@ class Bill(CRUDUrlMixin, TimestampedModel):
         PARTIAL = 5, _("Partiellement payé")
         PAID = 6, _("Payé")
         CANCELED = 7, _("Annulé")
-    bill_type = models.CharField(
-        max_length=20,
-        choices=BillType.choices,
-        default=BillType.QUOTE,
-        verbose_name=_("Type de facture"),
-    )
+        
+    bill_type = models.CharField(max_length=20,choices=BillTypes.choices,default=BillTypes.QUOTE,verbose_name=_("Type de facture"),)
     bill_number = models.CharField(max_length=50, verbose_name=_("Numéro"))
     bill_year = models.PositiveIntegerField(editable=False, db_index=True)
-    lead = models.ForeignKey(
-        "leads.B2BLead",
-        on_delete=models.PROTECT,
-        related_name="bills",
-        verbose_name=_("Opportunité"),
-        null=True,
-        blank=True,
-    )
+    lead = models.ForeignKey("leads.B2BLead",on_delete=models.PROTECT, related_name="bills", verbose_name=_("Opportunité"),null=True,blank=True,)
     due_date = models.DateField(verbose_name=_("Date d'échéance"), null=True, blank=True)
     creation_date = models.DateField(_("Creation date"), default=date.today)
-    created_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="bills_created",
-    )
-    updated_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="bills_updated",
-    )
-    notes = models.TextField(blank=True, null=True)
+    created_by = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name="bills_created")
+    updated_by = models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name="bills_updated")
     bill_total = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -113,7 +104,9 @@ class Bill(CRUDUrlMixin, TimestampedModel):
         help_text=_("Remise sur le total de la facture."),
     )
     state = models.PositiveSmallIntegerField(choices=BillStates.choices, default=BillStates.PENDING, verbose_name=_("Statut"), null=True, blank=True)
+    
     expiration_date = models.DateField(_("date d'expiration"), null=True, blank=True)
+    notes = models.TextField(blank=True, null=True)
 
     objects = BillQuerySet.as_manager()
 
@@ -125,6 +118,9 @@ class Bill(CRUDUrlMixin, TimestampedModel):
                 name="unique_bill_number_per_type_year",
             )
         ]
+        
+    def __str__(self):
+        return f"N° {self.bill_number}"
 
     def save(self, *args, **kwargs):
         if self.creation_date:
@@ -132,7 +128,47 @@ class Bill(CRUDUrlMixin, TimestampedModel):
         else:
             self.bill_year = now().year
         super().save(*args, **kwargs)
+        
+    @classmethod
+    def get_bulk_delete_url(cls):
+        return reverse("billing:bulk_delete_bills")
 
+
+
+
+
+    def get_update_url(self):
+        return reverse(f"billing:update_{self.bill_type}", kwargs={"pk": self.pk})
+
+    def get_delete_url(self):
+        return reverse("billing:delete_bill", kwargs={"pk": self.pk})
+
+    def get_absolute_url(self):
+        return reverse("billing:detail_bill", kwargs={"pk": self.pk})
+
+
+    def convert_to_invoice(self):
+        invoice = Invoice(
+            due_date=self.due_date,
+            lead=self.lead,
+            creation_date=self.creation_date,
+            created_by=self.created_by,
+            updated_by=self.updated_by,
+            notes=self.notes,
+            bill_total=self.bill_total,
+            bill_discount=self.bill_discount,
+        )
+        invoice.save()
+        for item in self.lines.all():
+            item.bill = invoice
+            item.pk = None
+            item.save()
+        return invoice
+    
+    @property
+    def is_invoice(self):
+        return self.bill_type == Bill.BillTypes.INVOICE
+    
     @property
     def get_state_color(self):
         state = self.state
@@ -186,17 +222,10 @@ class Bill(CRUDUrlMixin, TimestampedModel):
             return f"{self.due_date} ({self.num_of_days_to_due} jours)"
         return None
 
-    # @property
-    # def lines(self):
-    #     if self.bill_type == BillType.INVOICE:
-    #         return self.invoice_items
-    #     if self.bill_type == BillType.QUOTE:
-    #         return self.quote_items
-    #     return self.invoice_items.none()
-    
     @property
     def paid_amount(self):
         return sum(payment.amount for payment in self.payments.all())
+    
     @property
     def rest_amount(self):
         return self.get_total_ttc - self.paid_amount
@@ -212,6 +241,117 @@ class Bill(CRUDUrlMixin, TimestampedModel):
         if taxes:
             return self.get_total_ttc / (1 + taxes)
         return self.get_total_ttc
+    
+    @property
+    def get_company_and_rest(self):
+        company = self.lead.company if self.lead and self.lead.company else None
+        return f"{company}, {self.rest_amount} DA" if hasattr(self, 'rest_amount') else None
+
+
+
+
+class Invoice(Bill):
+    objects = BillManager(Bill.BillTypes.INVOICE)
+
+    class Meta:
+        proxy = True
+        verbose_name = _("Facture")
+        verbose_name_plural = _("Factures")
+        ordering = ["-created_at"]
+
+    def save(self, *args, **kwargs):
+        self.bill_type = Bill.BillTypes.INVOICE
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def get_list_url(cls):
+        return reverse("billing:list_invoice")
+
+        
+    @classmethod
+    def get_create_url(cls, lead_pk=None):
+        print('lead_pklead_pk:', lead_pk)
+        if lead_pk:
+            return reverse(
+                "billing:create_lead_invoice", kwargs={"lead_pk": lead_pk}
+            )
+        else:
+            return reverse("billing:create_invoice")
+
+class Quote(Bill):
+    objects = BillManager(Bill.BillTypes.QUOTE)
+
+    class Meta:
+        proxy = True
+        verbose_name = _("Devis")
+        verbose_name_plural = _("Devis")
+        ordering = ["-created_at"]
+
+    def save(self, *args, **kwargs):
+        self.bill_type = Bill.BillTypes.QUOTE
+        super().save(*args, **kwargs)
+    
+    @classmethod
+    def get_list_url(cls):
+        return reverse("billing:list_quote")
+
+
+
+class BillLine(TimestampedModel):
+
+    bill = models.ForeignKey(Bill, on_delete=models.CASCADE, related_name="lines")
+
+    title = models.CharField(max_length=200, verbose_name=_("Titre"), blank=True, null=True)
+    quantity = models.PositiveIntegerField(
+        default=1, verbose_name=_("Quantité"), blank=True, null=True
+    )
+    unit_price = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name=_("Prix"), blank=True, null=True
+    )
+    unit = models.CharField(
+        max_length=50, verbose_name=_("Unité"), blank=True, null=True
+    )
+    discount = models.DecimalField(
+        _("Remise"),
+        help_text=_("Réduction sur le total de la ligne"),
+        max_digits=10,
+        decimal_places=2,
+        blank=True,
+        null=True,
+    )
+    total_price = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name=_("Prix total"), default=0
+    )
+        
+    # description = HTMLField(
+    #     max_length=255, verbose_name=_("Description"), blank=True, null=True
+    # )
+    description = models.CharField(
+        max_length=255, verbose_name=_("Description"), blank=True, null=True
+    )
+    display_order = models.PositiveIntegerField(
+        default=0, verbose_name=_("Ordre d'affichage")
+    )
+
+    def save(self, *args, **kwargs):
+        self.total_price = (self.quantity or 1) * ( self.unit_price or 0)
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = _("Bill Line")
+        verbose_name_plural = _("Bill Lines")
+        ordering = ["bill", "description"]
+
+    def __str__(self):
+        return f"{self.description} - {self.quantity} x {self.unit_price}"
+
+    @property
+    def get_total_item(self):
+        return self.total_price - (self.discount or 0)
+
+
+
+
 
 
 # class Quote(AbstractBill):
@@ -346,168 +486,6 @@ class Bill(CRUDUrlMixin, TimestampedModel):
 #         else:
 #             return None
 
-
-
-
-
-class InvoiceQueryset(models.QuerySet):
-    def get_queryset(self):
-        return super().get_queryset().filter(bill_type=BillType.INVOICE)
-    def limit_user(self, user):
-        if user.is_superuser:
-            return self.all()
-        if user.is_staff and user.has_perm("billing.view_invoice"):
-            return self.all()
-        if User.objects.filter(supervisor=user).exists():
-            user_team_ids = user.team_members.values_list("id", flat=True)
-            return self.filter(
-                Q(created_by__id=user.id) | Q(created_by__id__in=user_team_ids)
-            )
-        if getattr(user, "is_commercial", False):
-            return self.filter(Q(created_by__id=user.id))
-        return self.none()
-
-
-class QuoteQueryset(models.QuerySet):
-    def get_queryset(self):
-        return super().get_queryset().filter(bill_type=BillType.QUOTE)
-    def limit_user(self, user):
-        if user.is_superuser:
-            return self.all()
-        if user.is_staff and user.has_perm("billing.view_quote"):
-            return self.all()
-        if User.objects.filter(supervisor=user).exists():
-            user_team_ids = user.team_members.values_list("id", flat=True)
-            return self.filter(
-                Q(created_by__id=user.id) | Q(created_by__id__in=user_team_ids)
-            )
-        if getattr(user, "is_commercial", False):
-            return self.filter(Q(created_by__id=user.id))
-        return self.none()
-
-
-class Invoice(Bill):
-
-    objects = InvoiceQueryset.as_manager()
-
-    class Meta:
-        proxy = True
-        verbose_name = _("Facture")
-        verbose_name_plural = _("Factures")
-        ordering = ["-created_at"]
-
-    def save(self, *args, **kwargs):
-        self.bill_type = BillType.INVOICE
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f"{self.bill_number}"
-
-    @classmethod
-    def get_bulk_delete_url(cls):
-        return reverse("billing:bulk_delete_invoices")
-
-    def get_absolute_url(self):
-        return reverse("billing:detail_invoice", kwargs={"pk": self.pk})
-
-
-
-class Quote(Bill):
-    objects = QuoteQueryset.as_manager()
-
-    class Meta:
-        proxy = True
-        verbose_name = _("Devis")
-        verbose_name_plural = _("Devis")
-        ordering = ["-created_at"]
-
-    def save(self, *args, **kwargs):
-        self.bill_type = BillType.QUOTE
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f"{self.bill_number} - {self.lead}"
-
-    @classmethod
-    def get_bulk_delete_url(cls):
-        return reverse("billing:bulk_delete_quotes")
-
-    def get_absolute_url(self):
-        return reverse("billing:detail_quote", kwargs={"pk": self.pk})
-
-    def convert_to_invoice(self):
-        invoice = Invoice(
-            due_date=self.due_date,
-            lead=self.lead,
-            creation_date=self.creation_date,
-            created_by=self.created_by,
-            updated_by=self.updated_by,
-            notes=self.notes,
-            bill_total=self.bill_total,
-            bill_discount=self.bill_discount,
-        )
-        invoice.save()
-        for item in self.lines.all():
-            item.clone_to_bill(invoice)
-        return invoice
-
-
-
-
-class BillLine(TimestampedModel):
-    # class Discount(models.IntegerChoices):
-    #     PERCENT     = 1, _('Percent'),
-    #     LINE_AMOUNT = 2, _('Amount per line'),
-    #     ITEM_AMOUNT = 3, _('Amount per unit'),
-    bill = models.ForeignKey(Bill, on_delete=models.CASCADE, related_name="lines")
-
-    title = models.CharField(max_length=200, verbose_name=_("Titre"), blank=True, null=True)
-    quantity = models.PositiveIntegerField(
-        default=1, verbose_name=_("Quantité"), blank=True, null=True
-    )
-    unit_price = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_("Prix"), blank=True, null=True
-    )
-    unit = models.CharField(
-        max_length=50, verbose_name=_("Unité"), blank=True, null=True
-    )
-    discount = models.DecimalField(
-        _("Remise"),
-        help_text=_("Réduction sur le total de la ligne"),
-        max_digits=10,
-        decimal_places=2,
-        blank=True,
-        null=True,
-    )
-    total_price = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name=_("Prix total"), default=0
-    )
-        
-    # description = HTMLField(
-    #     max_length=255, verbose_name=_("Description"), blank=True, null=True
-    # )
-    description = models.CharField(
-        max_length=255, verbose_name=_("Description"), blank=True, null=True
-    )
-    display_order = models.PositiveIntegerField(
-        default=0, verbose_name=_("Ordre d'affichage")
-    )
-
-    def save(self, *args, **kwargs):
-        self.total_price = (self.quantity or 1) * ( self.unit_price or 0)
-        super().save(*args, **kwargs)
-
-    class Meta:
-        verbose_name = _("Bill Line")
-        verbose_name_plural = _("Bill Lines")
-        ordering = ["bill", "description"]
-
-    def __str__(self):
-        return f"{self.description} - {self.quantity} x {self.unit_price}"
-
-    @property
-    def get_total_item(self):
-        return self.total_price - (self.discount or 0)
 
 
 # class InvoiceItem(BillLine):

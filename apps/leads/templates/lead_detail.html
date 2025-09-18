@@ -12,6 +12,30 @@
     {% include 'snippets/_breadcrumb.html' %}
     {% block create_appointment_button %}   
         <div class="d-flex align-items-center gap-2">
+            {% if perms.billing.add_quote %}
+                <a class="btn btn-sm btn-secondary"
+                    hx-get="{% url 'billing:create_company_quote' company.pk %}"
+                    hx-target="#kt_modal_content"
+                    hx-swap="innerHTML"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal"
+                >
+                    <i class="ki-duotone ki-plus fs-2"></i>
+                    {% translate "Devis" %}
+                </a>
+            {% endif %}
+            {% if perms.billing.add_invoice %}
+                <a class="btn btn-sm btn-warning"
+                    hx-get="{% url 'billing:create_lead_invoice' lead.pk %}"
+                    hx-target="#kt_modal_content"
+                    hx-swap="innerHTML"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal"
+                >
+                    <i class="ki-duotone ki-plus fs-2"></i>
+                    {% translate "Facture" %}
+                </a>
+            {% endif %}
             {% if perms.appointment.add_appointment %}
                 <button 
                     type="button"

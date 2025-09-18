@@ -1,22 +1,26 @@
-import ssl
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
-from django.urls import reverse
-from django.views import View
-from django_tables2 import SingleTableMixin
-from django_filters.views import FilterView
-from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.views.generic import DetailView
 import weasyprint
-from apps.billing.filters import InvoiceFilterSet, QuoteFilterSet
+from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.template.loader import render_to_string
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
+from django.views import View
+from django.views.generic import DetailView
+from django_filters.views import FilterView
+from django_tables2 import SingleTableMixin
+
+from apps.billing.filters import BillFilterSet, InvoiceFilterSet, InvoiceFilterSet, QuoteFilterSet
 from apps.billing.forms import (
     InvoiceItemModelFormSet,
     InvoiceModelForm,
     QuoteItemModelFormSet,
     QuoteModelForm,
 )
-from apps.billing.models import Invoice, Quote
-from apps.billing.tables import InvoiceHtmxTable, QuoteHtmxTable
+from apps.billing.models import Bill, Invoice, Quote
+from apps.billing.tables import BillHtmxTable, InvoiceHtmxTable, QuoteHtmxTable
 from apps.business.models import BusinessSettings
 from apps.core.mixins import (
     BaseManageHtmxFormView,
@@ -27,62 +31,66 @@ from apps.core.mixins import (
     ImportDataMixin,
     TableImportFieldsMixin,
 )
-from django.template.loader import render_to_string
-from django.contrib import messages
 from apps.core.models import Tax
-from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import permission_required
 
 # ################################ Invoice Views ################################
 
 
-@permission_required("billing.view_invoice", raise_exception=True)
-def print_invoice_pdf(request, invoice_id):
-    invoice = get_object_or_404(Invoice, id=invoice_id)
-    response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = f"filename=facture_{invoice.id}.pdf"
-    context = {
-        "invoice": invoice,
-        "business": BusinessSettings.objects.first(),
-        "invoice_items": invoice.lines.all(),
-        "taxes": Tax.objects.filter(is_active=True),
-    }
-    html = render_to_string("snippets/invoice_pdf.html", context)
-    weasyprint.HTML(string=html, base_url=request.build_absolute_uri()).write_pdf(
-        response
-    )
-    return response
-
-
-class InvoiceListView(BreadcrumbMixin, PermissionRequiredMixin, SingleTableMixin, FilterView):
+class BillListView(BreadcrumbMixin, PermissionRequiredMixin, SingleTableMixin, FilterView):
     permission_required = "billing.view_invoice"
-    model = Invoice
-    table_class = InvoiceHtmxTable
+    model = Bill
     paginate_by = 10
-    filterset_class = InvoiceFilterSet
+    filterset_class = BillFilterSet
 
-    def get_queryset(self):
-        queryset = (
-            Invoice.objects.limit_user(self.request.user).all().order_by("-created_at")
-        )
-        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["size_class"] = "modal-lg mw-950px"
         context["bulk_delete_url"] = self.model.get_bulk_delete_url()
         context["import_fields_url"] = reverse("billing:import_fields_invoice")
+        
+        context["model"] = self.model
         return context
 
     def get_template_names(self) -> list[str]:
         if self.request.htmx:
             return ["tables/table_partial.html"]
         else:
-            return ["invoice_list.html"]
+            return ["bill_list.html"]
+
+
+class QuoteListView(BillListView):
+    permission_required = "billing.view_quote"
+    model = Quote
+    filterset_class = QuoteFilterSet
+    table_class = QuoteHtmxTable
+
+    def get_queryset(self):
+        return Quote.objects.limit_user(self.request.user).all().order_by("-created_at")
+
+class InvoiceListView(BillListView):
+    model = Invoice
+    filterset_class = InvoiceFilterSet
+    table_class = InvoiceHtmxTable
+
+    def get_queryset(self):
+        return Invoice.objects.limit_user(self.request.user).all().order_by("-created_at")
+
+
+
+class CompanyQuotesTable(QuoteListView):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        pk = self.kwargs.get("pk")
+        queryset = Quote.objects.filter(lead__company__pk=pk).order_by("-created_at")
+        return queryset
+
+    def get_table_kwargs(self):
+        return {"company_pk": self.kwargs.get("pk")}
+
 
 
 class CompanyInvoicesTable(InvoiceListView):
-
     def get_queryset(self):
         queryset = super().get_queryset()
         pk = self.kwargs.get("pk")
@@ -93,10 +101,12 @@ class CompanyInvoicesTable(InvoiceListView):
         return {"company_pk": self.kwargs.get("pk")}
 
 
+
 class ManageInvoiceHTMX(BaseManageHtmxFormView):
     form_class = InvoiceModelForm
     model = Invoice
-    parent_url_kwarg = "company_pk"
+    # parent_url_kwarg =  "lead_pk"
+    parent_url_kwarg = ("company_pk", "lead_pk")
     hx_triggers = {
         "closeModal": "kt_modal",
         "refresh_table": None,
@@ -111,27 +121,25 @@ class ManageInvoiceHTMX(BaseManageHtmxFormView):
             )
         }
 
-
-class DeleteInvoice(DeleteMixinHTMX):
-    model = Invoice
-
-
-class DeleteBulkInvoices(BulkDeleteMixinHTMX):
-    model = Invoice
+class DeleteBulkBills(BulkDeleteMixinHTMX):
+    model = Bill
 
 
-class InvoiceDetailView(BreadcrumbMixin, PermissionRequiredMixin, DetailView):
-    permission_required = "billing.view_invoice"
-    model = Invoice
-    template_name = "invoice_detail.html"
-    context_object_name = "invoice"
+class BillDetailView(BreadcrumbMixin, PermissionRequiredMixin, DetailView):
+    permission_required = "billing.view_bill"
+    model = Bill
+    template_name = "bill_detail.html"
+    context_object_name = "bill"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["size_class"] = "modal-lg mw-950px"
         context["business"] = BusinessSettings.objects.first()
-        context["invoice_items"] = self.object.lines.all()
+        context["title"] = context["page_title"] =  self.object.get_bill_type_display() + " " + str(self.object.bill_number)
+        context["parent_url"] = reverse(f"billing:list_{self.object.bill_type.lower()}")
         context["taxes"] = Tax.objects.filter(is_active=True)
+        context["parent_page"] = self.object.get_bill_type_display()
+        print('self.>>>>>>>>>>>>>>>>>>>>>>>>model', self.model)
         return context
 
 
@@ -178,73 +186,35 @@ class ExportInvoices(PermissionRequiredMixin, ExportDataMixin, View):
 
 
 @permission_required("billing.view_quote", raise_exception=True)
-def print_quote_pdf(request, quote_id):
-    import logging
-    logger = logging.getLogger('weasyprint')
-    # logger.addHandler(logging.FileHandler('/tmp/weasyprint.log'))
-    logger.addHandler(logging.FileHandler('weasyprint.log'))
-    from PIL import features
-    print("WebP:", features.check("webp"))
+def print_bill_pdf(request, bill_id):
 
-    quote = get_object_or_404(Quote, id=quote_id)
+    bill = get_object_or_404(Bill, id=bill_id)
     response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = f"filename=devis_{quote.id}.pdf"
+    response["Content-Disposition"] = f"filename={bill.bill_type}_{bill.bill_number}.pdf"
     business = BusinessSettings.objects.first()
     context = {
-        "quote": quote,
-        "logo_url": business.logo.url,
-        "base_url": request.build_absolute_uri("/")[:-1],
+        "bill": bill,
         "business": business,
-        "quote_items": quote.lines.all(),
+        "base_url": request.build_absolute_uri("/")[:-1],
     }
-    html = render_to_string("snippets/quote_pdf.html", context)
+    if bill.is_invoice:
+        context["taxes"] = Tax.objects.filter(is_active=True)
+        template_name = "snippets/invoice_pdf.html"
+    else:
+        template_name = "snippets/bill_pdf.html"
+        
+    html = render_to_string(template_name, context)
     weasyprint.HTML(string=html, base_url=request.build_absolute_uri("/")).write_pdf(
         response,
     )
     return response
     # return HttpResponse(html)  
-
-class QuoteListView(
-    BreadcrumbMixin, PermissionRequiredMixin, SingleTableMixin, FilterView
-):
-    permission_required = "billing.view_quote"
-    model = Quote
-    table_class = QuoteHtmxTable
-    paginate_by = 10
-    filterset_class = QuoteFilterSet
-
-    def get_queryset(self):
-        return Quote.objects.limit_user(self.request.user).all().order_by("-created_at")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["size_class"] = "modal-lg mw-950px"
-        context["bulk_delete_url"] = self.model.get_bulk_delete_url()
-        context["import_fields_url"] = reverse("billing:import_fields_quote")
-        return context
-
-    def get_template_names(self) -> list[str]:
-        if self.request.htmx:
-            return ["tables/table_partial.html"]
-        else:
-            return ["quote_list.html"]
-
-
-class CompanyQuotesTable(QuoteListView):
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        pk = self.kwargs.get("pk")
-        queryset = Quote.objects.filter(lead__company__pk=pk).order_by("-created_at")
-        return queryset
-
-    def get_table_kwargs(self):
-        return {"company_pk": self.kwargs.get("pk")}
-
+    
 
 class ManageQuoteHTMX(BaseManageHtmxFormView):
     form_class = QuoteModelForm
     model = Quote
-    parent_url_kwarg = "company_pk"
+    parent_url_kwarg = ("company_pk", )
 
     hx_triggers = {
         "closeModal": "kt_modal",
@@ -258,33 +228,12 @@ class ManageQuoteHTMX(BaseManageHtmxFormView):
                 self.request.POST or None, instance=instance, prefix="quote_items"
             )
         }
-        
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["size_class"] = "modal-fullscreen"
-    #     return context
-
-class DeleteQuote(DeleteMixinHTMX):
-    model = Quote
 
 
-class DeleteBulkQuotes(BulkDeleteMixinHTMX):
-    model = Quote
+class DeleteBill(DeleteMixinHTMX):
+    model = Bill
 
 
-class QuoteDetailView(BreadcrumbMixin, PermissionRequiredMixin, DetailView):
-    permission_required = "billing.view_quote"
-    model = Quote
-    template_name = "quote_detail.html"
-    context_object_name = "quote"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["size_class"] = "modal-lg mw-950px"
-        context["business"] = BusinessSettings.objects.first()
-        context["quote_items"] = self.object.lines.all()
-        context["taxes"] = Tax.objects.filter(is_active=True)
-        return context
 
 
 class ImportQuotes(PermissionRequiredMixin, ImportDataMixin, View):
@@ -327,12 +276,12 @@ class ExportQuotes(PermissionRequiredMixin, ExportDataMixin, View):
 
 
 @permission_required("billing.add_invoice", raise_exception=True)
-def convert_quote_to_invoice(request, quote_id):
-    quote = get_object_or_404(Quote, id=quote_id)
-    invoice = quote.convert_to_invoice()
+def convert_bill_to_invoice(request, bill_id):
+    bill = get_object_or_404(Bill, id=bill_id)
+    invoice = bill.convert_to_invoice()
 
-    message = "Devis converti en facture avec succès."
+    message = _("Facture créée avec succès.")
     messages.success(request, str(message))
     return HttpResponseRedirect(
-        reverse("billing:detail_invoice", kwargs={"pk": invoice.id})
+        reverse("billing:detail_bill", kwargs={"pk": invoice.id})
     )

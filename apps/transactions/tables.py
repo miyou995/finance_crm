@@ -38,8 +38,8 @@ class ClientPaymentHTMxTable(TransactionBaseTable):
         template_code="{{ row_counter|add:'1' }}",
         orderable=False,
     )
-    invoice = tables.Column(
-        accessor="invoice", verbose_name=_("Facture"), orderable=True, linkify=True
+    bill = tables.Column(
+        accessor="bill", verbose_name=_("document"), orderable=True, linkify=True
     )
     company = tables.Column(
         accessor="bill__lead__company",
@@ -66,7 +66,7 @@ class ClientPaymentHTMxTable(TransactionBaseTable):
         fields = (
             "checked_row",
             "counter",
-            "invoice",
+            "bill",
             "company",
             "amount",
             "rest_amount",
@@ -134,10 +134,8 @@ class AutreTransactionTableHTMxTable(TransactionBaseTable):
         if self.contact is not None:
             self.columns.hide("checked_row")
             self.columns.hide("contact")
-
-
-
-
+            
+            
 class LedgerEntryTable(TransactionBaseTable):
     entry_type = BadgeColumn(
         "get_transaction_color", "entry_type", verbose_name=_("Type de transaction")
@@ -146,7 +144,7 @@ class LedgerEntryTable(TransactionBaseTable):
         accessor="get_transaction_type", verbose_name=_("Nature"), orderable=True
     )
     suppression = tables.TemplateColumn(
-        verbose_name=_("Suppression"),
+        verbose_name=_("Action"),
         orderable=False,
         template_code="""
         {% if not record.client_payment and not record.staff_payment and not record.misc_transaction %}
@@ -159,6 +157,7 @@ class LedgerEntryTable(TransactionBaseTable):
                 data-bs-target="#delete_modal"
             >
                 <i class="fa fa-trash"></i>
+            ++++++63.
             </a>
         {% else %}
             <button 

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from apps.billing.models import Invoice
+from apps.billing.models import Quote, Invoice,  Bill
 from apps.core.widgets import RichSelect
 from apps.crm.models import Contact, Company
 from .models import (
@@ -20,13 +20,13 @@ User = get_user_model()
 class BillPaiementModelForm(forms.ModelForm):
     amount = forms.IntegerField(required=False, label="Montant")
     bill = forms.ModelChoiceField(
-        queryset=Invoice.objects.all(),
+        queryset=Bill.objects.all(),
         widget=RichSelect(
             attrs={
                 "class": "form-select form-select-transparent",
                 "data-kt-rich-content": "true",
             },
-            data_subcontent_field="rest_amount",
+            data_subcontent_field="get_company_and_rest",
         ),
         label=_("Facture"),
         required=False,
@@ -46,7 +46,7 @@ class BillPaiementModelForm(forms.ModelForm):
         self.company_pk = company_pk
         
         if company_pk:
-            self.fields["bill"].queryset = Invoice.objects.filter(
+            self.fields["bill"].queryset = Bill.objects.filter(
                 lead__company__pk=company_pk
             )
 
@@ -58,9 +58,8 @@ class BillPaiementModelForm(forms.ModelForm):
         amount = self.cleaned_data.get("amount")
         bill = self.cleaned_data.get("bill")
         bill_pk = getattr(self, "_bill_pk", None)
-        print('YA BABAOOR LARGEEEE \n \n ', bill_pk)
         if bill_pk:
-            bill = get_object_or_404(Invoice, pk=bill_pk)
+            bill = get_object_or_404(Bill, pk=bill_pk)
             if not amount or amount < 0:
                 raise forms.ValidationError(
                     _("Montant est requis et doit être supérieur à zéro")
@@ -71,8 +70,6 @@ class BillPaiementModelForm(forms.ModelForm):
                         "Montant ne peut pas être supérieur au montant restant de la facture."
                     )
                 )
-            
-        print('YA BABAOOR LARGEEEE \n \n ', Invoice.objects.filter(pk=bill_pk).first().rest_amount if bill_pk else 'no bill pk')
         return amount
 
     def save(self, commit=True):
@@ -82,7 +79,7 @@ class BillPaiementModelForm(forms.ModelForm):
         print('self._bill_pk>>>', self._bill_pk)
         if getattr(self, "_bill_pk", None):
             obj.bill_id = self._bill_pk
-            obj.client = Invoice.objects.filter(pk=self._bill_pk).first().lead.company
+            obj.client = Bill.objects.filter(pk=self._bill_pk).first().lead.company
         elif self.company_pk:
             obj.client = get_object_or_404(Company, pk=self.company_pk)
         if commit:

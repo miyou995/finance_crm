@@ -69,7 +69,7 @@ urlpatterns = [
     ),
     # ClientPayment for invoice
     path(
-        "paiements/invoice/invoicepayment/<int:bill_pk>/",
+        "paiements/bills/bill/<int:bill_pk>/",
         CreateInvoiceClientPayment.as_view(),
         name="create_invoice_clientpayment",
     ),
@@ -89,7 +89,7 @@ urlpatterns = [
         name="bulk_delete_clientpayment",
     ),
     path(
-        "invoices-paiements/company_invoices_payment/<int:pk>/",
+        "paiements/company/<int:pk>/",
         CompanyInvoicesPaymentTable.as_view(),
         name="company_invoices_payment",
     ),

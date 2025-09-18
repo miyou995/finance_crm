@@ -241,7 +241,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for item in quote_items %}
+                {% for item in bill.lines.all %}
                     <tr>
                         <td>
                             <h4>{{ item.title }}</h4>

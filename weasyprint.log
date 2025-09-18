@@ -152,3 +152,22 @@ Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCM
 Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af145384cc0>
 Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af145384cc0>
 Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7af145384cc0>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76a9b0310680>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76a9a92f4630>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76a9a92f4630>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76a9a9385350>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76a9a9385350>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x76a9a9385350>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7c5a3f111260>
+Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7ba362088590>
+Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7ba36880c9a0>
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7ba36880c9a0>
+Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7f6dc5d544f0>
+Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x78483c0d5800>
+Ignored `box-shadow: 0 4px 24px rgba(0,0,0,0.08)` at 1:94, unknown property.
+Failed to load image at 'http://localhost:8000/media/images/logos/light-logo_vCMRv5J.png': UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7fae32bb6520>

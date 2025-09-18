@@ -55,7 +55,6 @@ class ContactModelForm(forms.ModelForm):
 
     def save(self, commit=True):
         source = self.cleaned_data.get("source")
-        print("\n \n \n \n Saving B2BLead with company_pk:", self._company_pk)
         obj = super().save(commit=False)
         if getattr(self, "_company_pk", None):
             obj.company_id = self._company_pk

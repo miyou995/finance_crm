@@ -41,7 +41,8 @@ class BreadcrumbMixin:
             list_url = model.get_list_url() if hasattr(model, "get_list_url") else None
             if list_url:
                 context["parent_url"] = list_url
-        except NoReverseMatch:
+        except NoReverseMatch as e:
+            print('NoReverseMatch Exception\n \n \n ', e)
             pass
 
         detail_page = self.object if hasattr(self, "object") else None
@@ -88,20 +89,6 @@ class BaseManageHtmxFormView(FormView):
                 return (f"{app_label}.add_{model_name}",)
         return ()
 
-    # def dispatch(self, request, *args, **kwargs):
-    #     pk = self.kwargs.get('pk')
-    #     if self.model:
-    #         opts = self.model._meta
-    #         app_label = opts.app_label
-    #         model_name = opts.model_name
-    #         if pk:
-    #             perm = f"{app_label}.change_{model_name}"
-    #         else:
-    #             perm = f"{app_label}.add_{model_name}"
-    #         if not request.user.has_perm(perm):
-    #             messages.error(request, _("You do not have permission to perform this action."))
-    #             return redirect("core:index")  # Adjust redirect as needed
-    #     return super().dispatch(request, *args, **kwargs)
 
     def get_object(self):
         kwargs = self.get_form_kwargs()
@@ -112,53 +99,89 @@ class BaseManageHtmxFormView(FormView):
         pk = self.kwargs.get("pk")
         parent_pk = None
         kwargs["instance"] = None
-
         if pk and self.model:
             instance = self.model.objects.get(pk=pk)
             kwargs["instance"] = instance
 
-        if self.kwargs.get(self.parent_url_kwarg):
-            parent_pk = self.kwargs.get(self.parent_url_kwarg)
-            # initial = kwargs.get('initial', {})
-            kwargs[self.parent_url_kwarg] = parent_pk
-            # kwargs['initial'] = initial
+        for parent_url in self.parent_url_kwarg:
+            if self.kwargs.get(parent_url):
+                parent_pk = self.kwargs.get(parent_url)
+                # initial = kwargs.get('initial', {})
+                kwargs[parent_url] = parent_pk
+                # kwargs['initial'] = initial
         return kwargs
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs.get("pk")
-        # Use model's classmethod for create_url if available
+
+        # Handle create_url if model defines it
         if (
             self.model
             and hasattr(self.model, "get_create_url")
             and callable(getattr(self.model, "get_create_url"))
         ):
-            if (
-                self.parent_url_kwarg
-                and self.kwargs.get(self.parent_url_kwarg) is not None
-            ):
-                parent_pk = self.kwargs.get(self.parent_url_kwarg)
-                try:
-                    context["create_url"] = self.model.get_create_url(
-                        **{self.parent_url_kwarg: parent_pk}
-                    )
-                except TypeError:
-                    context["create_url"] = self.model.get_create_url()
-            else:
+            parent_kwargs = {
+                parent_url: self.kwargs[parent_url]
+                for parent_url in self.parent_url_kwarg
+                if parent_url in self.kwargs
+            }
+
+            try:
+                context["create_url"] = self.model.get_create_url(**parent_kwargs)
+            except TypeError:
                 context["create_url"] = self.model.get_create_url()
+
+        # Handle update_url if editing an instance
         if pk and self.model:
             instance = self.model.objects.get(pk=pk)
             context[self.model.__name__.lower()] = instance
-            # Use model's instance method for update_url if available
-            if hasattr(instance, "get_update_url") and callable(
-                getattr(instance, "get_update_url")
-            ):
+            if hasattr(instance, "get_update_url") and callable(instance.get_update_url):
                 context["update_url"] = instance.get_update_url()
+
         context["formsets"] = self.get_formsets()
         context["form_verbose_name"] = (
             self.model._meta.verbose_name if self.form_class else None
         )
         return context
+
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     pk = self.kwargs.get("pk")
+    #     # Use model's classmethod for create_url if available
+    #     if (
+    #         self.model
+    #         and hasattr(self.model, "get_create_url")
+    #         and callable(getattr(self.model, "get_create_url"))
+    #     ):
+    #         if (
+    #             self.parent_url_kwarg
+    #             and self.kwargs.get(self.parent_url_kwarg) is not None
+    #         ):
+    #             parent_pk = self.kwargs.get(self.parent_url_kwarg)
+    #             print('parent_pk:', parent_pk)
+    #             try:
+    #                 context["create_url"] = self.model.get_create_url(
+    #                     **{self.parent_url_kwarg: parent_pk}
+    #                 )
+    #             except TypeError:
+    #                 context["create_url"] = self.model.get_create_url()
+    #         else:
+    #             context["create_url"] = self.model.get_create_url()
+    #     if pk and self.model:
+    #         instance = self.model.objects.get(pk=pk)
+    #         context[self.model.__name__.lower()] = instance
+    #         # Use model's instance method for update_url if available
+    #         if hasattr(instance, "get_update_url") and callable(
+    #             getattr(instance, "get_update_url")
+    #         ):
+    #             context["update_url"] = instance.get_update_url()
+    #     context["formsets"] = self.get_formsets()
+    #     context["form_verbose_name"] = (
+    #         self.model._meta.verbose_name if self.form_class else None
+    #     )
+    #     return context
 
     def process_formsets(self, instance=None):
         formsets = self.get_formsets()

@@ -84,9 +84,7 @@ class InvoicesPaymentView(
         context["bulk_delete_url"] = self.model.get_bulk_delete_url()
         context["create_url"] = self.get_queryset().model.get_create_url()
         context["export_url"] = self.model.get_export_url()
-        context["has_perms"] = self.request.user.has_perm(
-            "transactions.add_clientpayment"
-        )
+        context["has_perms"] = self.request.user.has_perm("transactions.add_clientpayment")
         return context
 
     def get_template_names(self):
@@ -122,7 +120,7 @@ class ManageInvoicePaiementHtmx(BaseManageHtmxFormView):
 
 
 class CreateCompanyInvoicePaiment(ManageInvoicePaiementHtmx):
-    parent_url_kwarg = "company_pk"
+    parent_url_kwarg = ("company_pk",)
 
     # def get_form_kwargs(self):
     #     kwargs = super().get_form_kwargs()
@@ -131,7 +129,7 @@ class CreateCompanyInvoicePaiment(ManageInvoicePaiementHtmx):
 
 
 class CreateInvoiceClientPayment(ManageInvoicePaiementHtmx):
-    parent_url_kwarg = "bill_pk"
+    parent_url_kwarg = ("bill_pk",)
 
 
 class DeleteInvoicePaiement(DeleteMixinHTMX):
@@ -293,7 +291,7 @@ class ManageAutreTransactionHtmx(BaseManageHtmxFormView):
 
 class ManageIncomeHtmx(ManageAutreTransactionHtmx):
     model = Income
-    parent_url_kwarg = "contact_pk"
+    parent_url_kwarg = ("contact_pk",)
 
 
 class ManageExpenseHtmx(ManageIncomeHtmx):

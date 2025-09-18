@@ -25,7 +25,7 @@ class ManageLeadB2bAppointmentHtmx(BaseManageHtmxFormView):
         "closeModal": "kt_modal",
         "refresh_table": None,
     }
-    parent_url_kwarg = "lead_b2b_pk"
+    parent_url_kwarg = ("lead_b2b_pk", )
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -36,7 +36,7 @@ class ManageLeadB2bAppointmentHtmx(BaseManageHtmxFormView):
 
 class ManageLeadB2cAppointmentHtmx(ManageLeadB2bAppointmentHtmx):
     form_class = AppointmentLeadB2cForm
-    parent_url_kwarg = "lead_b2c_pk"
+    parent_url_kwarg = ("lead_b2c_pk", )
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

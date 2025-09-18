@@ -1,0 +1,50 @@
+{% extends "layout/base.html" %}
+{% load widget_tweaks %}
+{% load custom_filters %}
+{% load static %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+    <div class="d-block d-md-flex justify-content-between align-items-end mb-4">
+        {% include 'snippets/_breadcrumb.html' %}
+        {% if perms.billing.add_quote %}
+            <div class="d-flex align-items-end gap-2">
+                {% include "snippets/_import_button.html" %}
+                {% include "snippets/_export_button.html" with  modal_id="billModal" %}
+                <button 
+                    class="btn btn-primary d-flex align-items-end gap-2 shadow"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal"
+                    hx-get="{{ model.get_create_url }}"
+                    hx-target="#kt_modal_content"
+                    hx-swap="innerHTML"
+                >
+                    <i class="ki-duotone ki-plus fs-4"></i>
+                    <span class="fw-semibold"> {% get_model_verbose_name model %} </span>
+                </button>
+            </div>
+        {% endif %}
+    </div>
+    {% include "snippets/toolbar.html" %}
+
+    <div id="quoteTable" 
+        class="table-responsive table-container"
+        hx-get="{{ model.get_list_url }}"
+        hx-trigger="refresh_table from:body"
+        hx-swap="innerHTML"
+        hx-target="closest .table-responsive"
+    >
+        {% render_table table %}
+    </div>
+
+{% endblock content %}
+
+{% block modal %}
+    {% url 'billing:export_quotes' as export_quotes_url %}
+    {% include "popups/export_modal.html" with export_url=export_quotes_url modal_id="billModal" %}
+
+    {% url 'billing:import_quotes' as import_quotes_url %}
+    {% include "popups/import_modal.html" with import_url=import_quotes_url  %}
+{% endblock modal %}
+
