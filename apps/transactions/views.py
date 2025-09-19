@@ -128,6 +128,7 @@ class CreateCompanyInvoicePaiment(ManageInvoicePaiementHtmx):
 
 class CreateCompanyQuotePayment(ManageInvoicePaiementHtmx):
     parent_url_kwarg = ("company_pk", )
+    extra_kwargs = {"bill_type": "quote"}
     
     # def get_form_kwargs(self):
     #     kwargs = super().get_form_kwargs()

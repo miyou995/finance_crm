@@ -16,8 +16,20 @@
                 data-bs-toggle="modal"
                 data-bs-target="#kt_modal"
                 >
-                <i class="fa fa-credit-card "></i>
-                <span class="fw-semibold">{% trans 'Payer facture' %}</span>    
+                <i class="ki-solid ki-dollar fs-2"></i>
+                <span class="fw-semibold">{% trans 'Payer Facture' %}</span>    
+            </a>
+        {% endif %}
+        {% if perms.transactions.add_clientpayment %}
+            <a class="btn btn-sm btn-primary"
+                hx-get="{% url 'transactions:create_company_quote_payment' company.pk %}"
+                hx-target="#kt_modal_content"
+                hx-swap="innerHTML"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal"
+                >
+                <i class="ki-solid ki-dollar fs-2"></i>
+                <span class="fw-semibold">{% trans 'Payer Autre Document' %}</span>    
             </a>
         {% endif %}
         {% if perms.crm.change_company %}

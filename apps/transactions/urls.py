@@ -24,6 +24,7 @@ from .views import (
     StaffPaymentView,
     StatisticClientPaymentPerMonth,
     impression_resu_autre_transaction,
+    CreateCompanyQuotePayment,
     AutreTransactionView,
     ManageQuotePaiementHtmx,
     AutreTransactionDelete,
@@ -65,6 +66,11 @@ urlpatterns = [
         "paiements/invoices/company/create/<int:company_pk>/",
         CreateCompanyInvoicePaiment.as_view(),
         name="create_company_clientpayment",
+    ),
+        path(
+        "paiements/quotes/company/create/<int:company_pk>/",
+        CreateCompanyQuotePayment.as_view(),
+        name="create_company_quote_payment",
     ),
     
     path(

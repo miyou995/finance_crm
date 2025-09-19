@@ -45,7 +45,6 @@ class BillPaiementModelForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.company_pk = company_pk
         self.bill_type = bill_type
-        print('bill_type>>>', bill_type)
         if company_pk:
             self.fields["bill"].queryset = self.fields["bill"].queryset.filter(
                 lead__company__pk=company_pk
@@ -56,8 +55,7 @@ class BillPaiementModelForm(forms.ModelForm):
             self.fields["bill"].queryset = self.fields["bill"].queryset.filter(
                 bill_type=bill_type
             )
-            self.fields["bill"].queryset.count()
-            
+            self.fields["bill"].label = Bill.BillTypes(bill_type).label
 
         self._bill_pk = bill_pk
         if bill_pk is not None:

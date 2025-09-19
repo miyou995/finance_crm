@@ -1649,3 +1649,40 @@ Traceback (most recent call last):
 django.urls.exceptions.NoReverseMatch: Reverse for 'create_invoice_payment' not found. 'create_invoice_payment' is not a valid view function or pattern name.
 2025-09-19 18:42:55,780 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
 2025-09-19 18:42:56,574 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:34:29,876 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:41:41,968 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:41:42,765 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:42:31,061 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:42:31,845 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:42:42,065 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:42:42,856 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:42:49,002 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:42:49,807 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:42:52,875 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:42:53,676 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:42:57,768 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:42:58,582 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:43:06,988 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:43:07,823 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:44:42,307 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 19:44:43,094 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:45:00,509 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 19:45:01,257 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:45:23,799 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 19:45:24,576 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:45:38,936 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 19:45:39,747 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:45:52,786 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 19:45:53,536 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:45:58,631 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 19:45:59,425 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:46:01,458 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 19:46:02,367 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 19:46:20,382 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 19:46:22,127 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 19:47:10,783 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 19:47:11,991 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 19:48:39,945 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 19:49:10,779 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 19:49:24,193 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 19:49:35,405 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
