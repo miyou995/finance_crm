@@ -11,7 +11,7 @@
         <div class="d-flex align-items-end gap-2">
             {% include "snippets/_export_button.html" with  modal_id="export_id" %}
             <button 
-                class="btn btn-success d-flex align-items-center  shadow"
+                class="btn btn-success d-flex align-items-center shadow"
                 data-bs-toggle="modal"
                 data-bs-target="#kt_modal"
                 hx-get="{% url 'transactions:create_income' %}"
@@ -19,7 +19,7 @@
                 hx-swap="innerHTML"
             >
                 <i class="ki-duotone ki-plus fs-4"></i>
-                <span class="fw-semibold">{% trans 'Revenue' %}</span>
+                <span class="fw-semibold">{% trans 'Entrée' %}</span>
             </button>
 			  <button 
                 class="btn btn-danger d-flex align-items-center  shadow"
@@ -30,7 +30,7 @@
                 hx-swap="innerHTML"
             >
                 <i class="ki-duotone ki-plus fs-4"></i>
-                <span class="fw-semibold">{% trans 'Dépense' %}</span>
+                <span class="fw-semibold">{% trans 'Sortie' %}</span>
             </button>
         </div>
     {% endif %}
@@ -46,7 +46,6 @@
     hx-target="closest .table-responsive"
 >
 	{% render_table table %}
-
 </div>
 
 {% endblock content %}

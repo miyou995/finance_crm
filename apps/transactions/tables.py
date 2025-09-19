@@ -50,6 +50,9 @@ class ClientPaymentHTMxTable(TransactionBaseTable):
     amount = tables.Column(
         accessor="amount", verbose_name=_("Montant Payé"), orderable=True
     )
+    doc_type = tables.Column(
+        accessor="bill__bill_type", verbose_name=_("Document"), orderable=True
+    )
     # rest_amount = tables.Column(accessor="rest_amount", verbose_name=_("Montant restant"), orderable=True)
     rest_amount = tables.TemplateColumn(
         verbose_name=_("Montant restant"),

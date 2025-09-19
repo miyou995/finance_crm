@@ -103,7 +103,7 @@ class BaseManageHtmxFormView(FormView):
             instance = self.model.objects.get(pk=pk)
             kwargs["instance"] = instance
 
-        for parent_url in self.parent_url_kwarg:
+        for parent_url in self.parent_url_kwarg or []:
             if self.kwargs.get(parent_url):
                 parent_pk = self.kwargs.get(parent_url)
                 # initial = kwargs.get('initial', {})
@@ -123,7 +123,7 @@ class BaseManageHtmxFormView(FormView):
         ):
             parent_kwargs = {
                 parent_url: self.kwargs[parent_url]
-                for parent_url in self.parent_url_kwarg
+                for parent_url in self.parent_url_kwarg or []
                 if parent_url in self.kwargs
             }
 
