@@ -7,33 +7,36 @@
 {% block content %}
 <div class="d-block d-md-flex justify-content-between align-items-end mb-4">
     {% include 'snippets/_breadcrumb.html' %}
-    {% if perms.transactions.add_misctransaction %}
-        <div class="d-flex align-items-end gap-2">
-            {% include "snippets/_export_button.html" with  modal_id="export_id" %}
-            <button 
-                class="btn btn-success d-flex align-items-center shadow"
-                data-bs-toggle="modal"
-                data-bs-target="#kt_modal"
-                hx-get="{% url 'transactions:create_income' %}"
-                hx-target="#kt_modal_content"
-                hx-swap="innerHTML"
-            >
-                <i class="ki-duotone ki-plus fs-4"></i>
-                <span class="fw-semibold">{% trans 'Entrée' %}</span>
-            </button>
-			  <button 
-                class="btn btn-danger d-flex align-items-center  shadow"
-                data-bs-toggle="modal"
-                data-bs-target="#kt_modal"
-                hx-get="{% url 'transactions:create_expense' %}"
-                hx-target="#kt_modal_content"
-                hx-swap="innerHTML"
-            >
-                <i class="ki-duotone ki-plus fs-4"></i>
-                <span class="fw-semibold">{% trans 'Sortie' %}</span>
-            </button>
-        </div>
-    {% endif %}
+    {% block create_buttons %}
+
+        {% if perms.transactions.add_misctransaction %}
+            <div class="d-flex align-items-end gap-2">
+                {% include "snippets/_export_button.html" with  modal_id="export_id" %}
+                <button 
+                    class="btn btn-success d-flex align-items-center shadow"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal"
+                    hx-get="{% url 'transactions:create_income' %}"
+                    hx-target="#kt_modal_content"
+                    hx-swap="innerHTML"
+                >
+                    <i class="ki-duotone ki-plus fs-4"></i>
+                    <span class="fw-semibold">{% trans 'Entrée' %}</span>
+                </button>
+                <button 
+                    class="btn btn-danger d-flex align-items-center  shadow"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal"
+                    hx-get="{% url 'transactions:create_expense' %}"
+                    hx-target="#kt_modal_content"
+                    hx-swap="innerHTML"
+                >
+                    <i class="ki-duotone ki-plus fs-4"></i>
+                    <span class="fw-semibold">{% trans 'Sortie' %}</span>
+                </button>
+            </div>
+        {% endif %}
+    {% endblock create_buttons %}
 </div>
 
 {% include "snippets/toolbar.html" %}

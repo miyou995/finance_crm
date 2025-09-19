@@ -96,19 +96,16 @@ class BaseManageHtmxFormView(FormView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        pk = self.kwargs.get("pk")
-        parent_pk = None
         kwargs["instance"] = None
+        pk = self.kwargs.get("pk")
         if pk and self.model:
             instance = self.model.objects.get(pk=pk)
             kwargs["instance"] = instance
-
         for parent_url in self.parent_url_kwarg or []:
             if self.kwargs.get(parent_url):
-                parent_pk = self.kwargs.get(parent_url)
-                # initial = kwargs.get('initial', {})
-                kwargs[parent_url] = parent_pk
-                # kwargs['initial'] = initial
+                kwargs[parent_url] = self.kwargs.get(parent_url)
+        for key, value in self.extra_kwargs.items() if hasattr(self, "extra_kwargs") else {}:
+            kwargs[key] = value
         return kwargs
     
     def get_context_data(self, **kwargs):

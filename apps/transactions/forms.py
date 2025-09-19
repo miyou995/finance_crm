@@ -20,7 +20,7 @@ User = get_user_model()
 class BillPaiementModelForm(forms.ModelForm):
     amount = forms.IntegerField(required=False, label="Montant")
     bill = forms.ModelChoiceField(
-        queryset=Bill.objects.all(),
+        queryset=Bill.objects.unpaid(),
         widget=RichSelect(
             attrs={
                 "class": "form-select form-select-transparent",
@@ -41,14 +41,23 @@ class BillPaiementModelForm(forms.ModelForm):
             ),
         }
 
-    def __init__(self, *args, company_pk=None, bill_pk=None, **kwargs):
+    def __init__(self, *args, company_pk=None, bill_pk=None, bill_type=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.company_pk = company_pk
-        
+        self.bill_type = bill_type
+        print('bill_type>>>', bill_type)
         if company_pk:
-            self.fields["bill"].queryset = Bill.objects.filter(
+            self.fields["bill"].queryset = self.fields["bill"].queryset.filter(
                 lead__company__pk=company_pk
             )
+            
+        self.fields["bill"].queryset.count()
+        if bill_type:
+            self.fields["bill"].queryset = self.fields["bill"].queryset.filter(
+                bill_type=bill_type
+            )
+            self.fields["bill"].queryset.count()
+            
 
         self._bill_pk = bill_pk
         if bill_pk is not None:

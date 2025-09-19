@@ -180,17 +180,7 @@
 										<span class="menu-bullet">
 											<span class="bullet bullet-dot"></span>
 										</span>
-										<span class="menu-title">{% translate "Entrées Client" %}</span>
-									</a>
-								</div>
-							{% endif %}
-							{% if perms.transactions.view_clientpayment %}
-								<div class="menu-item">
-									<a class="menu-link" href="{% url 'transactions:list_clientpayment' %}">
-										<span class="menu-bullet">
-											<span class="bullet bullet-dot"></span>
-										</span>
-										<span class="menu-title">{% translate "Entrées Factures" %}</span>
+										<span class="menu-title">{% translate "Entrées Clients" %}</span>
 									</a>
 								</div>
 							{% endif %}
@@ -201,7 +191,7 @@
 										<span class="menu-bullet">
 											<span class="bullet bullet-dot"></span>
 										</span>
-										<span class="menu-title">{% translate "Sorties Personnel" %}</span>
+										<span class="menu-title">{% translate "Sorties Personnels" %}</span>
 									</a>
 								</div>
 							{% endif %}

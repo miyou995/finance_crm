@@ -9,24 +9,35 @@
     {% include 'snippets/_breadcrumb.html' %}
     {% if has_perms %}
         <div class="d-flex align-items-end gap-2">
-            {% include "snippets/_export_button.html" with  modal_id="export_id" %}
-            {% if not is_ledger_url %}
-                <button 
-                    class="btn btn-primary d-flex align-items-center  shadow"
-                    data-bs-toggle="modal"
-                    data-bs-target="#kt_modal"
-                    hx-get="{{ create_url }}"
-                    hx-target="#kt_modal_content"
-                    hx-swap="innerHTML"
-                >
-                    <i class="ki-duotone ki-plus fs-4"></i>
-                    <span class="fw-semibold"> {{ page_title }} </span>
-                </button>
-            {% endif %}
+            {% block create_buttons %}
+            
+                {% include "snippets/_export_button.html" with  modal_id="export_id" %}
+            <button 
+                class="btn btn-success d-flex align-items-center  shadow"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal"
+                hx-get="{% url 'transactions:create_clientpayment' %}"
+                hx-target="#kt_modal_content"
+                hx-swap="innerHTML"
+            >
+                <i class="ki-duotone ki-plus fs-4"></i>
+                <span class="fw-semibold"> {% translate "Paiement Facture" %} </span>
+            </button>
+             <button 
+                class="btn btn-primary d-flex align-items-center shadow"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal"
+                hx-get="{% url 'transactions:create_quote_payment' %}"
+                hx-target="#kt_modal_content"
+                hx-swap="innerHTML"
+            >
+                <i class="ki-duotone ki-plus fs-4"></i>
+                <span class="fw-semibold"> {% translate "Paiement Autre" %} </span>
+            </button>
+            {% endblock create_buttons %}
         </div>
     {% endif %}
 </div>
-
 {% include "snippets/toolbar.html" %}
 
 <div id="TransactionTable" 
@@ -43,5 +54,4 @@
 
 {% block modal %}
     {% include "popups/export_modal.html" with export_url=export_url modal_id="export_id" %}
-
 {% endblock modal %}

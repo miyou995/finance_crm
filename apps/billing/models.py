@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
-
+from django.db.models import Sum, F
 from apps.core.models import CRUDUrlMixin, Tax, TimestampedModel
 
 User = get_user_model()
@@ -39,6 +39,21 @@ class BillQuerySet(models.QuerySet):
             return self.filter(Q(created_by__id=user.id))
         else:
             return self.none()
+        
+    # def unpaid(self):
+    #     """
+    #     Returns bills that are not fully paid.
+    #     Includes pending, sent, accepted, and partially paid.
+    #     Excludes paid and canceled.
+    #     """
+    #     return self.exclude(state__in=[Bill.BillStates.PAID, Bill.BillStates.CANCELED])
+
+    def unpaid(self):
+        return self.annotate(
+            total_paid=Sum("payments__amount")
+        ).filter(
+            Q(total_paid__lt=F("bill_total")) | Q(total_paid__isnull=True)
+        )
 
 
 class BillManager(models.Manager):
@@ -52,6 +67,8 @@ class BillManager(models.Manager):
     def limit_user(self, user):
         return self.get_queryset().limit_user(user)
 
+    def unpaid(self):
+        return self.get_queryset().unpaid()
 
 
 

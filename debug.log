@@ -1329,3 +1329,323 @@ TypeError: 'NoneType' object is not iterable
 2025-09-19 10:26:05,471 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/tables.py changed, reloading.
 2025-09-19 10:26:06,289 django.utils.autoreload INFO     Watching for file changes with StatReloader
 2025-09-19 10:26:52,803 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:35:48,839 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 17:46:19,219 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 17:46:20,034 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 17:49:33,468 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:49:35,205 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:57:43,812 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:59:25,108 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:59:27,397 django.request ERROR    Internal Server Error: /paiements/invoices/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 74, in resolve_template
+    return get_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 17: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+2025-09-19 17:59:27,529 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:59:27,825 django.request WARNING  Not Found: /favicon.ico
+2025-09-19 17:59:35,870 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:59:38,494 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 17:59:40,161 django.request WARNING  Not Found: /.well-known/appspecific/com.chrome.devtools.json
+2025-09-19 18:04:40,681 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:04:41,519 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:04:43,554 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:04:44,336 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:04:50,501 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:04:51,271 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:05:07,686 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:05:08,495 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:05:19,782 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:05:20,579 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:05:32,902 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:05:33,689 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:05:35,725 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:05:36,499 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:07:14,109 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:07:14,924 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:07:21,062 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:07:21,845 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:08:09,724 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:08:10,526 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:08:20,998 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:08:21,857 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:10:21,966 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:10:22,763 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:10:27,897 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:10:28,710 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:10:33,835 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:10:34,621 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:10:48,978 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:10:49,821 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:10:52,912 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:10:53,715 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:16:34,604 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:16:35,385 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:17:06,249 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:17:07,067 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:17:22,535 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:17:23,318 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:18:58,095 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:18:58,874 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:19:01,942 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:19:02,722 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:20:39,277 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:20:40,029 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:20:54,441 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:20:55,227 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:21:39,527 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:21:40,340 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:21:43,407 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:21:44,207 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:22:00,638 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:22:01,420 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:22:36,496 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:22:37,299 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:22:40,397 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:22:41,233 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:23:02,865 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:23:03,632 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:23:16,952 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:23:17,750 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:23:21,844 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:23:22,639 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:23:31,946 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:23:32,743 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:23:53,461 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:23:54,268 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:27:59,908 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:28:00,723 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:28:18,165 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:28:18,974 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:28:23,068 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:28:23,841 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:28:46,416 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:28:47,198 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:28:50,266 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:28:51,063 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:28:56,185 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:28:57,025 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:29:09,341 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/billing/models.py changed, reloading.
+2025-09-19 18:29:10,119 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:29:21,377 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:29:22,164 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:29:37,540 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:29:38,318 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:29:40,365 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:29:41,146 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:29:44,243 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/forms.py changed, reloading.
+2025-09-19 18:29:45,032 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:30:26,543 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:31:58,186 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:31:58,999 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:32:02,071 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:32:02,850 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:32:11,050 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:32:11,852 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:32:15,823 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:32:16,565 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:32:29,782 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:32:30,533 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:33:23,029 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:33:23,800 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:33:25,805 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/views.py changed, reloading.
+2025-09-19 18:33:26,622 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:33:55,333 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:33:56,144 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:33:58,176 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:33:58,960 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:34:01,011 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:34:01,824 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:34:23,907 django.request ERROR    Internal Server Error: /paiements/invoices/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/views/generic/base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django_filters/views.py", line 85, in get
+    context = self.get_context_data(
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/views.py", line 85, in get_context_data
+    context["create_url"] = self.get_queryset().model.get_create_url()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/apps/transactions/models.py", line 179, in get_create_url
+    return reverse(f"{cls._meta.app_label}:create_{cls._meta.model_name}")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_clientpayment' not found. 'create_clientpayment' is not a valid view function or pattern name.
+2025-09-19 18:34:48,246 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/transactions/urls.py changed, reloading.
+2025-09-19 18:34:49,046 django.utils.autoreload INFO     Watching for file changes with StatReloader
+2025-09-19 18:34:50,407 django.request ERROR    Internal Server Error: /paiements/invoices/
+Traceback (most recent call last):
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/test/utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/test/utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/taki/Desktop/octopus_crm/.venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_invoice_payment' not found. 'create_invoice_payment' is not a valid view function or pattern name.
+2025-09-19 18:42:55,780 django.utils.autoreload INFO     /home/taki/Desktop/octopus_crm/apps/core/mixins.py changed, reloading.
+2025-09-19 18:42:56,574 django.utils.autoreload INFO     Watching for file changes with StatReloader

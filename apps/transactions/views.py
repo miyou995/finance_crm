@@ -112,16 +112,23 @@ class ManageInvoicePaiementHtmx(BaseManageHtmxFormView):
     permission_required = "transactions.add_clientpayment"
     form_class = BillPaiementModelForm
     model = ClientPayment
+    extra_kwargs = {"bill_type": "invoice"}
     hx_triggers = {
         "closeModal": "kt_modal",
         "refresh_table": None,
         "update_total": None,
     }
 
+class ManageQuotePaiementHtmx(ManageInvoicePaiementHtmx):
+    extra_kwargs = {"bill_type": "quote"}
+
 
 class CreateCompanyInvoicePaiment(ManageInvoicePaiementHtmx):
     parent_url_kwarg = ("company_pk",)
 
+class CreateCompanyQuotePayment(ManageInvoicePaiementHtmx):
+    parent_url_kwarg = ("company_pk", )
+    
     # def get_form_kwargs(self):
     #     kwargs = super().get_form_kwargs()
     #     kwargs['company_pk'] = self.kwargs.get('company_pk')
@@ -185,7 +192,7 @@ class StaffPaymentView(
     def get_template_names(self) -> list[str]:
         if self.request.htmx:
             return ["tables/table_partial.html"]
-        return ["transactions.html"]
+        return ["staff-transactions.html"]
 
 
 class ManageStaffPaymentHtmx(BaseManageHtmxFormView):
